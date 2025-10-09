@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ACIAM 2026 — Mathematics for Resilient Futures</title>
+  <meta name="description" content="ACIAM 2026 — Mathematics for Resilient Futures: Climate, Health & Industry. Africa's forum connecting mathematics, computing and impact." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Merriweather:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f6f8fb;--surface:#fff;--text:#0f1724;--muted:#6b7280;
+      --primary:#0f4bd1;--accent:#f59e0b;--radius:12px;--shadow:0 8px 30px rgba(15,23,36,0.08);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Helvetica Neue,Arial;
+      color:var(--text);background:var(--bg);line-height:1.6;
+      -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+    }
+    header{position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(6px);
+      border-bottom:1px solid rgba(15,23,36,.06);z-index:60;}
+    .nav{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;
+      padding:14px 20px;}
+    .brand{font-family:"Merriweather",serif;font-weight:700;font-size:18px;color:var(--primary);}
+    nav a{margin-left:16px;text-decoration:none;color:var(--muted);font-weight:600;}
+    nav a:hover{color:var(--primary);}
+    .btn{background:var(--primary);color:#fff;border:none;border-radius:var(--radius);padding:10px 16px;
+      font-weight:700;cursor:pointer;box-shadow:var(--shadow);}
+    .btn.secondary{background:transparent;color:var(--primary);border:1px solid rgba(15,75,209,0.12);}
+    section{padding:60px 20px;}
+    h1,h2,h3{font-family:"Merriweather",serif;color:var(--text);}
+    h1{font-size:clamp(28px,4vw,40px);margin-bottom:12px;}
+    h2{font-size:26px;margin-bottom:14px;}
+    p{color:var(--muted);}
+    .container{max-width:1100px;margin:auto;}
+    .hero{display:grid;gap:30px;align-items:center;}
+    @media(min-width:900px){.hero{grid-template-columns:1fr 1fr;}}
+    .card{background:var(--surface);border-radius:var(--radius);padding:28px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.04);}
+    .pill{display:inline-flex;align-items:center;gap:6px;background:var(--surface);
+      border:1px solid rgba(15,23,36,.04);border-radius:999px;padding:6px 12px;font-size:14px;color:var(--muted);}
+    /* speakers */
+    .speaker-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px;}
+    .speaker{background:var(--surface);border-radius:var(--radius);overflow:hidden;
+      box-shadow:0 8px 20px rgba(15,23,36,.05);opacity:0;transform:translateY(18px);
+      transition:opacity .6s ease,transform .6s ease;}
+    .speaker.visible{opacity:1;transform:none;}
+    .speaker img{width:100%;height:190px;object-fit:cover;}
+    .speaker .meta{padding:14px;}
+    .speaker .name{font-weight:700;}
+    .speaker .title{font-size:14px;color:var(--primary);margin-top:6px}
+    .speaker .bio{font-size:14px;color:var(--muted);margin-top:8px;}
+    /* speakers submenu sticky */
+    .speakers-subnav{
+      position:sticky;top:82px;z-index:30;background:linear-gradient(90deg, rgba(255,255,255,0.96), rgba(255,255,255,0.96));
+      border:1px solid rgba(15,23,36,.06);border-radius:999px;display:flex;justify-content:center;gap:10px;padding:6px 12px;margin:24px 0 30px;
+      box-shadow:0 6px 16px rgba(0,0,0,.04);backdrop-filter:blur(4px);
+    }
+    .speakers-subnav a{
+      padding:8px 16px;border-radius:999px;font-weight:600;color:var(--muted);text-decoration:none;transition:all .18s ease;
+    }
+    .speakers-subnav a.active{background:var(--primary);color:#fff;box-shadow:0 6px 18px rgba(15,75,209,0.12)}
+    .category{padding:60px 0;border-top:1px solid rgba(15,23,36,.06);}
+    .category .category-inner{padding:20px;border-radius:12px}
+    .category.bg{background:#fcfdff}
+    footer{border-top:1px solid rgba(15,23,36,.06);padding:24px 20px;text-align:center;font-size:14px;color:var(--muted);}
+    .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);
+      z-index:1000;align-items:center;justify-content:center;padding:20px;}
+    .modal-content{background:var(--surface);padding:26px;border-radius:12px;max-width:760px;width:100%;
+      box-shadow:0 30px 80px rgba(2,6,23,0.3);max-height:84vh;overflow:auto;position:relative;}
+    .close{position:absolute;top:10px;right:14px;font-size:22px;cursor:pointer;color:var(--muted);background:transparent;border:0}
+    .muted{color:var(--muted)}
+    .stack{display:flex;flex-direction:column;gap:14px}
+    .row{display:flex;gap:12px;flex-wrap:wrap}
+    @media(max-width:720px){.hero{grid-template-columns:1fr}.speakers-subnav{overflow:auto;padding:8px}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <div class="brand">ACIAM 2026</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#aim">Aim</a>
+      <a href="#committees">Committees</a>
+      <a href="#speakers">Speakers</a>
+      <a href="#register">Register</a>
+    </nav>
+    <a href="#register" class="btn">Register</a>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="container hero">
+    <div>
+      <h1>ACIAM 2026 – Mathematics for Resilient Futures: Climate, Health & Industry</h1>
+      <p class="muted">Applied mathematics powering solutions for sustainable, resilient societies.</p>
+      <div style="margin:14px 0" class="row">
+        <div class="pill">📅 Sep 17–19, 2026</div>
+        <div class="pill">📍 University of Ouagadougou, Burkina Faso</div>
+      </div>
+      <div style="margin-top:18px" class="row">
+        <a class="btn" href="#register">Register</a>
+        <a class="btn secondary" href="#agenda">Agenda</a>
+      </div>
+    </div>
+    <aside class="card">
+      <strong>Agenda preview</strong>
+      <p class="muted" style="margin-top:8px">Day 1 - Opening, Keynote, Plenary sessions, Networking<br>Day 2 - Workshops, Posters, Industry panels<br>Day 3 - Tutorials & Closing</p>
+    </aside>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="container">
+    <h2>About</h2>
+    <div class="card">
+      <p><strong>Africa is inventing its future, fast, bold and resolute.</strong> ACIAM Burkina Faso 2026 celebrates mathematics as the spark that lights this transformation...</p>
+    </div>
+  </section>
+
+  <!-- AIM -->
+  <section id="aim" class="container">
+    <h2>Our Aim</h2>
+    <div class="card">
+      <p>Position ACIAM 2026 as Africa’s flagship forum where cutting-edge mathematics and computing drive measurable solutions for climate resilience, public health and industrial transformation.</p>
+    </div>
+  </section>
+
+  <!-- COMMITTEES -->
+  <section id="committees" class="container">
+    <h2>Committees</h2>
+    <p class="muted">The success of ACIAM 2026 is driven by distinguished committees committed to excellence and collaboration.</p>
+    <div class="row" style="margin-top:12px">
+      <button class="btn" data-modal="intlModal">International Organizing Committee</button>
+      <button class="btn secondary" data-modal="localModal">Local Organizing Committee</button>
+    </div>
+  </section>
+
+  <!-- SPEAKERS -->
+  <section id="speakers" class="container">
+    <h2>Speakers</h2>
+    <p class="muted">Our conference brings together keynote, plenary and special speakers — leaders in applied mathematics.</p>
+    <nav class="speakers-subnav" id="speakers-subnav">
+      <a href="#keynote" data-target="keynote">Keynote</a>
+      <a href="#plenary" data-target="plenary">Plenary</a>
+      <a href="#special" data-target="special">Special</a>
+    </nav>
+
+    <!-- Keynote -->
+    <div id="keynote" class="category">
+      <div class="category-inner card">
+        <h3>Keynote Speaker</h3>
+        <div class="speaker-grid">
+          <article class="speaker">
+            <img src="https://iciam.org/sites/default/files/styles/medium/public/profile-pictures/Schilders_Wil_WI_PO_VH_9265.jpg?itok=3Jd-9WQN" alt="Prof Wil Schilders">
+            <div class="meta">
+              <div class="name">Prof. Wil Schilders</div>
+              <div class="title">Keynote Speaker</div>
+              <div class="bio muted">President of the European Consortium for Mathematics in Industry (ECMI). Advocate for the application of mathematics to real-world industrial and societal challenges.</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <!-- Plenary -->
+    <div id="plenary" class="category bg">
+      <div class="category-inner card">
+        <h3>Plenary Speakers</h3>
+        <div class="speaker-grid">
+          <article class="speaker">
+            <img src="https://images.unsplash.com/photo-1545996124-1a9f3568c3a7?q=80&w=900&auto=format&fit=crop" alt="Prof. Oluwole Daniel Makinde">
+            <div class="meta">
+              <div class="name">Prof. Dr. Oluwole Daniel Makinde</div>
+              <div class="title">Plenary Speaker</div>
+              <div class="bio muted">Expert in fluid dynamics and nonlinear differential equations.</div>
+            </div>
+          </article>
+          <article class="speaker">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=900&auto=format&fit=crop" alt="Prof. Marie Françoise Ouedraogo">
+            <div class="meta">
+              <div class="name">Prof. Marie Françoise Ouedraogo</div>
+              <div class="title">Plenary Speaker</div>
+              <div class="bio muted">Leader in African mathematical communities and education.</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <!-- Special -->
+    <div id="special" class="category">
+      <div class="category-inner card">
+        <h3>Special Speakers</h3>
+        <div class="speaker-grid">
+          <article class="speaker">
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=900&auto=format&fit=crop" alt="Prof. Zakia Hammouch">
+            <div class="meta">
+              <div class="name">Prof. Dr. Zakia Hammouch</div>
+              <div class="title">Special Speaker</div>
+              <div class="bio muted">Specialist in mathematical modelling and fractional differential equations.</div>
+            </div>
+          </article>
+          <article class="speaker">
+            <img src="https://images.unsplash.com/photo-1554151228-14d9def656e4?q=80&w=900&auto=format&fit=crop" alt="Prof. Raseelo Joel Moitsheki">
+            <div class="meta">
+              <div class="name">Prof. Dr. Raseelo Joel Moitsheki</div>
+              <div class="title">Special Speaker</div>
+              <div class="bio muted">Computational methods for physical systems.</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Register -->
+  <section id="register" class="container">
+    <h2>Register</h2>
+    <div class="card" style="max-width:720px;margin-top:12px">
+      <form id="regForm" class="stack">
+        <div style="display:flex;gap:12px">
+          <input name="firstName" placeholder="First name" required>
+          <input name="lastName" placeholder="Last name" required>
+        </div>
+        <input type="email" name="email" placeholder="Email" required>
+        <select name="ticket">
+          <option>Standard (free)</option>
+          <option>Corporate</option>
+          <option>Student</option>
+        </select>
+        <label><input type="checkbox" name="consent" required> I agree to data processing for event management.</label>
+        <button class="btn" type="submit">Submit registration</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container muted">© <span id="year"></span> ACIAM — All rights reserved</div>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){e.target.classList.add('visible');} });
+},{threshold:.2});
+document.querySelectorAll('.speaker').forEach(s=>observer.observe(s));
+</script>
+</body>
+</html>
