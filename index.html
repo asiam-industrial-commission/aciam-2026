@@ -3,167 +3,563 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Conférence Next Horizons 2025</title>
-  <meta name="description" content="Conférence Next Horizons 2025 – Innovation, data & product au service de l'impact" />
+  <title>ACIAM 2026 — Mathematics for Resilient Futures</title>
+  <meta name="description" content="ACIAM 2026 — Mathematics for Resilient Futures: Climate, Health & Industry. Africa's forum connecting mathematics, computing and impact." />
+  <meta name="color-scheme" content="light" />
+  <meta name="theme-color" content="#10b981" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Merriweather:wght@600;700&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#f7f8fb; --paper:#ffffff; --ink:#0f172a; --muted:#5b647a; --line:#e6e8ee; --cta:#2563eb; --cta-ink:#ffffff; --cta2:#0ea5e9; --radius:16px;
+      --ink:#0F172A; --muted:#5B647A; --brand:#0B6B4F; --paper:#fff;
+      --bg-top:#FAFBF7; --bg-bottom:#E9F7F1; --cta:var(--brand); --cta-ink:#fff;
+      --line:rgba(15,23,42,.12); --radius:16px; --ring:0 0 0 3px rgba(11,107,79,.25);
+      --flip-h:120px; --flip-fs:54px; --flip-min:140px;
     }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0}
-    body{font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji"; color:var(--ink); background:linear-gradient(#fff, var(--bg));}
-    a{color:inherit}
-    .container{max-width:1100px;margin:0 auto;padding:0 20px}
-    header{position:sticky;top:0;backdrop-filter:saturate(150%) blur(6px);background:rgba(255,255,255,.8);border-bottom:1px solid var(--line);z-index:20}
-    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
-    .brand{font-weight:700}
-	  nav ul{list-style:none;display:flex;gap:20px;margin:0;padding:0}
-nav li{position:relative}
-nav li ul{display:none;position:absolute;top:100%;left:0;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:10px 0;min-width:160px;box-shadow:0 4px 12px rgba(0,0,0,.1)}
-nav li:hover ul{display:block}
-nav li ul li{padding:8px 16px;white-space:nowrap}
-nav li ul li:hover{background:var(--bg)}
-    /*nav a{font-size:14px;text-decoration:none;margin-left:20px;color:#334155}*/
-    .btn{display:inline-block;background:var(--cta);color:var(--cta-ink);padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:600;border:0;cursor:pointer}
-    .btn.outline{background:#fff;color:#0f172a;border:1px solid var(--line)}
-    .grid{display:grid;gap:24px}
-    .hero{padding:72px 0}
-    .hero h1{font-size:clamp(28px,4vw,44px);line-height:1.1;margin:0}
-    .muted{color:var(--muted)}
-    .kpi{display:flex;flex-wrap:wrap;gap:16px;margin-top:16px;font-size:14px}
-    .kpi span{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);padding:8px 12px;border-radius:999px}
-    .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 6px 24px rgba(16,24,40,.06)}
-    .card .card-h{padding:16px 20px;border-bottom:1px solid var(--line);font-weight:700}
-    .card .card-b{padding:16px 20px}
+    html,body{margin:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial;
+      color:var(--ink); min-height:100dvh; overflow-x:hidden;
+      background:linear-gradient(180deg,var(--bg-top) 0%, var(--bg-bottom) 100%);
+      position:relative;
+    }
+    :focus-visible{outline:none;box-shadow:var(--ring)}
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+
+    /* Decorative background */
+    body::before{
+      content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
+      background:url("https://upload.wikimedia.org/wikipedia/commons/9/9e/Burkina_Faso_location_map.svg")
+                 no-repeat center / min(90vw,1200px) auto;
+      opacity:.1;
+    }
+    body::after{
+      content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
+      background:radial-gradient(1000px 320px at 50% -10%, rgba(255,255,255,.55) 0%, rgba(255,255,255,.2) 50%, transparent 100%);
+    }
+
+    .container{max-width:1100px;margin-inline:auto;padding-inline:20px}
+
+    /* Header */
+    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:blur(6px);border-bottom:1px solid rgba(15,23,36,.08)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+    .brand{font-family:"Merriweather",serif;font-weight:700;font-size:18px;color:var(--brand)}
+    nav ul{list-style:none;display:flex;gap:20px;margin:0;padding:0}
+    nav li{position:relative}
+    nav a{color:var(--muted);font-weight:600}
+    nav a:hover{color:var(--ink)}
+    nav li:focus-within>ul,nav li:hover>ul{display:block}
+    nav li ul{
+      display:none;position:absolute;top:100%;left:0;background:#fff;border:1px solid var(--line);
+      border-radius:var(--radius);padding:8px 0;min-width:180px;box-shadow:0 4px 12px rgba(0,0,0,.1)
+    }
+    nav li ul a{display:block;padding:8px 14px}
+    nav li ul a:hover{background:rgba(15,23,42,.04)
+	}
+
+    p { padding: 10px; width: 95%; text-align: justify; }
+	.none { text-justify: none; }
+	.auto { text-justify: auto; }
+	.dist { text-justify: distribute; }
+	.word { text-justify: inter-word; }
+	.char { text-justify: inter-character; }
+
+    /* Buttons */
+    .btn{display:inline-block;background:var(--cta);color:var(--cta-ink);padding:10px 16px;border-radius:10px;font-weight:700;border:0;cursor:pointer}
+    .btn:hover{filter:brightness(1.05)}
+    .btn.outline{background:#fff;color:var(--ink);border:1px solid var(--line)}
+
+    /* Layout */
+    .grid{display:grid;gap:48px}
     .two{grid-template-columns:1fr}
-    @media(min-width:900px){.two{grid-template-columns:1.1fr .9fr}}
+    @media (min-width:900px){.two{grid-template-columns:1.1fr .9fr}}
 
-    /* Speakers */
-    .speakers{padding:56px 0}
-    .speaker-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:24px}
-    .speaker img{width:100%;height:180px;object-fit:cover;border-top-left-radius:var(--radius);border-top-right-radius:var(--radius)}
-    .speaker .meta{padding:14px 16px}
-    .speaker .name{font-weight:700}
-    .speaker .title{font-size:14px;color:var(--muted)}
-    .speaker .bio{font-size:14px;margin-top:8px}
+    /* Hero */
+    .hero{padding:72px 0}
+    .hero h1{font-family:"Merriweather",serif;font-weight:700;font-size:clamp(28px,4vw,44px);line-height:1.1;margin:0}
+    .muted{color:var(--muted)}
+    .kpi{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px;font-size:14px}
+    .kpi span{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);padding:8px 12px;border-radius:999px}
 
-    /* Agenda */
-    .agenda{padding:56px 0;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-    .agenda-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:20px}
-    .agenda-item{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius)}
-    .agenda-item .t{padding:14px 16px;font-weight:700;border-bottom:1px solid var(--line)}
-    .agenda-item .b{padding:14px 16px;font-size:14px;color:var(--muted)}
+    .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 6px 24px rgba(16,24,40,.06)}
+    .card-b{padding:16px 20px}
 
-    /* Register */
+     /* Reset */
+        * {margin:0; padding:0; box-sizing:border-box;}
+
+         /* Hero2 Section */
+        .hero2 {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        /* Slideshow Images */
+        .hero2 img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+    
+        .hero2 img.active {
+            opacity: 1;
+        }
+    
+        /* Overlay */
+        .overlay {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.45);
+        }
+    
+        /* Hero2 Content */
+        .hero2-content {
+            position: relative;
+            z-index: 2;
+        }
+    
+        .hero2-content h1 {
+            font-size: 3rem;
+            letter-spacing: 2px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        /* Buttons */
+        .hero2-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+    
+        .hero2-buttons a {
+         padding: 14px 32px;
+    
+    
+            background-color: #d32f2f;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: background 0.3s;
+        }
+
+        .hero2-buttons a:hover {
+         background-color: #b71c1c;
+        }
+
+        /* Responsive Text */
+        @media(max-width:768px){
+        .hero2-content h1 {font-size: 2.2rem;}
+        }
+
+        /* Buttons */
+        .btn{display:inline-block;background:var(--cta);color:var(--cta-ink);padding:10px 16px;border-radius:10px;font-weight:700;border:0;cursor:pointer}
+        .btn:hover{filter:brightness(1.05)}
+        .btn.outline{background:#fff;color:var(--ink);border:1px solid var(--line)}
+
+        /* Layout */
+        .grid{display:grid;gap:48px}
+        .two{grid-template-columns:1fr}
+     @media (min-width:900px){.two{grid-template-columns:1.1fr .9fr}}
+
+     /* Hero */
+        .hero{padding:72px 0}
+        .hero h1{font-family:"Merriweather",serif;font-weight:700;font-size:clamp(28px,4vw,44px);line-height:1.1;margin:0}
+        .muted{color:var(--muted)}
+        .kpi{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px;font-size:14px}
+        .kpi span{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);padding:8px 12px;border-radius:999px}
+
+        .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 6px 24px rgba(16,24,40,.06)}
+        .card-b{padding:16px 20px}
+
+
+        /* Hero Section */
+        .hero2 {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            font-family: 'Merriweather', serif;
+        }
+
+        /* Slideshow Images */
+        .hero2 img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .hero2 img.active {
+            opacity: 1;
+        }
+
+        /* Overlay */
+        .overlay {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.45);
+        }
+
+        /* Hero Content */
+        .hero2-content {
+            position: relative;
+            z-index: 0;
+        }
+
+        .hero2-content h1 {
+            font-size: 3rem;
+            letter-spacing: 2px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        /* Buttons */
+        .hero2-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero2-buttons a {
+            padding: 14px 32px;
+            background-color: #0B6B4F;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: background 0.3s;
+        }
+
+        .hero2-buttons a:hover {
+        background-color: #e20f0f;
+        }
+
+        /* Responsive Text */
+        @media(max-width:768px){
+        .hero-content h1 {font-size: 2.2rem;}
+        }
+
+
+
+    /* Sections */
+    .section{padding:56px 0}
+	.aim{border-block:1px solid var(--line)}
+    .keynotespeakers{border-block:1px solid var(--line)}
+    .speaker-grid, .aim-grid, .keynotespeaker-grid,.plenaryspeaker-grid,.invitedspeaker-grid,.specialspeaker-grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:24px
+    }
+    .speaker img, .aim img, .keynotespeaker img,.plenaryspeaker img,.invitedspeaker img,.specialspeaker img{
+      width:100%;height:180px;object-fit:cover;border-top-left-radius:var(--radius);border-top-right-radius:var(--radius);aspect-ratio:16/9
+    }
+	.aim img{height:400px;}
+    .keynotespeaker img{height:300px;aspect-ratio:4/3}
+    .meta{padding:14px 16px}
+    .name{font-weight:700}
+    .title{font-size:14px;color:var(--muted)}
+
+    /* Gallery */
+    .gallery{padding:56px 0;border-top:1px solid var(--line)}
+    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:16px}
+    .gallery-grid button{padding:0;border:0;background:none;cursor:pointer}
+    .gallery-grid img{width:100%;height:160px;object-fit:cover;border-radius:12px;aspect-ratio:4/3}
+    dialog.lightbox{border:0;border-radius:16px;padding:0;max-width:min(90vw,1100px)}
+    dialog.lightbox::backdrop{background:rgba(0,0,0,.5)}
+    .lightbox img{display:block;width:100%;height:auto;border-radius:16px}
+    .lightbox .close{position:absolute;top:8px;right:8px;border:0;background:#fff;border-radius:999px;padding:6px 10px;cursor:pointer}
+
+    /* Countdown (flip) */
+    .countdown{padding:24px 0 0}
+    .flip-wrap{display:grid;grid-template-columns:repeat(4,minmax(var(--flip-min),1fr));gap:16px;margin-top:8px}
+    @media (max-width:900px){.flip-wrap{grid-template-columns:repeat(2,minmax(var(--flip-min),1fr))}}
+    .flip-unit .label{font-size:12px;color:var(--muted);margin-bottom:8px;font-weight:600}
+    .flip{perspective:1000px;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 6px 24px rgba(16,24,40,.06);overflow:hidden}
+    .flip .card{position:relative;display:block;height:var(--flip-h);font-variant-numeric:tabular-nums;font-weight:800;font-size:var(--flip-fs);line-height:var(--flip-h);text-align:center;color:var(--ink)}
+    .flip .front,.flip .back{position:absolute;inset:0;display:block;backface-visibility:hidden;transform-style:preserve-3d}
+    .flip .front{background:linear-gradient(#fff,#f6f7fb)}
+    .flip .back{background:linear-gradient(#fff,#f6f7fb);transform:rotateX(180deg)}
+    .flip.anim .front{animation:flipFront .6s ease both}
+    .flip.anim .back{animation:flipBack .6s ease both}
+    @keyframes flipFront{0%{transform:rotateX(0)}100%{transform:rotateX(-180deg)}}
+    @keyframes flipBack{0%{transform:rotateX(180deg)}100%{transform:rotateX(0)}}
+    @media (prefers-reduced-motion:reduce){.flip.anim .front,.flip.anim .back{animation:none}}
+
+    .tictac-row{display:flex;align-items:center;gap:12px;margin-top:12px}
+    .tictac{width:14px;height:14px;border-radius:999px;background:var(--cta);box-shadow:0 0 0 0 rgba(16,185,129,.0);transform:scale(1)}
+    .tictac.on{animation:tictacPulse .9s ease-out}
+    @keyframes tictacPulse{0%{transform:scale(1);box-shadow:0 0 0 0 rgba(16,185,129,.25)}100%{transform:scale(1.15);box-shadow:0 0 0 12px rgba(16,185,129,0)}}
+    @media (prefers-reduced-motion:reduce){.tictac.on{animation:none}}
+
+    .fireworks-wrap{position:relative;margin-top:20px;border:1px dashed var(--line);border-radius:16px;overflow:hidden;display:none}
+    .fireworks-wrap.show{display:block}
+    #fireworks{display:block;width:100%;height:300px;background:radial-gradient(1200px 220px at 50% 110%,#eaf4ff 0%,#fff 40%,#fff 100%)}
+
+    .countdown.compact{--flip-h:68px;--flip-fs:40px;--flip-min:110px}
+    .countdown.compact .flip-unit .label{font-size:11px}
+
+    /* Rotator */
+    .suggestedthematics{padding:56px 0;border-top:1px solid var(--line); height: 500px;}
+    .rotator{max-width:1100px;margin-inline:auto; margin-top: 50px;}
+    .slide{border:1px solid var(--line);border-radius:var(--radius);background:var(--paper);padding:18px;box-shadow:0 6px 24px rgba(16,24,40,.06);min-height:140px}
+    .time{font-weight:700;margin-bottom:6px}
+    .track{font-size:14px;color:var(--muted)}
+    .fade{opacity:0;transform:translateY(8px);transition:opacity .28s ease,transform .28s ease}
+    .fade.show{opacity:1;transform:translateY(0); width:100%}
+    @media (prefers-reduced-motion:reduce){.fade,.fade.show{transition:none;transform:none}}
+    .controls{display:flex;justify-content:center;align-items:center;gap:10px;margin-top:14px}
+    .ctrl{border:1px solid var(--line);background:#fff;padding:8px 10px;border-radius:10px;cursor:pointer}
+    .dots{display:flex;gap:6px;align-items:center}
+    .dot.active{background:#0f172a;opacity:1}
+    .dot{width:8px;height:8px;border-radius:999px;background:#cbd5e1;opacity:.7}
+
+    /* Register / Form */
     .register{padding:56px 0}
     form{display:grid;gap:14px}
     .row{display:grid;gap:14px}
     @media(min-width:700px){.row.two{grid-template-columns:1fr 1fr}}
     label{font-size:14px;font-weight:600;display:block;margin-bottom:6px}
-    input,select,textarea{width:100%;padding:12px 12px;border:1px solid var(--line);border-radius:10px;font:inherit}
+    input,select,textarea{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;font:inherit}
     .hint{font-size:12px;color:var(--muted)}
     .error{font-size:12px;color:#dc2626;margin-top:6px}
     .consent{display:flex;gap:10px;align-items:flex-start}
     .consent input{margin-top:2px}
     .success{padding:28px;text-align:center}
-	
-	.top {
-	  --offset: 50px; 
-	  
-	  position: sticky;
-	  bottom: 20px;      
-	  margin-right:10px; 
-	  place-self: end;
-	  margin-top: calc(100vh + var(--offset));
-	  
-	  /* visual styling */
-	  text-decoration: none;
-	  padding: 10px;
-	  font-family: sans-serif;
-	  /*color: #334155;*/
-	  /*background: #675afe;*/
-	  color:var(--cta-ink);
-	  background:var(--cta);
-	  border-radius: 100px;
-	  white-space: nowrap;
-	}
 
-    /* Map */
-    .venue{padding:56px 0;background:#fff;border-top:1px solid var(--line)}
-
+    /* Venue / Footer */
+    .venue{padding:56px 0;border-top:1px solid var(--line)}
     footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted)}
-    footer .links a{margin-left:18px;text-decoration:none;color:inherit}
+    .links a{margin-left:18px}
+    .top{position:fixed;right:16px;bottom:18px;background:var(--cta);color:var(--cta-ink);padding:10px;border-radius:100px}
+
+    /* Accommodations */
+    .accommodations{padding:56px 0;border-top:1px solid var(--line)}
+    .hotel-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:18px}
+    .hotel .img{height:160px;overflow:hidden;border-top-left-radius:var(--radius);border-top-right-radius:var(--radius)}
+    .hotel img{width:100%;height:100%;object-fit:cover}
+    .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+    .tag{font-size:12px;border:1px solid var(--line);border-radius:999px;padding:4px 8px;color:#334155;background:#fff}
+    .hotel .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+
+    /* Committees */
+    .committee{padding:56px 0;border-top:1px solid var(--line)}
+    .committee-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:18px}
+    .committee .card .name{font-weight:800}
   </style>
 </head>
 <body>
+  <a id="top" tabindex="-1"></a>
+
   <header>
-    <div class="container nav" role="navigation" aria-label="Navigation principale">
-      <div class="brand">African Conference for Industrial And Appplied  Mathematics 2026</div>
-      	<nav>
-			<ul>
-				<li><a href="#speakers">Intervenants</a>
-					<ul>
-						<li><a href="#ai">Experts IA</a></li>
-						<li><a href="#cloud">Experts Cloud</a></li>
-						<li><a href="#security">Experts Sécurité</a></li>
-					</ul>
-				</li>
-				<li><a href="#agenda">Agenda</a></li>
-				<li><a href="#register">Inscription</a></li>
-				<li><a class="btn" href="#register">S'inscrire</a></li>
-			</ul>
-		</nav>
+    <div class="nav container">
+      <div class="brand">ACIAM 2026</div>
+      <nav aria-label="Navigation du site">
+        <ul>
+          <li><a href="#aim">About</a></li>
+          <li><a href="#committees">Committees</a>
+            <ul role="menu" aria-label="Committee categories">
+              <li><a role="menuitem" href="#localorganisingcommitee">Local Organising Committee Members</a></li>
+              <li><a role="menuitem" href="#internationalorganisingcommitee">International Organising Committee Members</a></li>
+              <li><a role="menuitem" href="#honorarycommitee">Honorary Committee</a></li>
+            </ul>
+          </li>
+          <li><a href="#keynotespeakers">Speakers</a>
+            <ul role="menu" aria-label="Speakers categories">
+              <li><a role="menuitem" href="#keynotespeakers">Keynote Speakers</a></li>
+              <li><a role="menuitem" href="#plenaryspeakers">Plenary Speakers</a></li>
+              <li><a role="menuitem" href="#invitedspeakers">Invited Speakers</a></li>
+              <li><a role="menuitem" href="#specialspeakers">Special Speakers</a></li>
+            </ul>
+          </li>
+          <li><a href="#accommodations">Accommodations</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#suggestedthematics">Suggested Thematics</a></li>
+        </ul>
+      </nav>
+      <a href="#register" class="btn">Register</a>
     </div>
   </header>
 
   <main>
-    <!-- Hero -->
+    <section class="hero2">
+            <img src="https://aciam-bf2026.com/images/h1.jpeg" class="active" alt="Burkina Faso Landscape">
+            <img src="https://aciam-bf2026.com/images/h2.jpeg" alt="Conference Hall">
+            <img src="https://aciam-bf2026.com/images/h3.jpeg" alt="Mathematics Conference">
+            <img src="https://aciam-bf2026.com/images/h4.jpeg" alt="Burkina Faso Landscape">
+            <img src="https://aciam-bf2026.com/images/h5.jpeg" alt="Conference Hall">
+            <img src="https://aciam-bf2026.com/images/h6.jpeg" alt="Mathematics Conference">
+            <img src="https://aciam-bf2026.com/images/h7.jpeg" alt="Mathematics Conference">
+
+            <div class="overlay"></div>
+
+            <div class="hero2-content">
+                <h1>ACIAM 2026 BURKINA FASO</h1>
+                <div class="hero2-buttons">
+                    <a href="#register">Register</a>
+                    <a href="#submit-abstract">Submit Abstract</a>
+                </div>
+            </div>
+        </section>
+
+        <script>
+        // Simple background image slideshow
+            const images = document.querySelectorAll('.hero2 img');
+        let current = 0;
+
+        setInterval(() => {
+        images[current].classList.remove('active');
+        current = (current + 1) % images.length;
+        images[current].classList.add('active');
+      }, 5000);
+    </script>
+    
+    <!-- HERO -->
     <section class="hero">
       <div class="container grid two" style="align-items:center">
         <div>
-          <h1>Innovation, data & product au service de l'impact</h1>
-          <p class="muted" style="margin-top:10px;font-size:18px">Rejoignez des leaders tech, data et produit pour 2 jours d'apprentissages concrets et de rencontres de qualité.</p>
-          <div class="kpi" aria-label="Informations clés">
-            <span>📅 17–21 Septembre 2026</span>
-            <span>📍 University of Ouagadougou, Ouagadougou - BURKINA FASO</span>
-            <span>🎙️ 4+ intervenants</span>
+          <h1>Mathematics for Resilient Futures</h1>
+          <p class="muted" style="margin-top:10px;font-size:18px">Join leaders in mathematics, computing and industry for concrete learning and impactful connections.</p>
+          <div class="kpi" aria-label="Key information">
+            <span>📅 17–21 septembre 2026</span>
+            <span>📍 University of Ouagadougou, Burkina Faso</span>
+            <span>🎙️ 15+ speakers</span>
           </div>
-          <div style="margin-top:20px;display:flex;gap:12px">
-            <a class="btn" href="#register">Je m'inscris</a>
-            <a class="btn outline" href="#agenda">Découvrir le programme</a>
-			<!--<a class="btn outline" href="#speakers">Découvrir le programme</a>-->
+          <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap">
+            <a class="btn" href="#register">Register</a>
+            <a class="btn outline" href="#suggestedthematics">See Suggested Thematic Tracks</a>
           </div>
         </div>
+
+        <!-- Compact countdown in hero -->
         <div>
-          <article class="card" aria-labelledby="apercuAgenda">
-            <div class="card-h" id="apercuAgenda">Aperçu agenda</div>
-            <div class="card-b" id="agendaPreview">
-              <!-- rempli par JS à partir des données AGENDA -->
+          <div class="countdown compact" id="countdown" aria-label="Countdown before the opening of the Conference">
+            <h2>Countdown before the opening of the Conference</h2>
+            <p class="muted">See you soon for ACIAM 2026 — ready?</p>
+
+            <div class="flip-wrap" aria-live="polite">
+              <div class="flip-unit" data-unit="days">
+                <div class="label">Days</div>
+                <div class="flip"><div class="card"><span class="front">000</span><span class="back">000</span></div></div>
+              </div>
+              <div class="flip-unit" data-unit="hours">
+                <div class="label">Hours</div>
+                <div class="flip"><div class="card"><span class="front">00</span><span class="back">00</span></div></div>
+              </div>
+              <div class="flip-unit" data-unit="minutes">
+                <div class="label">Minutes</div>
+                <div class="flip"><div class="card"><span class="front">00</span><span class="back">00</span></div></div>
+              </div>
+              <div class="flip-unit" data-unit="seconds">
+                <div class="label">Seconds</div>
+                <div class="flip"><div class="card"><span class="front">00</span><span class="back">00</span></div></div>
+              </div>
             </div>
-          </article>
+
+            <div class="tictac-row">
+              <button id="tickSound" class="btn outline" type="button" aria-pressed="false">Activate the tick-tock sound</button>
+              <div class="tictac" aria-hidden="true" title="Tic-Tac visuel"></div>
+            </div>
+
+            <div class="fireworks-wrap" aria-hidden="true">
+              <canvas id="fireworks"></canvas>
+              <div class="fw-message">
+                <h3>🚀 C’est parti !</h3>
+                <p>Bienvenue à ACIAM 2026</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Speakers -->
-    <section id="speakers" class="speakers">
+	<!-- AIM -->
+    <section id="aim" class="amsi section">
       <div class="container">
-        <h2>Intervenants</h2>
-        <p class="muted">Une sélection d'experts reconnus pour des talks actionnables.</p>
-        <div class="speaker-grid" id="speakerGrid" aria-live="polite">
-          <!-- cartes générées par JS -->
-        </div>
+        <h2>Welcome address from the President of ACIAM</h2>
+        <p class="muted">Africa is inventing its future, fast, bold and resolute. ACIAM Burkina Faso 2026 
+celebrates mathematics as the spark that lights this transformation...</p>
+        <div class="aim-grid" id="aimGrid" aria-live="polite"></div>
+      </div>
+    </section>
+	
+	<!-- LOCAL ORGANISING COMMITTEE -->
+    <section id="localorganisingcommitee" class="committee">
+      <div class="container">
+        <h2>Local Organising Committee</h2>
+        <p class="muted">Advising on scientific scope, partnerships, and global outreach.</p>
+        <div id="localCommitteeGrid" class="committee-grid" aria-live="polite"></div>
       </div>
     </section>
 
-    <!-- Agenda -->
-    <section id="agenda" class="agenda">
+    <!-- INTERNATIONAL ORGANISING COMMITTEE -->
+    <section id="internationalorganisingcommitee" class="committee">
       <div class="container">
-        <h2>Agenda</h2>
-        <p class="muted">Une trame claire, propice aux rencontres et aux ateliers.</p>
-        <div class="agenda-list" id="agendaList" aria-live="polite">
-          <!-- items générés par JS -->
-        </div>
+        <h2>International Organising Committee</h2>
+        <p class="muted">Advising on scientific scope, partnerships, and global outreach.</p>
+        <div id="internationalCommitteeGrid" class="committee-grid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- Keynote Speakers -->
+    <section id="keynotespeakers" class="keynotespeakers section">
+      <div class="container">
+        <h2>Keynote Speakers</h2>
+        <p class="muted">Our conference brings together distinguished voices from across the world of applied mathematics.</p>
+        <div class="keynotespeaker-grid" id="keyNoteSpeakerGrid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- Plenary Speakers -->
+    <section id="plenaryspeakers" class="plenaryspeakers section">
+      <div class="container">
+        <h2>Plenary Speakers</h2>
+        <p class="muted">Our conferences brings also around 8–12 plenary/keynote talks from internationally recognized experts.</p>
+        <div class="plenaryspeaker-grid" id="plenarySpeakerGrid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- Invited Speakers -->
+    <section id="invitedspeakers" class="invitedspeakers section">
+      <div class="container">
+        <h2>Invited Speakers</h2>
+        <p class="muted">Our conference brings together distinguished voices from across the world of applied mathematics.</p>
+        <div class="invitedspeaker-grid" id="invitedSpeakerGrid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- Special Speakers -->
+    <section id="specialspeakers" class="specialspeakers section">
+      <div class="container">
+        <h2>Special Speakers</h2>
+        <p class="muted">Our conference brings together distinguished voices from across the world of applied mathematics.</p>
+        <div class="specialspeaker-grid" id="specialSpeakerGrid" aria-live="polite"></div>
       </div>
     </section>
 
@@ -171,14 +567,14 @@ nav li ul li:hover{background:var(--bg)}
     <section id="register" class="register">
       <div class="container grid two" style="align-items:flex-start">
         <div>
-          <h2>S'inscrire</h2>
-          <p class="muted">Réservez votre place en quelques secondes. Un email de confirmation vous sera envoyé.</p>
+          <h2>Register</h2>
+          <p class="muted">Reserve your seat in seconds. A confirmation email will be sent to you.</p>
           <ul class="muted" style="margin-top:14px">
-            <li>Places limitées</li>
-            <li>Annulation gratuite jusqu'à J-7</li>
-            <li>Tarifs entreprises et étudiants</li>
+            <li>Limited seats</li>
+            <li>Free cancellation up to 7 days before</li>
+            <li>Corporate and student rates</li>
           </ul>
-          <p style="margin-top:10px"><a href="mailto:orga@example.com?subject=Inscription%20conf%C3%A9rence">Ou nous écrire ✉️</a></p>
+          <p style="margin-top:10px"><a href="mailto:orga@example.com?subject=ACIAM%202026%20Registration">Or write to us ✉️</a></p>
         </div>
 
         <article class="card" style="width:100%">
@@ -187,12 +583,12 @@ nav li ul li:hover{background:var(--bg)}
               <form id="regForm" novalidate>
                 <div class="row two">
                   <div>
-                    <label for="firstName">Prénom</label>
+                    <label for="firstName">First name</label>
                     <input id="firstName" name="firstName" autocomplete="given-name" placeholder="Alex" required />
                     <div class="error" data-error-for="firstName"></div>
                   </div>
                   <div>
-                    <label for="lastName">Nom</label>
+                    <label for="lastName">Last name</label>
                     <input id="lastName" name="lastName" autocomplete="family-name" placeholder="Martin" required />
                     <div class="error" data-error-for="lastName"></div>
                   </div>
@@ -204,54 +600,105 @@ nav li ul li:hover{background:var(--bg)}
                 </div>
                 <div class="row two">
                   <div>
-                    <label for="company">Société</label>
+                    <label for="company">Company</label>
                     <input id="company" name="company" placeholder="Acme Corp" />
                   </div>
                   <div>
-                    <label for="role">Poste / Fonction</label>
+                    <label for="role">Role / Position</label>
                     <input id="role" name="role" placeholder="Product Manager" />
                   </div>
                 </div>
                 <div>
-                  <label for="ticket">Type de billet</label>
+                  <label for="ticket">Ticket type</label>
                   <select id="ticket" name="ticket" required>
-                    <option value="standard">Standard (gratuit)</option>
-                    <option value="entreprise">Entreprise</option>
-                    <option value="etudiant">Étudiant</option>
+                    <option value="standard">Standard (free)</option>
+                    <option value="entreprise">Corporate</option>
+                    <option value="etudiant">Student</option>
                   </select>
                 </div>
                 <div>
-                  <label for="message">Message (optionnel)</label>
-                  <textarea id="message" name="message" rows="4" placeholder="Besoin spécifique, accessibilité, facture..."></textarea>
+                  <label for="message">Message (optional)</label>
+                  <textarea id="message" name="message" rows="4" placeholder="Accessibility needs, invoice, etc."></textarea>
                 </div>
                 <div class="consent">
                   <input id="consent" name="consent" type="checkbox" required />
-                  <label for="consent" class="hint">J'accepte que mes données soient utilisées pour la gestion de l'événement, conformément à la politique de confidentialité.</label>
+                  <label for="consent" class="hint">I agree that my data will be used to manage the event, according to the privacy policy.</label>
                 </div>
                 <div class="error" data-error-for="consent"></div>
 
-                <button class="btn" type="submit">Valider mon inscription</button>
-                <p class="hint" style="text-align:center">En soumettant, vous recevrez un email de confirmation.</p>
+                <button class="btn" type="submit">Confirm registration</button>
+                <p class="hint" style="text-align:center">You will receive a confirmation email.</p>
               </form>
             </div>
 
             <div id="success" class="success" hidden>
-              <h3>Merci ! 🎉</h3>
-              <p class="muted">Votre inscription a bien été enregistrée. Nous revenons vers vous très vite.</p>
-              <p style="margin-top:14px"><a class="btn" href="#top">Retour à l'accueil</a></p>
+              <h3>Thank you! 🎉</h3>
+              <p class="muted">Your registration has been recorded. We will get back to you very soon.</p>
+              <p style="margin-top:14px"><a class="btn" href="#top">Back to top</a></p>
             </div>
           </div>
         </article>
       </div>
     </section>
 
-    <!-- Venue / Map -->
+    <!-- Accommodations -->
+    <section id="accommodations" class="accommodations">
+      <div class="container">
+        <h2>Accommodations in Ouagadougou</h2>
+        <p class="muted" style="margin-top:8px">
+          Options near Université Joseph Ki-Zerbo and the city center. Times are typical taxi rides (traffic-dependent).
+        </p>
+        <div class="hotel-grid" id="hotelGrid" aria-live="polite"></div>
+        <div style="margin-top:16px">
+          <a class="btn outline" href="https://www.google.com/maps/search/?api=1&query=hotel+Ouagadougou" target="_blank" rel="noopener">Browse more on Google Maps</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Rotator -->
+    <section id="suggestedthematics" class="suggestedthematics">
+      <div class="container">
+        <h2>Suggested Thematic Tracks</h2>
+        <p class="muted" style="margin-top:8px">Quick inspiration for submissions & sessions.</p>
+        <div class="rotator" aria-live="polite">
+          <article class="slide fade show" id="slide" aria-atomic="true">
+            <div class="time" id="time"></div>
+            <h3 id="title" style="margin:6px 0 4px; margin-top: 4%;">Loading…</h3>
+            <div class="track" id="track"></div>
+          </article>
+          <div class="controls">
+            <button class="ctrl" id="prev" type="button" aria-label="Précédent">◀</button>
+            <button class="ctrl" id="play" type="button" aria-label="Pause/lecture">⏯</button>
+            <button class="ctrl" id="next" type="button" aria-label="Suivant">▶</button>
+            <div class="dots" id="dots" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="gallery">
+      <div class="container">
+        <h2>Previous editions</h2>
+        <p class="muted">A look back at moments from past ACIAM events.</p>
+        <div class="gallery-grid" id="galleryGrid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <dialog id="lightbox" class="lightbox" aria-label="Image preview">
+      <img alt="" id="lightboxImg" decoding="async" />
+      <button class="close" aria-label="Close">✕</button>
+    </dialog>
+
+    <!-- Venue -->
     <section class="venue">
       <div class="container">
-        <h2>Lieu</h2>
-        <p class="muted">University of Ouagadougou, Ouagadougou - BURKINA FASO.</p>
+        <h2>Venue</h2>
+        <p class="muted">University of Ouagadougou, Ouagadougou – Burkina Faso.</p>
         <div style="margin-top:16px;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden">
-			<iframe title="Plan" src="https://www.openstreetmap.org/export/embed.html?bbox=-1.5353661775588991%2C12.363766340018941%2C-1.5328556299209595%2C12.365534835996145&amp;layer=mapnik" style="width:100%;height:340px;border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <iframe title="Plan"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=-1.5353661775588991%2C12.363766340018941%2C-1.5328556299209595%2C12.365534835996145&amp;layer=mapnik"
+            loading="lazy" style="width:100%;height:340px;border:0" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
     </section>
@@ -259,134 +706,376 @@ nav li ul li:hover{background:var(--bg)}
 
   <footer>
     <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
-      <div>© <span id="year"></span> Conférence Next Horizons 2025 · Tous droits réservés</div>
+      <div>© <span id="year"></span> ACIAM 2026 · All rights reserved</div>
       <div class="links">
-        <a href="#register">Billetterie</a>
-        <a href="#speakers">Intervenants</a>
-        <a href="#">Mentions légales</a>
+        <a href="#register">Registration</a>
+        <a href="#keynotespeakers">Speakers</a>
+        <a href="#">Legal</a>
       </div>
     </div>
   </footer>
 
+  <a href="#top" class="top" aria-label="Retour en haut">↑</a>
+
   <script>
-    // ————————————————————————————————————————
-    // CONFIG – modifiez ces données selon votre événement
-    // ————————————————————————————————————————
-    const SITE = {
-      name: "Conférence Next Horizons 2025",
-      tagline: "Innovation, data & product au service de l'impact",
-      date: "17–21 septembre 2026",
-      location: "University of Ouagadougou, Ouagadougou - BURKINA FASO",
-      // ⚙️ Si vous utilisez Formspree, mettez ici l'endpoint, ex:
-      // FORMSPREE_ENDPOINT: "https://formspree.io/f/xxxxxx"
-      FORMSPREE_ENDPOINT: ""
-    };
+    // ---------- Utils ----------
+    const $ = (s,r=document)=>r.querySelector(s);
+    const $$ = (s,r=document)=>Array.from(r.querySelectorAll(s));
+    $('#year').textContent = new Date().getFullYear();
 
-    const SPEAKERS = [
-      { name:"Amina Bensaïd", title:"Head of AI, DataCo", bio:"Conçoit des plateformes MLOps à grande échelle pour l'industrie.", avatar:"https://images.unsplash.com/photo-1554151228-14d9def656e4?q=80&w=512&auto=format&fit=crop" },
-      { name:"Lucas Perrin", title:"CTO, Finopsy", bio:"Spécialiste cloud-native, optimisation des coûts et fiabilité.", avatar:"https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=512&auto=format&fit=crop" },
-      { name:"Sofia Almeida", title:"Product Director, Valyant", bio:"Met en musique la discovery continue et l'analytics produit.", avatar:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=512&auto=format&fit=crop" },
-      { name:"Noah Dupont", title:"Security Architect, SafeStack", bio:"Zero-trust, supply chain et sécurité des conteneurs.", avatar:"https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=512&auto=format&fit=crop" },
+    // ---------- Data ----------
+	const AIM = [
+      { name:"Prof. Abdon ATANGANA", title:"Chair of African Conference of Industrial and Applied Mathematics (ACIAM).", avatar:"https://www.africanresearchers.org/wp-content/uploads/2024/06/Professor-Abdon-Atangana-Named-Worlds-Top-Mathematician-A-Milestone-for-African-Science.jpg" },
     ];
 
-    const AGENDA = [
-      { time:"09:00", title:"Accueil & café", track:"Main Stage" },
-      { time:"09:30", title:"Keynote d'ouverture", track:"Main Stage" },
-      { time:"10:30", title:"Panels parallèles", track:"Track A / Track B" },
-      { time:"12:00", title:"Déjeuner & networking", track:"Expo" },
-      { time:"14:00", title:"Ateliers pratiques", track:"Workshops" },
-      { time:"17:30", title:"Clôture & apéro", track:"Main Stage" },
+    /* International Organising Committee list */
+    const INTERNATIONAL_COMMITTEE = [
+      { name:"Prof. Abdon ATANGANA", title:"University of the Free State, South Africa." },
+	  { name:"Prof. Dr. Oluwole Daniel MAKINDE", title:"Fluid dynamics & nonlinear differential equations." },
+      { name:"Pr Mamadou Abdoul Diop", title:"Université Gaston Berger de Saint-Louis (UGB)" },
+      { name:"Prof Bakare Emmanuel", title:"International Centre for Applied Mathematical Modelling & Data Analytics" },
+      { name:"Pr. Dr. Mbele Bidima Martin Le Doux", title:"University of Yaounde I, Cameroon" },
+      { name:"Prof. Dr Getachew Teshome Tilahun", title:"Haramaya University - Haramaya / Ethiopia" },
+      { name:"Prof Sara Abdelsalam", title:"Faculty of Engineering, The British University, Egypt" },
+      { name:"Prof. Dr. Raseelo Joel Moitsheki", title:"University of the Witwatersrand, South Africa" },
+      { name:"Prof. M. F. Ouedraogo", title:"Université Joseph Ki-Zerbo, Burkina Faso" },
+      { name:"Prof. Lazarus Rundora", title:"University of Limpopo, Turfloop Campus, South Africa" },
+      { name:"Prof. Solly Lebelo", title:"Vaal University of Technology, South Africa" },
+	  { name:"Prof. Dr. Hassirou Mouhamadou", title:"University of Niamey, Niger" },
+      { name:"Prof Dr. Zakia Hammouch", title:"Moulay Ismail University Morocco, Kyung Hee University South Korea" },
+      { name:"Professor Olaniyi Samuel Iyiola", title:"Morgan State University, United State of America" },
+      { name:"Prof Khalid Ouarghi", title:"Université Moulay Ismail de Meknes, Morocco" },
+      { name:"Prof. Chinedu Nwaigwe", title:"Rivers State University, Nigeria" },
+      { name:"Dr. Makosha Ishmaeline Charlotte Morakaladi", title:"Free States University, South Africa" },
+      { name:"Eng, MBA Rocky TSANE ZEDONG", title:"HULT International Business School, London" },
+      { name:"Councillor Jacki Mpondo-Hendricks", title:"Social Entrepreneurship....Global business development..Private Public Sector Partnerships...GBVF and Women Empowerment Activism, South Africa" },
+      { name:"Mr. Zahi Olivier Zabo", title:" PPA-CI, Nigeria" },	  
+      { name:"Prof. W. Schilders", title:"TU/e & ECMI, The Netherlands" }
     ];
 
-    // ————————————————————————————————————————
-    // RENDERING
-    // ————————————————————————————————————————
-    document.getElementById('year').textContent = new Date().getFullYear();
+    /* Local Organising Committee list */
+    const LOCAL_COMMITTEE = [
+      { name:"Prof. Boureima Sangare", title:" Unité de Formation et de Recherche en Sciences Exactes et Appliquées (UFR SEA), Burkina Faso" },
+	  { name:"Dr. Nonkane Ibrahim", title:"Université Thomas SANKARA, Ouagadougou, Burkina Faso" },
+      { name:"Dr.Sanogo Satafa", title:"Université Paul Sabatier - Toulouse, France" },
+      { name:"Dr. Kabore Abdoulaye", title:"Université Nazi Boni, Burkina Faso" },
+      { name:"Pr. Dr. Mbele Bidima Martin Le Doux", title:"University of Yaounde I, Cameroon" },
+      { name:"Prof. Dr Getachew Teshome Tilahun", title:"Haramaya University - Haramaya / Ethiopia" },
+      { name:"Prof Sara Abdelsalam", title:"Faculty of Engineering, The British University, Egypt" },
+      { name:"Prof. Dr. Raseelo Joel Moitsheki", title:"University of the Witwatersrand, South Africa" },
+      { name:"Prof. M. F. Ouedraogo", title:"Université Joseph Ki-Zerbo, Burkina Faso" },
+      { name:"Prof. Lazarus Rundora", title:"University of Limpopo, Turfloop Campus, South Africa" },
+      { name:"Prof. Solly Lebelo", title:"Vaal University of Technology, South Africa" },
+	  { name:"Prof. Dr. Hassirou Mouhamadou", title:"University of Niamey, Niger" },
+      { name:"Prof Dr. Zakia Hammouch", title:"Moulay Ismail University Morocco, Kyung Hee University South Korea" },
+      { name:"Professor Olaniyi Samuel Iyiola", title:"Morgan State University, United State of America" },
+      { name:"Prof Khalid Ouarghi", title:"Université Moulay Ismail de Meknes, Morocco" },
+      { name:"Prof. Chinedu Nwaigwe", title:"Rivers State University, Nigeria" },
+      { name:"Dr. Makosha Ishmaeline Charlotte Morakaladi", title:"Free States University, South Africa" },
+      { name:"Eng, MBA Rocky TSANE ZEDONG", title:"HULT International Business School, London" },
+      { name:"Councillor Jacki Mpondo-Hendricks", title:"Social Entrepreneurship....Global business development..Private Public Sector Partnerships...GBVF and Women Empowerment Activism, South Africa" },
+      { name:"Mr. Zahi Olivier Zabo", title:" PPA-CI, Nigeria" },	  
+      { name:"Prof. W. Schilders", title:"TU/e & ECMI, The Netherlands" }
+    ];
 
-    const speakerGrid = document.getElementById('speakerGrid');
-    SPEAKERS.forEach(s => {
-      const card = document.createElement('article');
-      card.className = 'card speaker';
-      card.innerHTML = `
-        <img alt="${s.name}" src="${s.avatar}">
-        <div class="meta">
-          <div class="name">${s.name}</div>
-          <div class="title">${s.title}</div>
-          <p class="bio">${s.bio}</p>
-        </div>
-      `;
-      speakerGrid.appendChild(card);
-    });
+    const KEYNOTESPEAKERS = [
+      { name:"Prof. Wil Schilders", title:"President of ECMI & ICIAM; advocate for industrial & societal mathematics.", avatar:"https://assets.w3.tue.nl/w/uploads/_processed_/0/3/csm_Schilders_Wil_BvOF230317ADP_4x3_LR_aa2b16cb9a.jpg" },
+    ];
+    const PLENARYSPEAKERS = [
+      { name:"Prof. Dr. Oluwole Daniel MAKINDE", title:"Fluid dynamics & nonlinear differential equations.", avatar:"https://aciam-bf2026.com/images/ASIAM1-1-300x300-1.webp" },
+      { name:"Prof. Abdon ATANGANA", title:"University of the Free State, South Africa.", avatar:"https://aciam-bf2026.com/images/asiam-1.webp" },
+      { name:"Prof. Marie Françoise Ouedraogo", title:"Université Joseph Ki-Zerbo, Burkina Faso.", avatar:"https://mentalidadesmatematicas.org.br/wp-content/webp-express/webp-images/uploads/2021/05/dia-das-mulheres-matematicas-marie-1.jpg.webp" },
+      { name:"Prof. Shen ZUOWEI", title:"National University of Singapore, Singapore.", avatar:"https://www.polyu.edu.hk/ama/-/media/Department/AMA/People/people/Visiting-Honorary-Professors/Shen-Zuowei.jpg?bc=ffffff&h=430&w=280" },
+      { name:"Prof. Bao WEIZHU", title:"National University of Singapore, Singapore.", avatar:"https://www.math.nus.edu.sg/wp-content/uploads/sites/4/2020/02/matbaowz.jpg" },
+      { name:"Prof. Tao TANG", title:"Hong Kong University of Science and Technology, China.", avatar:"https://gbaaa.org.hk/uploads/image/202206/cba7047a188db3d4657f28d0fbdf74d5.jpg" },
+      { name:"Prof. Gang BAO", title:"Zhejiang University, China.", avatar:"https://www.eurasc.eu/wp-content/uploads/2025/10/FOTOS-PERFIL-EURASC-2.jpg" }
+    ];
+    const INVITEDSPEAKERS = [
+      { name:"Prof. Zhonghua QIAO", title:"The Hong Kong Polytechnic University, China.", avatar:"https://awards.ugc.edu.hk/f/awardee/13610/560c560/RFS_Dr%20QIAO%20Zhonghua.jpg" },
+      { name:"Prof. Jae KYOUNG KIM", title:"KAIST, South Korea.", avatar:"https://mathsci.kaist.ac.kr/~jaekkim/img/NYJ30062-1.jpg" },
+      { name:"Prof. Shen ZUOWEI", title:"National University of Singapore, Singapore.", avatar:"https://www.polyu.edu.hk/ama/-/media/Department/AMA/People/people/Visiting-Honorary-Professors/Shen-Zuowei.jpg" },
+      { name:"Prof. Bao WEIZHU", title:"National University of Singapore, Singapore.", avatar:"https://www.math.nus.edu.sg/wp-content/uploads/sites/4/2020/02/matbaowz.jpg" },
+      { name:"Prof. Tao TANG", title:"HKUST, China.", avatar:"https://gbaaa.org.hk/uploads/image/202206/cba7047a188db3d4657f28d0fbdf74d5.jpg" },
+      { name:"Prof. Gang BAO", title:"Zhejiang University, China.", avatar:"https://www.eurasc.eu/wp-content/uploads/2025/10/FOTOS-PERFIL-EURASC-2.jpg" }
+    ];
+    const SPECIALSPEAKERS = [
+      { name:"Prof. Dr. Zakia Hammouch", title:"Mathematical modelling & fractional differential equations.", avatar:"https://tse2.mm.bing.net/th/id/OIP.n5r-UlkXbEpmc0n9DhWyNgAAAA?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" },
+      { name:"Eng, MBA Rocky TSANE ZEDONG", title:"Cloud DevOps Architect", avatar:"https://media.licdn.com/dms/image/v2/C4D03AQG9RJMP6f8kqw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1608207904148?e=1763596800&v=beta&t=TwydFXrJ1U-TZteHabYRsrOHpTkh_nmyzF2QMg9LybQ" },
+      { name:"Eng, BERTIN NGA OHANDZA", title:"RedHat Automation Expert", avatar:"https://media.licdn.com/dms/image/v2/C4D03AQHVFj8vCg172w/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1575475587113?e=1763596800&v=beta&t=NEobDe6uBjMWqWPT7svIYzk8SFD8BA3Z81wrW8qTUr0" },
+      { name:"Abdoul-Aziz Zakari Madougou", title:"Cloud / DevOps Architect", avatar:"https://media.licdn.com/dms/image/v2/D4E03AQEHg1HNjj6DkQ/profile-displayphoto-shrink_400_400/B4EZbhwq8bGkAg-/0/1747544355166?e=1763596800&v=beta&t=A_ZKQJ7Pvgqc2Mihm1IKnlPdKhB1UbK3d19pM7kHE88" }
+    ];
+    const GALLERY = [
+      { src:"https://aciam-bf2026.com/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-19-at-07.27.48.jpeg", alt:"Conference hall" },
+      { src:'https://aciam-bf2026.com/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-17-at-08.16.54.jpeg', alt:'Workshop session' },
+      { src:'https://aciam-bf2026.com/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-17-at-08.16.56-scaled.jpeg', alt:'Audience in auditorium' },
+      { src:'https://aciam-bf2026.com/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-17-at-08.16.59.jpeg', alt:'Keynote on stage' },
+      { src:'https://aciam-bf2026.com/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-17-at-08.16.53-scaled.jpeg', alt:'Networking break' },
+      { src:'https://aciam-bf2026.com/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-17-at-08.16.52-scaled.jpeg', alt:'Panel discussion' },
+      { src:'https://aciam-bf2026.com/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-19-at-07.26.19.jpeg', alt:'Audience in auditorium' }
+    ];
+    const SUGGESTEDTHEMATICS = [
+      { title:"Climate modelling, hydrology, and water resources (groundwater, extreme events)" },
+      { title:"Mathematical epidemiology, health systems modelling, and bio-mathematics" },
+      { title:"Data-driven methods, machine learning for scientific computing, and uncertainty quantification" },
+      { title:"Numerical analysis, fractional calculus, and advanced PDE methods" },
+      { title:"Optimization, control, and operations research for industry & logistics" },
+      { title:"High-performance computing, scalable algorithms, and computational infrastructure" },
+      { title:"Materials, energy systems, and industrial mathematics (renewables, storage)" },
+      { title:"Mathematics education, capacity building, and outreach in Africa" },
+    ];
 
-    const agendaList = document.getElementById('agendaList');
-    const agendaPreview = document.getElementById('agendaPreview');
-    AGENDA.forEach((it, i) => {
-      const item = document.createElement('div');
-      item.className = 'agenda-item';
-      item.innerHTML = `<div class="t">${it.time} · ${it.title}</div><div class="b">Piste : ${it.track}</div>`;
-      agendaList.appendChild(item);
+    // ---- Accommodations data
+    const HOTELS = [
+      {name:"Bravia Hotel Ouagadougou",area:"Centre-ville",time:"≈10–20 min taxi",price:"Upper-midrange",img:"https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1200&auto=format&fit=crop",perks:["Wi-Fi","Pool","Airport shuttle"],maps:"https://www.google.com/maps/search/?api=1&query=Bravia+Hotel+Ouagadougou",web:"https://www.google.com/search?q=Bravia+Hotel+Ouagadougou"},
+      {name:"Sopatel Silmande",area:"Zone du Bois",time:"≈15–25 min taxi",price:"Midrange",img:"https://images.unsplash.com/photo-1551776235-dde6d4829808?q=80&w=1200&auto=format&fit=crop",perks:["Wi-Fi","Pool","Tennis"],maps:"https://www.google.com/maps/search/?api=1&query=Sopatel+Silmande",web:"https://www.google.com/search?q=Sopatel+Silmande"},
+      {name:"Laico Ouaga 2000",area:"Ouaga 2000",time:"≈20–30 min taxi",price:"Upscale",img:"https://images.unsplash.com/photo-1501117716987-c8e2a3a67e0e?q=80&w=1200&auto=format&fit=crop",perks:["Wi-Fi","Pool","Fitness"],maps:"https://www.google.com/maps/search/?api=1&query=Laico+Ouaga+2000",web:"https://www.google.com/search?q=Laico+Ouaga+2000"},
+      {name:"Pacific Hotel",area:"Centre-ville",time:"≈10–20 min taxi",price:"Value",img:"https://images.unsplash.com/photo-1502920917128-1aa500764cbd?q=80&w=1200&auto=format&fit=crop",perks:["Wi-Fi","Restaurant"],maps:"https://www.google.com/maps/search/?api=1&query=Pacific+Hotel+Ouagadougou",web:"https://www.google.com/search?q=Pacific+Hotel+Ouagadougou"},
+      {name:"Villa Kaya (Guesthouse)",area:"Quartier calme",time:"≈10–20 min taxi",price:"Budget",img:"https://images.unsplash.com/photo-1505692794403-34d4982fd1dc?q=80&w=1200&auto=format&fit=crop",perks:["Wi-Fi","Breakfast"],maps:"https://www.google.com/maps/search/?api=1&query=Villa+Kaya+Ouagadougou",web:"https://www.google.com/search?q=Villa+Kaya+Ouagadougou"}
+    ];
 
-      if (i < 5) {
-        const row = document.createElement('div');
-        row.style.display='flex'; row.style.gap='12px'; row.style.alignItems='flex-start';
-        row.innerHTML = `<div style="width:64px;font-weight:700">${it.time}</div><div><div style="font-weight:600">${it.title}</div><div class="muted" style="font-size:14px">${it.track}</div></div>`;
-        agendaPreview.appendChild(row);
-      }
-    });
-
-    // ————————————————————————————————————————
-    // FORM – Validation & envoi (option Formspree)
-    // ————————————————————————————————————————
-    const form = document.getElementById('regForm');
-    const success = document.getElementById('success');
-    const formWrap = document.getElementById('formWrap');
-
-    function setError(id, msg){
-      const el = document.querySelector(`[data-error-for="${id}"]`);
-      if(el) el.textContent = msg || '';
+    // ---------- Render helpers ----------
+    function renderCards(data, containerSel, cls='card'){
+      const root = $(containerSel); if(!root) return;
+      const frag = document.createDocumentFragment();
+      data.forEach(s=>{
+        const el = document.createElement('article');
+        el.className = cls;
+        el.innerHTML = `
+          <img alt="${s.name}" src="${s.avatar}" loading="lazy" decoding="async" width="360" height="270">
+          <div class="meta">
+            <div class="name">${s.name}</div>
+            <div class="title">${s.title||''}</div>
+          </div>`;
+        frag.appendChild(el);
+      });
+      root.appendChild(frag);
     }
 
+    /* NEW: simple list renderer for committee (no photos) */
+    function renderPeopleList(data, containerSel){
+      const root = $(containerSel); if(!root) return;
+      const frag = document.createDocumentFragment();
+      data.forEach(p=>{
+        const el = document.createElement('article');
+        el.className = 'card';
+        el.innerHTML = `
+          <div class="card-b">
+            <div class="name">${p.name}</div>
+            <div class="title">${p.title||''}</div>
+          </div>`;
+        frag.appendChild(el);
+      });
+      root.appendChild(frag);
+    }
+
+    // Render sections
+	renderCards(AIM, '#aimGrid', 'card aim');
+    renderPeopleList(INTERNATIONAL_COMMITTEE, '#internationalCommitteeGrid');
+	renderPeopleList(LOCAL_COMMITTEE, '#localCommitteeGrid');
+    renderCards(KEYNOTESPEAKERS, '#keyNoteSpeakerGrid', 'card keynotespeaker');
+    renderCards(PLENARYSPEAKERS, '#plenarySpeakerGrid', 'card plenaryspeaker');
+    renderCards(INVITEDSPEAKERS, '#invitedSpeakerGrid', 'card invitedspeaker');
+    renderCards(SPECIALSPEAKERS, '#specialSpeakerGrid', 'card specialspeaker');
+
+    // ---------- Gallery ----------
+    const galleryGrid = $('#galleryGrid');
+    if (galleryGrid) {
+      const gfrag = document.createDocumentFragment();
+      GALLERY.forEach(img => {
+        const btn = document.createElement('button');
+        btn.setAttribute('aria-label','Open image');
+        btn.innerHTML = `<img alt="${img.alt}" src="${img.src}" loading="lazy" decoding="async">`;
+        btn.addEventListener('click', () => openLightbox(img.src, img.alt));
+        gfrag.appendChild(btn);
+      });
+      galleryGrid.appendChild(gfrag);
+    }
+    const lightbox = $('#lightbox'), lightboxImg = $('#lightboxImg'), closeBtn = lightbox?.querySelector('.close');
+    function openLightbox(src, alt){ if(!lightbox||!lightboxImg) return; lightboxImg.src=src; lightboxImg.alt=alt||''; lightbox.showModal(); }
+    closeBtn?.addEventListener('click',()=>lightbox.close());
+    lightbox?.addEventListener('click',e=>{ if(e.target===lightbox) lightbox.close(); });
+    document.addEventListener('keydown',e=>{ if(e.key==='Escape' && lightbox?.open) lightbox.close(); });
+
+    // ---------- Countdown ----------
+    const EVENT_START = new Date('2026-09-17T09:00:00+02:00');
+    const tictac = document.querySelector('.tictac');
+    function setFlipValue(unit, value){
+      const el = document.querySelector(`.flip-unit[data-unit="${unit}"] .flip`); if(!el) return;
+      const front = el.querySelector('.front'); const back  = el.querySelector('.back');
+      const nextStr = value.toString().padStart(unit==='days'?3:2,'0');
+      if (front.textContent === nextStr) return;
+      back.textContent = nextStr; el.classList.remove('anim'); void el.offsetWidth; el.classList.add('anim');
+      setTimeout(()=>{ front.textContent = nextStr; }, 560);
+    }
+    let audioCtx = null, tickEnabled = false;
+    const tickBtn = document.getElementById('tickSound');
+    tickBtn?.addEventListener('click', ()=>{
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      tickEnabled = !tickEnabled; tickBtn.setAttribute('aria-pressed', String(tickEnabled));
+      tickBtn.classList.toggle('outline', !tickEnabled);
+      tickBtn.textContent = tickEnabled ? 'Deactivate the tick-tock sound' : 'Activate the tick-tock sound';
+    });
+    function playTick(){
+      if (!audioCtx) return;
+      const o = audioCtx.createOscillator(), g = audioCtx.createGain();
+      o.type='square'; o.frequency.value=880;
+      g.gain.setValueAtTime(0.0001, audioCtx.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.2, audioCtx.currentTime + 0.005);
+      g.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.07);
+      o.connect(g); g.connect(audioCtx.destination); o.start(); o.stop(audioCtx.currentTime + 0.08);
+    }
+    let fwStarted=false, fwRAF=0;
+    function startFireworks(){
+      const wrap = document.querySelector('.fireworks-wrap'); const canvas = document.getElementById('fireworks'); const ctx = canvas.getContext('2d');
+      if(!wrap||!canvas||!ctx) return;
+      wrap.classList.add('show');
+      function resize(){ canvas.width = wrap.clientWidth; canvas.height = 300; }
+      resize(); addEventListener('resize', resize);
+      const sparks=[];
+      function burst(x,y,count=60){
+        for(let i=0;i<count;i++){
+          const angle = (Math.PI*2)*(i/count) + Math.random()*0.2;
+          const speed = 2 + Math.random()*3;
+          sparks.push({x,y,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,life:60+Math.random()*20,age:0});
+        }
+      }
+      const cx = canvas.width/2, cy = canvas.height*0.45;
+      burst(cx,cy); setTimeout(()=>burst(cx-120,cy+20),300); setTimeout(()=>burst(cx+130,cy-10),650);
+      function step(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        for(let i=sparks.length-1;i>=0;i--){
+          const p=sparks[i]; p.x+=p.vx; p.y+=p.vy; p.vy+=0.03; p.age++; const t=1-(p.age/p.life);
+          if(t<=0){sparks.splice(i,1); continue;}
+          ctx.globalAlpha=Math.max(0,t); ctx.beginPath(); ctx.arc(p.x,p.y,2.2*t+0.6,0,Math.PI*2); ctx.fillStyle='#10b981'; ctx.fill();
+        }
+        fwRAF=requestAnimationFrame(step);
+      }
+      step(); setTimeout(()=>cancelAnimationFrame(fwRAF),7000);
+    }
+    function tickCountdown(){
+      const now = new Date(); let diff = Math.max(0, EVENT_START - now);
+      const days = Math.floor(diff/86400000); diff -= days*86400000;
+      const hours = Math.floor(diff/3600000); diff -= hours*3600000;
+      const minutes = Math.floor(diff/60000); diff -= minutes*60000;
+      const seconds = Math.floor(diff/1000);
+      setFlipValue('days', days); setFlipValue('hours', hours); setFlipValue('minutes', minutes); setFlipValue('seconds', seconds);
+      tictac?.classList.remove('on'); void tictac?.offsetWidth; tictac?.classList.add('on');
+      if (tickEnabled) playTick();
+      if(days===0 && hours===0 && minutes===0 && seconds===0 && !fwStarted){ fwStarted=true; startFireworks(); }
+    }
+    tickCountdown();
+    const countdownTimer = setInterval(tickCountdown,1000);
+
+    // ---------- Form ----------
+    const form = $('#regForm'); const success = $('#success'); const formWrap = $('#formWrap');
+    function setError(id,msg){ const el = document.querySelector(`[data-error-for="${id}"]`); if(el) el.textContent = msg||''; }
     function validate(){
-      let ok = true;
-      const firstName = form.firstName.value.trim();
-      const lastName = form.lastName.value.trim();
-      const email = form.email.value.trim();
-      const consent = form.consent.checked;
-      setError('firstName',''); setError('lastName',''); setError('email',''); setError('consent','');
-      if(!firstName){ setError('firstName','Prénom requis'); ok=false; }
-      if(!lastName){ setError('lastName','Nom requis'); ok=false; }
-      if(!/^([^\s@]+)@([^\s@]+)\.[^\s@]+$/.test(email)){ setError('email','Email invalide'); ok=false; }
-      if(!consent){ setError('consent','Veuillez accepter le traitement des données'); ok=false; }
+      let ok=true;
+      const firstName=form.firstName.value.trim();
+      const lastName=form.lastName.value.trim();
+      const email=form.email.value.trim();
+      const consent=form.consent.checked;
+      setError('firstName','');setError('lastName','');setError('email','');setError('consent','');
+      if(!firstName){setError('firstName','First name required');ok=false}
+      if(!lastName){setError('lastName','Last name required');ok=false}
+      if(!/^([^\s@]+)@([^\s@]+)\.[^\s@]+$/.test(email)){setError('email','Invalid email');ok=false}
+      if(!consent){setError('consent','Please accept data processing');ok=false}
       return ok;
     }
-
     form.addEventListener('submit', async (e)=>{
       e.preventDefault();
       if(!validate()) return;
-
-      const payload = Object.fromEntries(new FormData(form).entries());
-
-      try {
-        if (SITE.FORMSPREE_ENDPOINT) {
-          const res = await fetch(SITE.FORMSPREE_ENDPOINT, {
-            method: 'POST',
-            headers: { 'Accept':'application/json' },
-            body: new FormData(form)
-          });
-          if (!res.ok) throw new Error('Erreur d\'envoi');
-        } else {
-          // Pas d'endpoint configuré: on simule la réussite côté front
-          console.log('Registration payload', payload);
-        }
-        formWrap.hidden = true;
-        success.hidden = false;
-        form.reset();
-      } catch(err){
-        alert("Impossible d'envoyer le formulaire. Réessayez plus tard.");
+      try{
+        console.log('Registration payload', Object.fromEntries(new FormData(form).entries()));
+        formWrap.hidden=true; success.hidden=false; form.reset();
+      }catch(err){
+        alert('Unable to submit the form. Please try again later.');
         console.error(err);
       }
     });
+
+    // ---------- Rotator ----------
+    const slide = $('#slide'), titleE = $('#title'), timeEl = $('#time'), trackEl = $('#track');
+    const dots = $('#dots'); const nextBtn = $('#next'); const prevBtn = $('#prev'); const playBtn = $('#play');
+
+    const dfrag = document.createDocumentFragment();
+    SUGGESTEDTHEMATICS.forEach((it,i)=>{
+      const d=document.createElement('button');
+      d.className='dot'+(i===0?' active':'');
+      d.type='button';
+      d.setAttribute('aria-label',`Go to: ${it.title}`);
+      d.dataset.index=i;
+      dfrag.appendChild(d);
+    });
+    dots.appendChild(dfrag);
+
+    let idx=0, timer=null, playing=true;
+    const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function render(i){
+      const it = SUGGESTEDTHEMATICS[i];
+      titleE.textContent = it.title || '';
+      timeEl.textContent = it.time || '';
+      trackEl.textContent = it.track || '';
+      if(!reduceMotion){
+        requestAnimationFrame(()=>{slide.classList.remove('show');requestAnimationFrame(()=>slide.classList.add('show'))});
+      }
+      $$('.dot',dots).forEach((d,k)=>d.classList.toggle('active',k===i));
+      idx=i;
+    }
+    const next=()=>render((idx+1)%SUGGESTEDTHEMATICS.length);
+    const prev=()=>render((idx-1+SUGGESTEDTHEMATICS.length)%SUGGESTEDTHEMATICS.length);
+
+    function start(){
+      if(timer) clearInterval(timer);
+      if(!reduceMotion){ timer = setInterval(next,5000); }
+      playing=true; if(playBtn) playBtn.textContent='⏸';
+    }
+    function stop(){
+      if(timer) clearInterval(timer);
+      timer=null; playing=false; if(playBtn) playBtn.textContent='▶';
+    }
+
+    nextBtn?.addEventListener('click',()=>{stop();next()},{passive:true});
+    prevBtn?.addEventListener('click',()=>{stop();prev()},{passive:true});
+    playBtn?.addEventListener('click',()=> playing?stop():start());
+    slide.addEventListener('mouseenter',stop);
+    slide.addEventListener('mouseleave',start);
+
+    document.addEventListener('visibilitychange',()=> document.hidden?stop():start());
+    const io = new IntersectionObserver(([e])=>{ e.isIntersecting?start():stop(); }, {threshold:0.2});
+    io.observe(slide);
+
+    dots.addEventListener('click',e=>{
+      const t=e.target.closest('.dot');
+      if(!t) return; stop(); render(+t.dataset.index);
+    });
+
+    render(0); start();
+
+    // ---- Accommodations render
+    function renderHotels(list, sel){
+      const root = $(sel); if(!root) return;
+      const frag = document.createDocumentFragment();
+      list.forEach(h=>{
+        const el = document.createElement('article');
+        el.className = 'card hotel';
+        el.innerHTML = `
+          <div class="img"><img src="${h.img}" alt="${h.name}" loading="lazy" decoding="async"></div>
+          <div class="card-b">
+            <div class="name" style="font-weight:800">${h.name}</div>
+            <div class="title">${h.area} · ${h.time} · ${h.price}</div>
+            <div class="tags">${(h.perks||[]).map(p=>`<span class="tag">${p}</span>`).join('')}</div>
+            <div class="actions">
+              <a class="btn" href="${h.maps}" target="_blank" rel="noopener">Map</a>
+              <a class="btn outline" href="${h.web}" target="_blank" rel="noopener">Search/Book</a>
+            </div>
+          </div>`;
+        frag.appendChild(el);
+      });
+      root.appendChild(frag);
+    }
+    renderHotels(HOTELS, '#hotelGrid');
   </script>
-  <a href="#" class="top">Back to Top &#8593;</a>
 </body>
 </html>
