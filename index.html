@@ -527,6 +527,15 @@ The African Conference for Industrial and Applied Mathematics (ACIAM) returns in
       </div>
     </section>
 
+    <!-- HONORARY COMMITTEE -->
+    <section id="honorarycommitee" class="committee">
+      <div class="container">
+        <h2>Honorary Committee</h2>
+        <p class="muted">Advising on scientific scope, partnerships, and global outreach.</p>
+        <div id="honoraryCommitteeGrid" class="committee-grid" aria-live="polite"></div>
+      </div>
+    </section>
+
     <!-- Keynote Speakers -->
     <section id="keynotespeakers" class="keynotespeakers section">
       <div class="container">
@@ -780,23 +789,30 @@ The African Conference for Industrial and Applied Mathematics (ACIAM) returns in
       { name:"Prof. W. Schilders", title:"TU/e & ECMI, The Netherlands" }
     ];
 
+
+    /* Honorary Committee list */
+    const HONORARY_COMMITTEE = [
+      { name:"Prof. Ousseynou Nakoulima", title:" University Ouaga 3S, Burkina Faso" },
+	    { name:"HE Mr. Kone Moriba Alain", title:"His Excellency the Ambassador of the Republic of South Africa to the Republic of Guinea" },
+    ];
+
     const KEYNOTESPEAKERS = [
       { name:"Prof. Wil Schilders", title:"President of ECMI & ICIAM; advocate for industrial & societal mathematics.", avatar:"https://assets.w3.tue.nl/w/uploads/_processed_/0/3/csm_Schilders_Wil_BvOF230317ADP_4x3_LR_aa2b16cb9a.jpg" },
       { name:"Prof. Gaston Mandata N'Guerekata", title:"University Distinguished Professor and Associate Dean at Morgan State University in Baltimore, Maryland, USA", avatar:"https://aciam-bf2026.com/images/gaston.jpg" }
     ];
     const PLENARYSPEAKERS = [
-      { name:"Prof. Dr. Oluwole Daniel MAKINDE", title:"Fluid dynamics & nonlinear differential equations.", avatar:"https://aciam-bf2026.com/images/ASIAM1-1-300x300-1.webp" },
+      { name:"Prof. Dr. Oluwole Daniel MAKINDE", title:"Stellenbosch University, South Africa", avatar:"https://aciam-bf2026.com/images/ASIAM1-1-300x300-1.webp" },
       { name:"Prof. Abdon ATANGANA", title:"University of the Free State, South Africa.", avatar:"https://aciam-bf2026.com/images/asiam-1.webp" },
       { name:"Prof. Marie Françoise Ouedraogo", title:"Université Joseph Ki-Zerbo, Burkina Faso.", avatar:"https://mentalidadesmatematicas.org.br/wp-content/webp-express/webp-images/uploads/2021/05/dia-das-mulheres-matematicas-marie-1.jpg.webp" },
       { name:"Prof. Shen ZUOWEI", title:"National University of Singapore, Singapore.", avatar:"https://www.polyu.edu.hk/ama/-/media/Department/AMA/People/people/Visiting-Honorary-Professors/Shen-Zuowei.jpg?bc=ffffff&h=430&w=280" },
       { name:"Prof. Bao WEIZHU", title:"National University of Singapore, Singapore.", avatar:"https://www.math.nus.edu.sg/wp-content/uploads/sites/4/2020/02/matbaowz.jpg" },
-      { name:"Prof. Tao TANG", title:"Hong Kong University of Science and Technology, China.", avatar:"https://gbaaa.org.hk/uploads/image/202206/cba7047a188db3d4657f28d0fbdf74d5.jpg" },
+      { name:"Prof. Tao TANG", title:"Hong Kong University of Science and Technology, Hong Kong", avatar:"https://gbaaa.org.hk/uploads/image/202206/cba7047a188db3d4657f28d0fbdf74d5.jpg" },
       { name:"Prof. Gang BAO", title:"Zhejiang University, China.", avatar:"https://www.eurasc.eu/wp-content/uploads/2025/10/FOTOS-PERFIL-EURASC-2.jpg" },
-      { name:"Prof. Yang XIANG", title:"Hong Kong University of Science and Technology, China.", avatar:"https://facultyprofiles.hkust.edu.hk/profiles/images/P000001206.jpg" },
+      { name:"Prof. Yang XIANG", title:"Hong Kong University of Science and Technology, Hong Kong", avatar:"https://facultyprofiles.hkust.edu.hk/profiles/images/P000001206.jpg" },
       { name:"Prof. Gisèle Mophou", title:"University of the French Antilles", avatar:"https://fegu.org/wp-content/uploads/2021/10/Pr-Gisele-Mophou.png" }
     ];
     const INVITEDSPEAKERS = [
-      { name:"Prof. Zhonghua QIAO", title:"The Hong Kong Polytechnic University, China.", avatar:"https://awards.ugc.edu.hk/f/awardee/13610/560c560/RFS_Dr%20QIAO%20Zhonghua.jpg" },
+      { name:"Prof. Zhonghua QIAO", title:"The Hong Kong Polytechnic University, Hong Kong", avatar:"https://awards.ugc.edu.hk/f/awardee/13610/560c560/RFS_Dr%20QIAO%20Zhonghua.jpg" },
       { name:"Prof. Jae KYOUNG KIM", title:"KAIST, South Korea.", avatar:"https://mathsci.kaist.ac.kr/~jaekkim/img/NYJ30062-1.jpg" },
       { name:"Prof. Shen ZUOWEI", title:"National University of Singapore, Singapore.", avatar:"https://www.polyu.edu.hk/ama/-/media/Department/AMA/People/people/Visiting-Honorary-Professors/Shen-Zuowei.jpg" },
       { name:"Prof. Bao WEIZHU", title:"National University of Singapore, Singapore.", avatar:"https://www.math.nus.edu.sg/wp-content/uploads/sites/4/2020/02/matbaowz.jpg" },
@@ -807,7 +823,8 @@ The African Conference for Industrial and Applied Mathematics (ACIAM) returns in
       { name:"Prof. Dr. Zakia Hammouch", title:"Mathematical modelling & fractional differential equations.", avatar:"https://tse2.mm.bing.net/th/id/OIP.n5r-UlkXbEpmc0n9DhWyNgAAAA?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" },
       { name:"Eng, MBA Rocky TSANE ZEDONG", title:"Cloud DevOps Architect", avatar:"https://media.licdn.com/dms/image/v2/C4D03AQG9RJMP6f8kqw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1608207904148?e=1763596800&v=beta&t=TwydFXrJ1U-TZteHabYRsrOHpTkh_nmyzF2QMg9LybQ" },
       { name:"Eng, BERTIN NGA OHANDZA", title:"RedHat Automation Expert", avatar:"https://media.licdn.com/dms/image/v2/C4D03AQHVFj8vCg172w/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1575475587113?e=1763596800&v=beta&t=NEobDe6uBjMWqWPT7svIYzk8SFD8BA3Z81wrW8qTUr0" },
-      { name:"Abdoul-Aziz Zakari Madougou", title:"Cloud / DevOps Architect", avatar:"https://media.licdn.com/dms/image/v2/D4E03AQEHg1HNjj6DkQ/profile-displayphoto-shrink_400_400/B4EZbhwq8bGkAg-/0/1747544355166?e=1763596800&v=beta&t=A_ZKQJ7Pvgqc2Mihm1IKnlPdKhB1UbK3d19pM7kHE88" }
+      { name:"Abdoul-Aziz Zakari Madougou", title:"Cloud / DevOps Architect", avatar:"https://media.licdn.com/dms/image/v2/D4E03AQEHg1HNjj6DkQ/profile-displayphoto-shrink_400_400/B4EZbhwq8bGkAg-/0/1747544355166?e=1763596800&v=beta&t=A_ZKQJ7Pvgqc2Mihm1IKnlPdKhB1UbK3d19pM7kHE88" },
+      { name:"Dr. Arsene Stephane Tema Biwole", title:"Massachusetts Institute of Technology", avatar:"https://media.licdn.com/dms/image/v2/D4E03AQElfrfbBp1q0w/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1686657969858?e=2147483647&v=beta&t=XUJhkAJ2T5EkxlAxY6mmlsG0jd7rst0tPOh6tdDuUiM" }
     ];
     const GALLERY = [
       { src:'https://aciam-bf2026.com/images/h1.jpeg', alt:'Conference hall' },
@@ -888,6 +905,7 @@ The African Conference for Industrial and Applied Mathematics (ACIAM) returns in
 	renderCards(AIM, '#aimGrid', 'card aim');
     renderPeopleList(INTERNATIONAL_COMMITTEE, '#internationalCommitteeGrid');
 	renderPeopleList(LOCAL_COMMITTEE, '#localCommitteeGrid');
+  renderPeopleList(HONORARY_COMMITTEE, '#honoraryCommitteeGrid');
     renderCards(KEYNOTESPEAKERS, '#keyNoteSpeakerGrid', 'card keynotespeaker');
     renderCards(PLENARYSPEAKERS, '#plenarySpeakerGrid', 'card plenaryspeaker');
     renderCards(INVITEDSPEAKERS, '#invitedSpeakerGrid', 'card invitedspeaker');
