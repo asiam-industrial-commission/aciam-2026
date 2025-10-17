@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -47,7 +48,7 @@
     /* Header */
     header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:blur(6px);border-bottom:1px solid rgba(15,23,36,.08)}
     .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
-    .brand{font-family:"Merriweather",serif;font-weight:700;font-size:18px;color:var(--brand)}
+    .brand{font-family:"Merriweather",serif;font-weight:700;font-size:14px;color:var(--brand)}
     nav ul{list-style:none;display:flex;gap:20px;margin:0;padding:0}
     nav li{position:relative}
     nav a{color:var(--muted);font-weight:600}
@@ -180,112 +181,54 @@
         .two{grid-template-columns:1fr}
      @media (min-width:900px){.two{grid-template-columns:1.1fr .9fr}}
 
-     /* Hero */
-        .hero{padding:72px 0}
-        .hero h1{font-family:"Merriweather",serif;font-weight:700;font-size:clamp(28px,4vw,44px);line-height:1.1;margin:0}
-        .muted{color:var(--muted)}
-        .kpi{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px;font-size:14px}
-        .kpi span{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);padding:8px 12px;border-radius:999px}
-
-        .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 6px 24px rgba(16,24,40,.06)}
-        .card-b{padding:16px 20px}
-
-
-        /* Hero Section */
-        .hero2 {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-align: center;
-            font-family: 'Merriweather', serif;
-        }
-
-        /* Slideshow Images */
-        .hero2 img {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-
-        .hero2 img.active {
-            opacity: 1;
-        }
-
-        /* Overlay */
-        .overlay {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.45);
-        }
-
-        /* Hero Content */
-        .hero2-content {
-            position: relative;
-            z-index: 0;
-        }
-
-        .hero2-content h1 {
-            font-size: 3rem;
-            letter-spacing: 2px;
-            font-weight: 700;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-        }
-
-        /* Buttons */
-        .hero2-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .hero2-buttons a {
-            padding: 14px 32px;
-            background-color: #0B6B4F;
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 6px;
-            transition: background 0.3s;
-        }
-
-        .hero2-buttons a:hover {
-        background-color: #e20f0f;
-        }
-
-        /* Responsive Text */
-        @media(max-width:768px){
-        .hero-content h1 {font-size: 2.2rem;}
-        }
-
-
-
     /* Sections */
     .section{padding:56px 0}
+	section {
+      position: relative;
+      min-height: 300px;
+      padding: 2rem;
+      background-color: #fff;
+      overflow: hidden;
+    }
 	.aim{border-block:1px solid var(--line)}
     .keynotespeakers{border-block:1px solid var(--line)}
-    .speaker-grid, .aim-grid, .keynotespeaker-grid,.plenaryspeaker-grid,.invitedspeaker-grid,.specialspeaker-grid{
+	.honorarycommittee{border-block:1px solid var(--line)}
+    .speaker-grid, .aim-grid, .honorarycommittee-grid, .keynotespeaker-grid,.plenaryspeaker-grid,.invitedspeaker-grid,.specialspeaker-grid{
       display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:24px
     }
-    .speaker img, .aim img, .keynotespeaker img,.plenaryspeaker img,.invitedspeaker img,.specialspeaker img{
+    .speaker img, .aim img, .honorarycommittee img, .keynotespeaker img,.plenaryspeaker img,.invitedspeaker img,.specialspeaker img{
       width:100%;height:180px;object-fit:cover;border-top-left-radius:var(--radius);border-top-right-radius:var(--radius);aspect-ratio:16/9
     }
-	.aim img{height:400px;}
+	.aim img{height:300px;aspect-ratio:4/3}
     .keynotespeaker img{height:300px;aspect-ratio:4/3}
+	.honorarycommittee img{height:300px;aspect-ratio:4/3}
     .meta{padding:14px 16px}
     .name{font-weight:700}
     .title{font-size:14px;color:var(--muted)}
 
+	
+	/* Logo background for each section */
+    section::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 60%;
+      height: 60%;
+      background-image: url("https://avatars.githubusercontent.com/u/234540898?v=4"); /* ← your logo path here */
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      opacity: 0.08; /* Adjust transparency (0 = invisible, 1 = opaque) */
+      transform: translate(-50%, -50%);
+      z-index: 0;
+    }
+	
+	section > * {
+      position: relative;
+      z-index: 1;
+    }
+	
     /* Gallery */
     .gallery{padding:56px 0;border-top:1px solid var(--line)}
     .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:16px}
@@ -327,8 +270,12 @@
 
     /* Rotator */
     .suggestedthematics{padding:56px 0;border-top:1px solid var(--line); height: 500px;}
+	.keynotetopics{padding:56px 0;border-top:1px solid var(--line); height: 500px;}
+
     .rotator{max-width:1100px;margin-inline:auto; margin-top: 50px;}
+	.rotatorkt{max-width:1100px;margin-inline:auto; margin-top: 50px;}
     .slide{border:1px solid var(--line);border-radius:var(--radius);background:var(--paper);padding:18px;box-shadow:0 6px 24px rgba(16,24,40,.06);min-height:140px}
+    .slidekt{border:1px solid var(--line);border-radius:var(--radius);background:var(--paper);padding:18px;box-shadow:0 6px 24px rgba(16,24,40,.06);min-height:140px}
     .time{font-weight:700;margin-bottom:6px}
     .track{font-size:14px;color:var(--muted)}
     .fade{opacity:0;transform:translateY(8px);transition:opacity .28s ease,transform .28s ease}
@@ -357,8 +304,9 @@
     .venue{padding:56px 0;border-top:1px solid var(--line)}
     footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted)}
     .links a{margin-left:18px}
-    .top{position:fixed;right:16px;bottom:18px;background:var(--cta);color:var(--cta-ink);padding:10px;border-radius:100px}
-
+    .top{position:fixed;left:16px;bottom:18px;background:var(--cta);color:var(--cta-ink);padding:10px;border-radius:100px}
+	
+	
     /* Accommodations */
     .accommodations{padding:56px 0;border-top:1px solid var(--line)}
     .hotel-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:18px}
@@ -371,7 +319,8 @@
     /* Committees */
     .committee{padding:56px 0;border-top:1px solid var(--line)}
     .committee-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:18px}
-    .committee .card .name{font-weight:800}
+    .international-committee-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin-top:18px}
+	.committee .card .name{font-weight:800}
   </style>
 </head>
 <body>
@@ -385,9 +334,9 @@
           <li><a href="#aim">About</a></li>
           <li><a href="#committees">Committees</a>
             <ul role="menu" aria-label="Committee categories">
+              <li><a role="menuitem" href="#honorarycommitee">Honorary Committee</a></li>
               <li><a role="menuitem" href="#localorganisingcommitee">Local Organising Committee Members</a></li>
               <li><a role="menuitem" href="#internationalorganisingcommitee">International Organising Committee Members</a></li>
-              <li><a role="menuitem" href="#honorarycommitee">Honorary Committee</a></li>
             </ul>
           </li>
           <li><a href="#keynotespeakers">Speakers</a>
@@ -398,8 +347,14 @@
               <li><a role="menuitem" href="#specialspeakers">Special Speakers</a></li>
             </ul>
           </li>
+		  <li><a href="#thematicstopics">Thematics & Topics</a>
+            <ul role="menu" aria-label="Thematics and Topics categories">
+              <li><a role="menuitem" href="#suggestedthematics">Suggested Thematics</a></li>
+              <li><a role="menuitem" href="#keynotetopics">Keynote Topics</a></li>
+            </ul>
+          </li>
+		  <li><a href="#sponsors">Sponsors and Partners</a></li>
           <li><a href="#gallery">Gallery</a></li>
-          <li><a href="#suggestedthematics">Suggested Thematics</a></li>
           <li><a href="#accommodations">Accommodations</a></li>
         </ul>
       </nav>
@@ -499,13 +454,23 @@
     </section>
 
 	<!-- AIM -->
-    <section id="aim" class="amsi section">
+    <section id="aim" class="aim section">
       <div class="container">
-        <h2>Welcome address from the Chair of ACIAM</h2>
+        <h2>Welcome address from the Chair and Co-Chair of ACIAM</h2>
         <p class="muted">Africa is inventing its future, fast, bold and resolute. ACIAM Burkina Faso 2026 celebrates mathematics as the spark that lights this transformation: the models that predict storms and protect communities, the algorithms that power factories and scale healthy systems, and the data-driven insights that unlock opportunity for millions. Here, ideas meet action, students, start-ups, researchers and policymakers will gather to imagine new possibilities and build partnerships that turn rigorous thinking into tangible progress. Join us to be part of a movement that harnesses mathematical creativity to strengthen communities, energize industry, and create a more resilient, equitable future for Africa and the world. <br>
 
-The African Conference for Industrial and Applied Mathematics (ACIAM) returns in September 2026 in Burkina Faso. Under the theme “Mathematics for Resilient Futures: Climate, Health and Industry”, ACIAM 2026 invites original contributions that harness mathematical theory, computation and data science to address pressing societal challenges.</p>
+The African Conference for Industrial and Applied Mathematics (ACIAM) returns in September 2026 in Burkina Faso. Under the theme “Mathematics for Resilient Futures: Climate, Health and Industry”, ACIAM 2026 invites original contributions that harness mathematical theory, computation and data science to address pressing societal challenges.
         <div class="aim-grid" id="aimGrid" aria-live="polite"></div>
+      </div>
+    </section>
+	
+    <!-- HONORARY COMMITTEE -->
+    <section id="honorarycommitee" class="honorarycommitee section">
+      <div class="container">
+        <h2>Honorary Committee</h2>
+        <p class="muted">Advising on scientific scope, partnerships, and global outreach.</p>
+        <!-- <div id="honorarycommittee-grid" id="keyNoteSpeakerGrid" class="committee-grid" aria-live="polite"></div> -->
+		<div class="honorarycommittee-grid" id="honoraryCommitteeGrid" aria-live="polite"></div>
       </div>
     </section>
 	
@@ -523,16 +488,7 @@ The African Conference for Industrial and Applied Mathematics (ACIAM) returns in
       <div class="container">
         <h2>International Organising Committee</h2>
         <p class="muted">Advising on scientific scope, partnerships, and global outreach.</p>
-        <div id="internationalCommitteeGrid" class="committee-grid" aria-live="polite"></div>
-      </div>
-    </section>
-
-    <!-- HONORARY COMMITTEE -->
-    <section id="honorarycommitee" class="committee">
-      <div class="container">
-        <h2>Honorary Committee</h2>
-        <p class="muted">Advising on scientific scope, partnerships, and global outreach.</p>
-        <div id="honoraryCommitteeGrid" class="committee-grid" aria-live="polite"></div>
+        <div id="internationalCommitteeGrid" class="international-committee-grid" aria-live="polite"></div>
       </div>
     </section>
 
@@ -625,6 +581,12 @@ The African Conference for Industrial and Applied Mathematics (ACIAM) returns in
                     <option value="etudiant">Student</option>
                   </select>
                 </div>
+				<div>
+					<label for="country">Country:</label>
+					<select id="country">
+					  <option value="">Select your country</option>
+					</select>
+				</div>
                 <div>
                   <label for="message">Message (optional)</label>
                   <textarea id="message" name="message" rows="4" placeholder="Accessibility needs, invoice, etc."></textarea>
@@ -643,6 +605,20 @@ The African Conference for Industrial and Applied Mathematics (ACIAM) returns in
             <div id="success" class="success" hidden>
               <h3>Thank you! 🎉</h3>
               <p class="muted">Your registration has been recorded. We will get back to you very soon.</p>
+              <p style="margin-top:14px"><a class="btn" href="#top">Back to top</a></p>
+            </div>
+			
+			<div id="successAfricanCondition" class="success" hidden>
+              <h3>Thank you! 🎉</h3>
+              <p class="muted">Your registration has been recorded. We will get back to you very soon.</p>
+			  <p class="muted">Please finalize your reservation by transferring $30 to the following IBAN: ${IBAN}</p>
+              <p style="margin-top:14px"><a class="btn" href="#top">Back to top</a></p>
+            </div>
+			
+			<div id="successNonAfricanCondition" class="success" hidden>
+              <h3>Thank you! 🎉</h3>
+              <p class="muted">Your registration has been recorded. We will get back to you very soon. </p>
+			  <p class="muted">Please finalize your reservation by transferring $70 to the following IBAN: ${IBAN}</p>
               <p style="margin-top:14px"><a class="btn" href="#top">Back to top</a></p>
             </div>
           </div>
@@ -671,6 +647,56 @@ The African Conference for Industrial and Applied Mathematics (ACIAM) returns in
         </div>
       </div>
     </section>
+	
+	
+	<!-- Rotator -->
+    <section id="keynotetopics" class="keynotetopics">
+      <div class="container">
+        <h2>Keynote Topics</h2>
+        <p class="muted" style="margin-top:8px">Quick inspiration for submissions & sessions.</p>
+        <div class="rotatorkt" aria-live="polite">
+          <article class="slidekt fade show" id="slidekt" aria-atomic="true">
+            <div class="timekt" id="timekt"></div>
+            <h3 id="titlekt" style="margin:6px 0 4px; margin-top: 4%;">Loading…</h3>
+            <div class="trackkt" id="trackkt"></div>
+          </article>
+          <div class="controls">
+            <button class="ctrl" id="prevkt" type="button" aria-label="Précédent">◀</button>
+            <button class="ctrl" id="playkt" type="button" aria-label="Pause/lecture">⏯</button>
+            <button class="ctrl" id="nextkt" type="button" aria-label="Suivant">▶</button>
+            <div class="dotskt" id="dotskt" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+	
+	
+	<!-- Sponsors -->
+    <section id="sponsors" class="sponsors section">
+		<div class="container">
+			<h2>Sponsors and Partners</h2>
+			<p class="muted">We proudly acknowledge the support of our sponsors and partners.</p>
+			<div class="specialspeaker-grid" id="specialSpeakerGrid" aria-live="polite"></div>
+		</div>
+
+		<div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 40px; max-width: 1000px; margin: 0 auto;">
+			<!-- Logo 1 -->
+			<div style="flex: 0 1 180px; text-align: center;">
+				<img src="https://en.csiam.org.cn/upload/shuxueen/63a2bb6068ac9.png" alt="China Society for Industrial and Applied Mathematics" style="width:150px; height:150px; border-radius:50%; object-fit:cover; border:3px solid #ddd;">
+			</div>
+		  
+			<!-- Logo 2 -->
+			<div style="flex: 0 1 180px; text-align: center;">
+				<img src="https://lirp.cdn-website.com/839d468e/dms3rep/multi/opt/UMA-1920w.png" alt="African Mathematical Union" style="width:150px; height:150px; border-radius:50%; object-fit:cover; border:3px solid #ddd;">
+			</div>
+			
+			<!-- Logo 3 -->
+			<div style="flex: 0 1 180px; text-align: center;">
+				<img src="http://univ-ouaga3s.com/wp-content/uploads/2023/11/logo.png" alt="African Mathematical Union" style="width:150px; height:150px; border-radius:50%; object-fit:cover; border:3px solid #ddd;">
+			</div>
+		</div>
+  </section>
+
 
     <!-- Gallery -->
     <section id="gallery" class="gallery">
@@ -736,95 +762,127 @@ The African Conference for Industrial and Applied Mathematics (ACIAM) returns in
 
     // ---------- Data ----------
 	const AIM = [
-      { name:"Prof. Abdon ATANGANA", title:"Chair of African Conference of Industrial and Applied Mathematics (ACIAM).", avatar:"https://aciam-bf2026.com/images/prof-abdon.jpg" },
-    ];
+      { name:"Prof. Abdon ATANGANA", title:"Chair of African Conference of Industrial and Applied Mathematics (ACIAM).", avatar:"https://fr.journalducameroun.com/wp-content/uploads/2023/08/abdon-m.jpg" },//"https://aciam-bf2026.com/images/prof-abdon.jpg" },
+      { name:"Prof. Dr. Oluwole Daniel MAKINDE", title:"Co-Chair of African Conference of Industrial and Applied Mathematics (ACIAM).", avatar:"./images/Professor_MAKINDE_Award.jpg" } //"https://aciam-bf2026.com/images/ASIAM1-1-300x300-1.webp" },
+    ]
 
     /* International Organising Committee list */
     const INTERNATIONAL_COMMITTEE = [
-      { name:"Prof. Abdon ATANGANA", title:"University of the Free State, South Africa." },
-	  { name:"Prof. Dr. Oluwole Daniel MAKINDE", title:"Fluid dynamics & nonlinear differential equations." },
-      { name:"Pr Mamadou Abdoul Diop", title:"Université Gaston Berger de Saint-Louis (UGB)" },
-      { name:"Prof Bakare Emmanuel", title:"International Centre for Applied Mathematical Modelling & Data Analytics" },
-      { name:"Pr. Dr. Mbele Bidima Martin Le Doux", title:"University of Yaounde I, Cameroon" },
-      { name:"Prof. Dr Getachew Teshome Tilahun", title:"Haramaya University - Haramaya / Ethiopia" },
-      { name:"Prof Sara Abdelsalam", title:"Faculty of Engineering, The British University, Egypt" },
-      { name:"Prof. Dr. Raseelo Joel Moitsheki", title:"University of the Witwatersrand, South Africa" },
-      { name:"Prof. M. F. Ouedraogo", title:"Université Joseph Ki-Zerbo, Burkina Faso" },
-      { name:"Prof. Lazarus Rundora", title:"University of Limpopo, Turfloop Campus, South Africa" },
-      { name:"Prof. Solly Lebelo", title:"Vaal University of Technology, South Africa" },
-	  { name:"Prof. Dr. Hassirou Mouhamadou", title:"University of Niamey, Niger" },
-      { name:"Prof Dr. Zakia Hammouch", title:"Moulay Ismail University Morocco, Kyung Hee University South Korea" },
-      { name:"Professor Olaniyi Samuel Iyiola", title:"Morgan State University, United State of America" },
-      { name:"Prof Khalid Ouarghi", title:"Université Moulay Ismail de Meknes, Morocco" },
-      { name:"Prof. Chinedu Nwaigwe", title:"Rivers State University, Nigeria" },
-      { name:"Dr. Makosha Ishmaeline Charlotte Morakaladi", title:"Free States University, South Africa" },
-      { name:"Eng, MBA Rocky TSANE ZEDONG", title:"HULT International Business School, London" },
-      { name:"Councillor Jacki Mpondo-Hendricks", title:"Social Entrepreneurship....Global business development..Private Public Sector Partnerships...GBVF and Women Empowerment Activism, South Africa" },
-      { name:"Mr. Zahi Olivier Zabo", title:" PPA-CI, Nigeria" },	  
-      { name:"Prof. W. Schilders", title:"TU/e & ECMI, The Netherlands" }
+      { name:"Prof. Abdon ATANGANA", title:"South Africa" },
+	  { name:"Prof. Dr. Oluwole Daniel MAKINDE", title:"South Africa" },
+      { name:"Pr Mamadou Abdoul DIOP", title:"Senegal" },
+      { name:"Prof Emmanuel BAKARE", title:"Nigeria" },
+      { name:"Pr. Dr. Martin Le Doux MBELE BIDIMA", title:"Cameroon" },
+      { name:"Prof. Dr GETACHEW TESHOME Tilahun", title:"Ethiopia" },
+      { name:"Prof Sara ABDELSALAM", title:"Egypt" },
+      { name:"Prof. Dr. Raseelo Joel MOITSHEKI", title:"South Africa" },
+      { name:"Prof. M. F. OUEDRAOGO", title:"Burkina Faso" },
+      { name:"Prof. Lazarus RUNDORA", title:"South Africa" },
+      { name:"Prof. Solly Lebelo", title:"South Africa" },
+	  { name:"Prof. Dr. Hassirou Mouhamadou", title:"Niger" },
+      { name:"Prof Dr. Zakia Hammouch", title:"South Korea" },
+      { name:"Professor Olaniyi Samuel Iyiola", title:"United State of America" },
+      { name:"Prof Khalid Ouarghi", title:"Morocco" },
+      { name:"Prof. Chinedu Nwaigwe", title:"Nigeria" },
+      { name:"Dr. Makosha Ishmaeline Charlotte Morakaladi", title:"South Africa" },
+      { name:"Eng, MBA Rocky TSANE ZEDONG", title:"France" },
+      { name:"Councillor Jacki Mpondo-Hendricks", title:"South Africa" },
+      { name:"Mr. Zahi Olivier Zabo", title:"Nigeria" },
+	  { name:"Prof. Calvin TADMON", title:"Cameroon" },
+	  { name:"Dr. Jocelyn GONESSA", title:"Central African Republic" },
+	  { name:"Pr. Dr. Bakari ABBO", title:"Chad" },
+	  { name:"Dr. Cyr-Séraphin NGAMOUYIH MOUSSATA", title:"Congo Brazzaville" },
+	  { name:"Professor Justin Bazimaziki Munyakazi", title:"Democratic Republic of Congo" },
+	  { name:"Prof. Carmelo EBANG NDONG", title:"Equatorial Guinea" },
+	  { name:"Dr. Vianney MBAZUMUTIMA", title:"Burundi" },
+	  { name:"Prof. Gemechis File Duressa", title:"Ethiopia" },
+	  { name:"Dr. Jane A. ADUDA", title:"Kenya" },
+	  { name:"Prof. Denis NDANGUZA", title:"Rwanda" },
+	  { name:"Dr. Sunday PETE", title:"South Sudan" },
+	  { name:"Dr. Entisar ALRASHEED", title:"Sudan" },
+	  { name:"Prof. Benjamin Aina PETER", title:"Uganda" },
+	  { name:"Dr. Idrissa Said AMOUR", title:"Tanzania" },
+	  { name:"Pr. Amar DEBBOUCHE", title:"Algeria" },
+	  { name:"Pr.  Zeinab MANSOUR", title:"Egypt" },
+	  { name:"Pr. Dr. Haniyah A. Saed BEN HAMDIN", title:"Libya" },
+	  { name:"Pr. Khalid HATTAF", title:"Morocco" },
+	  { name:"Prof. Omar NAIFAR", title:"Tunisia" },
+	  { name:"Prof. Maria DE NATIVIDADE", title:"Angola" },
+	  { name:"Dr. T. G. MOTSUMI", title:"Botswana" },
+	  { name:"Dr. Peter MHONE", title:"Malawi" },
+	  { name:"Pr. Dr. Sansao PEDRO", title:"Mozambique" },
+	  { name:"Dr. David IIYAMBO", title:"Namibia" },
+	  { name:"Prof M. KHUMALO", title:"South Africa" },
+	  { name:"Dr. Sandile MOTSA", title:"Swaziland" },
+	  { name:"Mervis KIKONKO", title:"Zambia" },
+	  { name:"Dr. Gift MUTCHATIBAYA", title:"Zimbabwe" },
+	  { name:"Assoc. Prof. Guy DEGLA", title:"Benin" },
+	  { name:"Prof Delfim F. M. TORRES", title:"Cape Verde" },
+	  { name:"Ms. Naffie AIDARA", title:"Gambia" },
+	  { name:"Prof. Ebenezer BONYAH", title:"Ghana" },
+	  { name:"Prof. Dr. Abdoulaye BANIRE DIALLO", title:"Guinea Conakry" },
+	  { name:"Dr. Tenan YEO", title:"Ivory Coast" },  
+	  { name:"Prof. Saley BISSO", title:"Niger" },
+	  { name:"Dr. Afeez ABIDEMI", title:"Nigeria" },
+	  { name:"Professor Diene NGOM", title:"Senegal" },
+	  { name:"Assoc. Prof. Kwassi ANANI", title:"Togo" },
+	  { name:"Dr. Tenan YEO", title:"Ivory Coast" }
     ];
 
     /* Local Organising Committee list */
     const LOCAL_COMMITTEE = [
-      { name:"Prof. Boureima Sangare", title:" Unité de Formation et de Recherche en Sciences Exactes et Appliquées (UFR SEA), Burkina Faso" },
-	  { name:"Dr. Nonkane Ibrahim", title:"Université Thomas SANKARA, Ouagadougou, Burkina Faso" },
-      { name:"Dr.Sanogo Satafa", title:"Université Paul Sabatier - Toulouse, France" },
-      { name:"Dr. Kabore Abdoulaye", title:"Université Nazi Boni, Burkina Faso" },
-      { name:"Pr. Dr. Mbele Bidima Martin Le Doux", title:"University of Yaounde I, Cameroon" },
-      { name:"Prof. Dr Getachew Teshome Tilahun", title:"Haramaya University - Haramaya / Ethiopia" },
-      { name:"Prof Sara Abdelsalam", title:"Faculty of Engineering, The British University, Egypt" },
-      { name:"Prof. Dr. Raseelo Joel Moitsheki", title:"University of the Witwatersrand, South Africa" },
-      { name:"Prof. M. F. Ouedraogo", title:"Université Joseph Ki-Zerbo, Burkina Faso" },
-      { name:"Prof. Lazarus Rundora", title:"University of Limpopo, Turfloop Campus, South Africa" },
-      { name:"Prof. Solly Lebelo", title:"Vaal University of Technology, South Africa" },
-	  { name:"Prof. Dr. Hassirou Mouhamadou", title:"University of Niamey, Niger" },
-      { name:"Prof Dr. Zakia Hammouch", title:"Moulay Ismail University Morocco, Kyung Hee University South Korea" },
-      { name:"Professor Olaniyi Samuel Iyiola", title:"Morgan State University, United State of America" },
-      { name:"Prof Khalid Ouarghi", title:"Université Moulay Ismail de Meknes, Morocco" },
-      { name:"Prof. Chinedu Nwaigwe", title:"Rivers State University, Nigeria" },
-      { name:"Dr. Makosha Ishmaeline Charlotte Morakaladi", title:"Free States University, South Africa" },
-      { name:"Eng, MBA Rocky TSANE ZEDONG", title:"HULT International Business School, London" },
-      { name:"Councillor Jacki Mpondo-Hendricks", title:"Social Entrepreneurship....Global business development..Private Public Sector Partnerships...GBVF and Women Empowerment Activism, South Africa" },
-      { name:"Mr. Zahi Olivier Zabo", title:" PPA-CI, Nigeria" },	  
-      { name:"Prof. W. Schilders", title:"TU/e & ECMI, The Netherlands" }
+      { name:"Prof. Boureima SANGARE", title:" Unité de Formation et de Recherche en Sciences Exactes et Appliquées (UFR SEA), Burkina Faso" },
+	  { name:"Dr. Ibrahim NONKANE", title:"Université Thomas SANKARA, Ouagadougou, Burkina Faso" },
+      //{ name:"Dr.Sanogo Satafa", title:"Université Paul Sabatier - Toulouse, France" },
+      { name:"Dr. Abdoulaye KABORE", title:"Université Nazi Boni, Burkina Faso" },
+      { name:"Prof. M. F. OUEDRAOGO", title:"Université Joseph Ki-Zerbo, Burkina Faso" },
+	  { name:"Matthieu Sobom SOME", title:"Université Sankara (Secrétaire), Burkina Faso" },
+	  { name:"Rodrigue Aimé SANOU", title:"Université Thomas Sankara (Rapporteur), Burkina Faso" },
+	  { name:"Mathieu Romaric POODA", title:"Université Thomas Sankara (Rapporteur), Burkina Faso" },
+	  { name:"Ibrahime KONATE", title:"Université Thomas Sankara" },
+	  { name:"Dominique BONKOUGOU", title:"Université Thomas Sankara" },
+	  { name:"Frédéric D.Y. ZONGO", title:"Ecole Normale Supérieure" },
+	  { name:"Luc T. BAMBARA", title:"Ecole Normale Supérieure" },
+	  { name:"Gaëlle Kafira KO", title:"Ecole Normale Supérieure" },
+	  { name:"Abdoul Aziz Kalifa DIANDA", title:"Université Thomas Sankara" }
+
     ];
 
 
     /* Honorary Committee list */
     const HONORARY_COMMITTEE = [
-      { name:"Prof. Ousseynou Nakoulima", title:" University Ouaga 3S, Burkina Faso" },
-	    { name:"HE Mr. Kone Moriba Alain", title:"His Excellency the Ambassador of the Republic of South Africa to the Republic of Guinea" },
-    ];
+      { name:"Prof. Ousseynou Nakoulima", title:" University Ouaga 3S, Burkina Faso", avatar:"https://univ-ouaga3s.com/wp-content/uploads/2024/02/zyro-image-1.jpg" },
+	  { name:"HE Mr. Kone Moriba Alain", title:"His Excellency the Ambassador of the Republic of South Africa to the Republic of Guinea", avatar:"https://prod.cdn-medias.jeuneafrique.com/cdn-cgi/image/q=auto,f=auto,metadata=none,width=1215,fit=cover/https://prod.cdn-medias.jeuneafrique.com/medias/2022/07/15/jad20220715-conf-guinee-moribaalainkone-1256x628-1657893756.jpg" },
+	];
 
     const KEYNOTESPEAKERS = [
-      { name:"Prof. Wil Schilders", title:"President of ECMI & ICIAM; advocate for industrial & societal mathematics.", avatar:"https://assets.w3.tue.nl/w/uploads/_processed_/0/3/csm_Schilders_Wil_BvOF230317ADP_4x3_LR_aa2b16cb9a.jpg" },
-      { name:"Prof. Gaston Mandata N'Guerekata", title:"University Distinguished Professor and Associate Dean at Morgan State University in Baltimore, Maryland, USA", avatar:"https://aciam-bf2026.com/images/gaston.jpg" }
+      { name:"Prof. Wil SCHILDERS", title:"President of ECMI & ICIAM; advocate for industrial & societal mathematics.", avatar:"https://assets.w3.tue.nl/w/uploads/_processed_/0/3/csm_Schilders_Wil_BvOF230317ADP_4x3_LR_aa2b16cb9a.jpg" },
+      { name:"Prof. Gaston Mandata N'GUEREKATA", title:"University Distinguished Professor and Associate Dean at Morgan State University in Baltimore, Maryland, USA", avatar:"https://aciam-bf2026.com/images/gaston.jpg" }
     ];
     const PLENARYSPEAKERS = [
       { name:"Prof. Dr. Oluwole Daniel MAKINDE", title:"Stellenbosch University, South Africa", avatar:"https://aciam-bf2026.com/images/ASIAM1-1-300x300-1.webp" },
       { name:"Prof. Abdon ATANGANA", title:"University of the Free State, South Africa.", avatar:"https://aciam-bf2026.com/images/asiam-1.webp" },
-      { name:"Prof. Marie Françoise Ouedraogo", title:"Université Joseph Ki-Zerbo, Burkina Faso.", avatar:"https://mentalidadesmatematicas.org.br/wp-content/webp-express/webp-images/uploads/2021/05/dia-das-mulheres-matematicas-marie-1.jpg.webp" },
+      { name:"Prof. Marie Françoise OUEDRAOGO", title:"Université Joseph Ki-Zerbo, Burkina Faso.", avatar:"https://mentalidadesmatematicas.org.br/wp-content/webp-express/webp-images/uploads/2021/05/dia-das-mulheres-matematicas-marie-1.jpg.webp" },
       { name:"Prof. Shen ZUOWEI", title:"National University of Singapore, Singapore.", avatar:"https://www.polyu.edu.hk/ama/-/media/Department/AMA/People/people/Visiting-Honorary-Professors/Shen-Zuowei.jpg?bc=ffffff&h=430&w=280" },
       { name:"Prof. Bao WEIZHU", title:"National University of Singapore, Singapore.", avatar:"https://www.math.nus.edu.sg/wp-content/uploads/sites/4/2020/02/matbaowz.jpg" },
       { name:"Prof. Tao TANG", title:"Hong Kong University of Science and Technology, Hong Kong", avatar:"https://gbaaa.org.hk/uploads/image/202206/cba7047a188db3d4657f28d0fbdf74d5.jpg" },
       { name:"Prof. Gang BAO", title:"Zhejiang University, China.", avatar:"https://www.eurasc.eu/wp-content/uploads/2025/10/FOTOS-PERFIL-EURASC-2.jpg" },
       { name:"Prof. Yang XIANG", title:"Hong Kong University of Science and Technology, Hong Kong", avatar:"https://facultyprofiles.hkust.edu.hk/profiles/images/P000001206.jpg" },
-      { name:"Prof. Gisèle Mophou", title:"University of the French Antilles", avatar:"https://fegu.org/wp-content/uploads/2021/10/Pr-Gisele-Mophou.png" }
+      { name:"Prof. Gisèle MOPHOU", title:"University of the French Antilles", avatar:"https://fegu.org/wp-content/uploads/2021/10/Pr-Gisele-Mophou.png" }
     ];
     const INVITEDSPEAKERS = [
       { name:"Prof. Zhonghua QIAO", title:"The Hong Kong Polytechnic University, Hong Kong", avatar:"https://awards.ugc.edu.hk/f/awardee/13610/560c560/RFS_Dr%20QIAO%20Zhonghua.jpg" },
       { name:"Prof. Jae KYOUNG KIM", title:"KAIST, South Korea.", avatar:"https://mathsci.kaist.ac.kr/~jaekkim/img/NYJ30062-1.jpg" },
-      { name:"Prof. Shen ZUOWEI", title:"National University of Singapore, Singapore.", avatar:"https://www.polyu.edu.hk/ama/-/media/Department/AMA/People/people/Visiting-Honorary-Professors/Shen-Zuowei.jpg" },
-      { name:"Prof. Bao WEIZHU", title:"National University of Singapore, Singapore.", avatar:"https://www.math.nus.edu.sg/wp-content/uploads/sites/4/2020/02/matbaowz.jpg" },
-      { name:"Prof. Tao TANG", title:"HKUST, China.", avatar:"https://gbaaa.org.hk/uploads/image/202206/cba7047a188db3d4657f28d0fbdf74d5.jpg" },
-      { name:"Prof. Gang BAO", title:"Zhejiang University, China.", avatar:"https://www.eurasc.eu/wp-content/uploads/2025/10/FOTOS-PERFIL-EURASC-2.jpg" }
+      { name:"Professoressa Ordinaria Stefania BELLAVIA", title:"UNIVERSITÀ DEGLI STUDI DI FIRENZE - Dipartimento di Ingegneria Industriale (DIEF), Italy.", avatar:"https://0.academia-photos.com/209216194/69077530/57470511/s200_stefania.bellavia.png" },
+      { name:"Prof. Samir ADLY", title:"President, SMAI (French Society for Industrial and Applied Mathematics) Professor of Applied Mathematics, University of Limoges (XLIM), France.", avatar:"https://www.unilim.fr/acsyon/wp-content/uploads/2020/02/Samir_Adly.jpg" },
+      { name:"Prof Elena BRAVERMAN", title:" University of Caglary, Canada", avatar:"https://profiles.ucalgary.ca/sites/default/files/styles/ucws_profile_picture/public/Elena%2520Braverman.jpg?itok=Uj62Oqim" }
     ];
     const SPECIALSPEAKERS = [
-      { name:"Prof. Dr. Zakia Hammouch", title:"Mathematical modelling & fractional differential equations.", avatar:"https://tse2.mm.bing.net/th/id/OIP.n5r-UlkXbEpmc0n9DhWyNgAAAA?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" },
+      { name:"Prof. Dr. Zakia HAMMOUCH", title:"Mathematical modelling & fractional differential equations.", avatar:"https://tse2.mm.bing.net/th/id/OIP.n5r-UlkXbEpmc0n9DhWyNgAAAA?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" },
+      { name:"Dr. Arsene Stephane TEMA BIWOLE", title:"Massachusetts Institute of Technology", avatar:"https://media.licdn.com/dms/image/v2/D4E03AQElfrfbBp1q0w/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1686657969858?e=2147483647&v=beta&t=XUJhkAJ2T5EkxlAxY6mmlsG0jd7rst0tPOh6tdDuUiM" },
       { name:"Eng, MBA Rocky TSANE ZEDONG", title:"Cloud DevOps Architect", avatar:"https://media.licdn.com/dms/image/v2/C4D03AQG9RJMP6f8kqw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1608207904148?e=1763596800&v=beta&t=TwydFXrJ1U-TZteHabYRsrOHpTkh_nmyzF2QMg9LybQ" },
       { name:"Eng, BERTIN NGA OHANDZA", title:"RedHat Automation Expert", avatar:"https://media.licdn.com/dms/image/v2/C4D03AQHVFj8vCg172w/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1575475587113?e=1763596800&v=beta&t=NEobDe6uBjMWqWPT7svIYzk8SFD8BA3Z81wrW8qTUr0" },
-      { name:"Abdoul-Aziz Zakari Madougou", title:"Cloud / DevOps Architect", avatar:"https://media.licdn.com/dms/image/v2/D4E03AQEHg1HNjj6DkQ/profile-displayphoto-shrink_400_400/B4EZbhwq8bGkAg-/0/1747544355166?e=1763596800&v=beta&t=A_ZKQJ7Pvgqc2Mihm1IKnlPdKhB1UbK3d19pM7kHE88" },
-      { name:"Dr. Arsene Stephane Tema Biwole", title:"Massachusetts Institute of Technology", avatar:"https://media.licdn.com/dms/image/v2/D4E03AQElfrfbBp1q0w/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1686657969858?e=2147483647&v=beta&t=XUJhkAJ2T5EkxlAxY6mmlsG0jd7rst0tPOh6tdDuUiM" }
+      { name:"Abdoul-Aziz Zakari MADOUGOU", title:"Cloud / DevOps Architect", avatar:"https://media.licdn.com/dms/image/v2/D4E03AQEHg1HNjj6DkQ/profile-displayphoto-shrink_400_400/B4EZbhwq8bGkAg-/0/1747544355166?e=1763596800&v=beta&t=A_ZKQJ7Pvgqc2Mihm1IKnlPdKhB1UbK3d19pM7kHE88" }
     ];
     const GALLERY = [
       { src:'https://aciam-bf2026.com/images/h1.jpeg', alt:'Conference hall' },
@@ -854,7 +912,17 @@ The African Conference for Industrial and Applied Mathematics (ACIAM) returns in
       { title:"Optimization, control, and operations research for industry & logistics" },
       { title:"High-performance computing, scalable algorithms, and computational infrastructure" },
       { title:"Materials, energy systems, and industrial mathematics (renewables, storage)" },
-      { title:"Mathematics education, capacity building, and outreach in Africa" },
+      { title:"Mathematics education, capacity building, and outreach in Africa" }
+    ];
+	
+	const KEYNOTETOPICS = [
+      { titlekt:"Mathematical approaches to climate-risk modeling and adaptation planning" },
+      { titlekt:"Data assimilation and AI for environmental forecasting" },
+      { titlekt:"Mathematical epidemiology: modeling, inference, and policy impact" },
+      { titlekt:"High-performance solvers for multi-scale, multiphysics models" },
+      { titlekt:"Inverse problems and uncertainty quantification in real-world systems" },
+      { titlekt:"Optimization for energy grids and resource allocation in developing economies" },
+      { titlekt:"Mathematical foundations of trustworthy machine learning" }
     ];
 
     // ---- Accommodations data
@@ -902,10 +970,13 @@ The African Conference for Industrial and Applied Mathematics (ACIAM) returns in
     }
 
     // Render sections
-	renderCards(AIM, '#aimGrid', 'card aim');
-    renderPeopleList(INTERNATIONAL_COMMITTEE, '#internationalCommitteeGrid');
+	
 	renderPeopleList(LOCAL_COMMITTEE, '#localCommitteeGrid');
-  renderPeopleList(HONORARY_COMMITTEE, '#honoraryCommitteeGrid');
+    renderPeopleList(INTERNATIONAL_COMMITTEE, '#internationalCommitteeGrid');
+	//renderPeopleList(HONORARY_COMMITTEE, '#honoraryCommitteeGrid');
+	
+	renderCards(AIM, '#aimGrid', 'card aim');
+	renderCards(HONORARY_COMMITTEE, '#honoraryCommitteeGrid', 'card honorarycommittee');
     renderCards(KEYNOTESPEAKERS, '#keyNoteSpeakerGrid', 'card keynotespeaker');
     renderCards(PLENARYSPEAKERS, '#plenarySpeakerGrid', 'card plenaryspeaker');
     renderCards(INVITEDSPEAKERS, '#invitedSpeakerGrid', 'card invitedspeaker');
@@ -1008,6 +1079,7 @@ The African Conference for Industrial and Applied Mathematics (ACIAM) returns in
       const firstName=form.firstName.value.trim();
       const lastName=form.lastName.value.trim();
       const email=form.email.value.trim();
+
       const consent=form.consent.checked;
       setError('firstName','');setError('lastName','');setError('email','');setError('consent','');
       if(!firstName){setError('firstName','First name required');ok=false}
@@ -1016,12 +1088,72 @@ The African Conference for Industrial and Applied Mathematics (ACIAM) returns in
       if(!consent){setError('consent','Please accept data processing');ok=false}
       return ok;
     }
+	
+	
+	
+	document.addEventListener("DOMContentLoaded", () => {
+	 const countrySelect = document.getElementById("country");
+	 const message = document.getElementById("message");
+
+	// List of African countries (simplified)
+	const africanCountries = [
+		"Algeria", "Angola", "Benin", "Botswana", "Burkina Faso", "Burundi",
+		"Cameroon", "Cape Verde", "Central African Republic", "Chad", "Comoros",
+		"Congo", "Djibouti", "Egypt", "Equatorial Guinea", "Eritrea", "Eswatini",
+		"Ethiopia", "Gabon", "Gambia", "Ghana", "Guinea", "Guinea-Bissau",
+		"Ivory Coast", "Kenya", "Lesotho", "Liberia", "Libya", "Madagascar",
+		"Malawi", "Mali", "Mauritania", "Mauritius", "Morocco", "Mozambique",
+		"Namibia", "Niger", "Nigeria", "Rwanda", "São Tomé and Príncipe",
+		"Senegal", "Seychelles", "Sierra Leone", "Somalia", "South Africa",
+		"South Sudan", "Sudan", "Tanzania", "Togo", "Tunisia", "Uganda",
+		"Zambia", "Zimbabwe"
+	];
+
+	// Optionally: populate the select list
+	const allCountries = [...africanCountries, "France", "Germany", "India", "United States"];
+	allCountries.sort().forEach(c => {
+		const opt = document.createElement("option");
+		opt.value = c;
+		opt.textContent = c;
+		countrySelect.appendChild(opt);
+	});
+
+	// Detect change
+	countrySelect.addEventListener("change", () => {
+		const selected = countrySelect.value;
+		if (!selected) {
+		  message.textContent = "";
+		  return;
+		}
+
+		if (africanCountries.includes(selected)) {
+		  message.textContent = `🌍 Welcome! ${selected} is an African country.`;
+		  message.style.color = "green";
+		  selectedCountry = "African"
+		} else {
+		  message.textContent = `${selected} is not in Africa.`;
+		  message.style.color = "gray";
+		  selectedCountry = "NonAfrican"
+		}
+	  });
+	});
+
+	
+	
+	
     form.addEventListener('submit', async (e)=>{
       e.preventDefault();
       if(!validate()) return;
       try{
         console.log('Registration payload', Object.fromEntries(new FormData(form).entries()));
-        formWrap.hidden=true; success.hidden=false; form.reset();
+        //formWrap.hidden=true; success.hidden=false; form.reset();
+		
+		if (selectedCountry == "African") {
+		  formWrap.hidden=true; successAfricanCondition.hidden=false; form.reset();
+		} else {
+		  formWrap.hidden=true; successNonAfricanCondition.hidden=false; form.reset();
+		}
+		
       }catch(err){
         alert('Unable to submit the form. Please try again later.');
         console.error(err);
@@ -1087,6 +1219,72 @@ The African Conference for Industrial and Applied Mathematics (ACIAM) returns in
 
     render(0); start();
 
+
+
+
+	    // ---------- Rotator ----------
+    const slidekt = $('#slidekt'), titleEkt = $('#titlekt'), timeElkt = $('#timekt'), trackElkt = $('#trackkt');
+    const dotskt = $('#dotskt'); const nextBtnkt = $('#nextkt'); const prevBtnkt = $('#prevkt'); const playBtnkt = $('#playkt');
+
+    const dfragkt = document.createDocumentFragment();
+    KEYNOTETOPICS.forEach((itkt,j)=>{
+      const dkt=document.createElement('button');
+      dkt.className='dotkt'+(j===0?' active':'');
+      dkt.type='button';
+      dkt.setAttribute('aria-label',`Go to: ${itkt.titlekt}`);
+      dkt.dataset.index=j;
+      dfragkt.appendChild(dkt);
+    });
+    dotskt.appendChild(dfragkt);
+
+    let idxkt=0, timerkt=null, playingkt=true;
+    const reduceMotionkt = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function renderKeynoteTopics(j){
+      const itkt = KEYNOTETOPICS[j];
+      titleEkt.textContent = itkt.titlekt || '';
+      timeElkt.textContent = itkt.timekt || '';
+      trackElkt.textContent = itkt.trackkt || '';
+      if(!reduceMotionkt){
+        requestAnimationFrame(()=>{slidekt.classList.remove('show');requestAnimationFrame(()=>slidekt.classList.add('show'))});
+      }
+      $$('.dotkt',dotskt).forEach((dkt,kkt)=>dkt.classList.toggle('active',kkt===j));
+      idxkt=j;
+    }
+    const nextkt=()=>renderKeynoteTopics((idxkt+1)%KEYNOTETOPICS.length);
+    const prevkt=()=>renderKeynoteTopics((idxkt-1+KEYNOTETOPICS.length)%KEYNOTETOPICS.length);
+
+    function startkt(){
+      if(timerkt) clearInterval(timerkt);
+      if(!reduceMotionkt){ timerkt = setInterval(nextkt,5000); }
+      playingkt=true; if(playBtnkt) playBtnkt.textContent='⏸';
+    }
+    function stopkt(){
+      if(timerkt) clearInterval(timerkt);
+      timerkt=null; playingkt=false; if(playBtnkt) playBtnkt.textContent='▶';
+    }
+
+    nextBtnkt?.addEventListener('click',()=>{stopkt();nextkt()},{passive:true});
+    prevBtnkt?.addEventListener('click',()=>{stopkt();prevkt()},{passive:true});
+    playBtnkt?.addEventListener('click',()=> playing?stopkt():startkt());
+    slidekt.addEventListener('mouseenter',stopkt);
+    slidekt.addEventListener('mouseleave',startkt);
+
+    document.addEventListener('visibilitychange',()=> document.hidden?stopkt():startkt());
+    const iokt = new IntersectionObserver(([ekt])=>{ ekt.isIntersecting?startkt():stopkt(); }, {threshold:0.2});
+    iokt.observe(slidekt);
+
+    dotskt.addEventListener('click',ekt=>{
+      const tkt=ekt.target.closest('.dotkt');
+      if(!tkt) return; stopkt(); renderKeynoteTopics(+tkt.dataset.index);
+    });
+
+    renderKeynoteTopics(0); startkt();
+
+
+
+
+
     // ---- Accommodations render
     function renderHotels(list, sel){
       const root = $(sel); if(!root) return;
@@ -1110,6 +1308,18 @@ The African Conference for Industrial and Applied Mathematics (ACIAM) returns in
       root.appendChild(frag);
     }
     renderHotels(HOTELS, '#hotelGrid');
+	
+	
+	
+	fetch("https://ipapi.co/json/")
+	  .then(res => res.json())
+	  .then(data => {
+		if (data && data.country_name) {
+		  countrySelect.value = data.country_name;
+		  countrySelect.dispatchEvent(new Event("change"));
+		}
+	})
+  .catch(() => console.log("Could not detect location"));
   </script>
 </body>
 </html>
