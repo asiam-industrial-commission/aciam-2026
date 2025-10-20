@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 
@@ -229,6 +230,73 @@
       z-index: 1;
     }
 	
+	.vertical-scroll {
+			height: 300px; /* taller for better readability */
+			  overflow: hidden;
+			  position: relative;
+			  background: #e9f9ec; /* pale green background */
+			  border-radius: 15px;
+			  margin-top: 25px;
+			  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+			  padding: 10px 0;
+			}
+			
+			.scroll-list {
+			  list-style: none;
+			  margin: 0;
+			  padding: 0;
+			  animation: scrollUp 25s linear infinite;
+			}
+			
+			.scroll-list li {
+			  padding: 20px 24px;
+			  font-size: 1rem;
+			  font-weight: 500;
+			  background: #ffffff;
+			  border-radius: 10px;
+			  margin: 10px 18px; /* 👈 adds vertical space between items */
+			  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
+			  color: #2d4232;
+			  transition: transform 0.3s ease, background-color 0.3s ease;
+			}
+			
+			.scroll-list li:nth-child(even) {
+			  background: #f3fbf5; /* slightly lighter for alternation */
+			}
+			
+			/* Subtle hover effect for visual feedback */
+			.scroll-list li:hover {
+			  background: rgba(15,23,42,.04); /*#dff5e2;*/
+				
+			  transform: scale(1.02);
+			}
+			
+			@keyframes scrollUp {
+			  0% {
+				transform: translateY(0);
+			  }
+			  100% {
+				transform: translateY(-50%);
+			  }
+			}
+			
+			/* Pause scroll on hover */
+			.vertical-scroll:hover .scroll-list {
+			  animation-play-state: paused;
+			}
+			
+			/* Responsive styling */
+			@media (max-width: 868px) {
+			  .vertical-scroll {
+				height: 300px;
+			  }
+			  .scroll-list li {
+				font-size: 0.8rem;
+				padding: 16px 18px;
+				margin: 8px 12px;
+			  }
+			}
+	
     /* Gallery */
     .gallery{padding:56px 0;border-top:1px solid var(--line)}
     .gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:16px}
@@ -323,1126 +391,1007 @@
 	.committee .card .name{font-weight:800}
   </style>
 </head>
-<body>
-  <a id="top" tabindex="-1"></a>
+	<body>
+		<a id="top" tabindex="-1"></a>
 
-  <header>
-    <div class="nav container">
-      <div class="brand">ACIAM 2026</div>
-      <nav aria-label="Navigation du site">
-        <ul>
-          <li><a href="#aim">About</a></li>
-          <li><a href="#committees">Committees</a>
-            <ul role="menu" aria-label="Committee categories">
-              <li><a role="menuitem" href="#honorarycommitee">Honorary Committee</a></li>
-              <li><a role="menuitem" href="#localorganisingcommitee">Local Organising Committee Members</a></li>
-              <li><a role="menuitem" href="#internationalorganisingcommitee">International Organising Committee Members</a></li>
-            </ul>
-          </li>
-          <li><a  href="#speakers">Speakers</a>
-            <ul role="menu" aria-label="Speakers categories">
-              <li><a role="menuitem" href="#keynotespeakers">Keynote Speakers</a></li>
-              <li><a role="menuitem" href="#plenaryspeakers">Plenary Speakers</a></li>
-              <li><a role="menuitem" href="#invitedspeakers">Invited Speakers</a></li>
-              <li><a role="menuitem" href="#specialspeakers">Special Speakers</a></li>
-            </ul>
-          </li>
-		  <li><a href="#thematicstopics">Thematics & Topics</a>
-            <ul role="menu" aria-label="Thematics and Topics categories">
-              <li><a role="menuitem" href="#suggestedthematics">Suggested Thematics</a></li>
-              <li><a role="menuitem" href="#keynotetopics">Keynote Topics</a></li>
-            </ul>
-          </li>
-		  <li><a href="#sponsors">Sponsors and Partners</a></li>
-          <li><a href="#gallery">Gallery</a></li>
-          <li><a href="#accommodations">Accommodations</a></li>
-        </ul>
-      </nav>
-      <a href="#register" class="btn">Register</a>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero2">
-            <img src="./images/Family_Photo_ACIAM_2023.jpeg" alt="Audience in auditorium">
-		    <img src="./images/Workshop_2_ACIAM_2024.jpeg" class="active" alt="Conference hall">
-            <img src="./images/Workshop_1_ACIAM_2024.jpeg" alt="Workshop session">
-            <img src="./images/ACIAM_2023_State_Representation.jpeg" alt="Audience in auditorium">
-            <img src="./images/Prof_ATANGANA_Delegation_Aciam_2023.jpeg" alt="Keynote on stage">
-            <img src="./images/ACIAM_Festivities.jpeg" alt="Networking break">
-            <img src="./images/Guests_Hosts_ACIAM_2024.jpeg" alt="Panel discussion">
-
-            <div class="overlay"></div>
-
-            <div class="hero2-content">
-                <h1>ACIAM 2026 BURKINA FASO</h1>
-                <div class="hero2-buttons">
-                    <a href="#register">Register</a>
-                </div>
-            </div>
-        </section>
-
-        <script>
-        // Simple background image slideshow
-            const images = document.querySelectorAll('.hero2 img');
-        let current = 0;
-
-        setInterval(() => {
-        images[current].classList.remove('active');
-        current = (current + 1) % images.length;
-        images[current].classList.add('active');
-      }, 5000);
-    </script>
-    
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container grid two" style="align-items:center">
-        <div>
-          <h1>Mathematics for Resilient Futures</h1>
-          <p class="muted" style="margin-top:10px;font-size:18px">Join leaders in mathematics, computing and industry for concrete learning and impactful connections.</p>
-          <div class="kpi" aria-label="Key information">
-            <span>📅 17–21 septembre 2026</span>
-            <span>📍 University of Ouagadougou, Burkina Faso</span>
-            <span>🎙️ 15+ speakers</span>
-          </div>
-          <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap">
-            <a class="btn" href="#register">Register</a>
-            <a class="btn outline" href="#suggestedthematics">See Suggested Thematic Tracks</a>
-          </div>
-        </div>
-
-        <!-- Compact countdown in hero -->
-        <div>
-          <div class="countdown compact" id="countdown" aria-label="Countdown before the opening of the Conference">
-            <h2>Countdown before the opening of the Conference</h2>
-            <p class="muted">See you soon for ACIAM 2026 — ready?</p>
-
-            <div class="flip-wrap" aria-live="polite">
-              <div class="flip-unit" data-unit="days">
-                <div class="label">Days</div>
-                <div class="flip"><div class="card"><span class="front">000</span><span class="back">000</span></div></div>
-              </div>
-              <div class="flip-unit" data-unit="hours">
-                <div class="label">Hours</div>
-                <div class="flip"><div class="card"><span class="front">00</span><span class="back">00</span></div></div>
-              </div>
-              <div class="flip-unit" data-unit="minutes">
-                <div class="label">Minutes</div>
-                <div class="flip"><div class="card"><span class="front">00</span><span class="back">00</span></div></div>
-              </div>
-              <div class="flip-unit" data-unit="seconds">
-                <div class="label">Seconds</div>
-                <div class="flip"><div class="card"><span class="front">00</span><span class="back">00</span></div></div>
-              </div>
-            </div>
-
-            <div class="tictac-row">
-              <button id="tickSound" class="btn outline" type="button" aria-pressed="false">Activate the tick-tock sound</button>
-              <div class="tictac" aria-hidden="true" title="Tic-Tac visuel"></div>
-            </div>
-
-            <div class="fireworks-wrap" aria-hidden="true">
-              <canvas id="fireworks"></canvas>
-              <div class="fw-message">
-                <h3>🚀 C’est parti !</h3>
-                <p>Bienvenue à ACIAM 2026</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-	<!-- AIM -->
-    <section id="aim" class="aim section">
-      <div class="container">
-        <h2>Welcome address from the Chair and Co-Chair of ACIAM</h2>
-        <p class="muted">Africa is inventing its future, fast, bold and resolute. ACIAM Burkina Faso 2026 celebrates mathematics as the spark that lights this transformation: the models that predict storms and protect communities, the algorithms that power factories and scale healthy systems, and the data-driven insights that unlock opportunity for millions. Here, ideas meet action, students, start-ups, researchers and policymakers will gather to imagine new possibilities and build partnerships that turn rigorous thinking into tangible progress. Join us to be part of a movement that harnesses mathematical creativity to strengthen communities, energize industry, and create a more resilient, equitable future for Africa and the world. <br>
-
-The African Conference for Industrial and Applied Mathematics (ACIAM) returns in September 2026 in Burkina Faso. Under the theme “Mathematics for Resilient Futures: Climate, Health and Industry”, ACIAM 2026 invites original contributions that harness mathematical theory, computation and data science to address pressing societal challenges.
-        <div class="aim-grid" id="aimGrid" aria-live="polite"></div>
-      </div>
-    </section>
-	
-    <!-- HONORARY COMMITTEE -->
-    <section id="honorarycommitee" class="honorarycommitee section">
-      <div class="container">
-        <h2>Honorary Committee</h2>
-        <p class="muted"></p>
-        <!-- <div id="honorarycommittee-grid" id="keyNoteSpeakerGrid" class="committee-grid" aria-live="polite"></div> -->
-		<div class="honorarycommittee-grid" id="honoraryCommitteeGrid" aria-live="polite"></div>
-      </div>
-    </section>
-	
-	<!-- LOCAL ORGANISING COMMITTEE -->
-    <section id="localorganisingcommitee" class="committee">
-      <div class="container">
-        <h2>Local Organising Committee</h2>
-        <p class="muted"></p>
-        <div id="localCommitteeGrid" class="committee-grid" aria-live="polite"></div>
-      </div>
-    </section>
-
-    <!-- INTERNATIONAL ORGANISING COMMITTEE -->
-    <section id="internationalorganisingcommitee" class="committee">
-      <div class="container">
-        <h2>International Organising Committee</h2>
-        <p class="muted"></p>
-        <div id="internationalCommitteeGrid" class="international-committee-grid" aria-live="polite"></div>
-      </div>
-    </section>
-
-    <!-- Keynote Speakers -->
-    <section id="keynotespeakers" class="keynotespeakers section">
-      <div class="container">
-        <h2>Keynote Speakers</h2>
-        <p class="muted">Our conference brings together distinguished voices from across the world of applied mathematics.</p>
-        <div class="keynotespeaker-grid" id="keyNoteSpeakerGrid" aria-live="polite"></div>
-      </div>
-    </section>
-
-    <!-- Plenary Speakers -->
-    <section id="plenaryspeakers" class="plenaryspeakers section">
-      <div class="container">
-        <h2>Plenary Speakers (To update...)</h2>
-        <p class="muted">Our conferences brings also around 8–12 plenary/keynote talks from internationally recognized experts.</p>
-        <div class="plenaryspeaker-grid" id="plenarySpeakerGrid" aria-live="polite"></div>
-      </div>
-    </section>
-
-    <!-- Invited Speakers -->
-    <section id="invitedspeakers" class="invitedspeakers section">
-      <div class="container">
-        <h2>Invited Speakers (To update...)</h2>
-        <p class="muted"></p>
-        <div class="invitedspeaker-grid" id="invitedSpeakerGrid" aria-live="polite"></div>
-      </div>
-    </section>
-
-    <!-- Special Speakers -->
-    <section id="specialspeakers" class="specialspeakers section">
-      <div class="container">
-        <h2>Special Speakers</h2>
-        <p class="muted"></p>
-        <div class="specialspeaker-grid" id="specialSpeakerGrid" aria-live="polite"></div>
-      </div>
-    </section>
-
-    <!-- Register -->
-    <section id="register" class="register">
-      <div class="container grid two" style="align-items:flex-start">
-        <div>
-          <h2>Register</h2>
-          <p class="muted">Reserve your seat in seconds. A confirmation email will be sent to you.</p>
-          <ul class="muted" style="margin-top:14px">
-            <li>Limited seats</li>
-            <li>Free cancellation up to 7 days before</li>
-            <li>Corporate and student rates</li>
-          </ul>
-          <p style="margin-top:10px"><a href="mailto:orga@example.com?subject=ACIAM%202026%20Registration">Or write to us ✉️</a></p>
-        </div>
-
-        <article class="card" style="width:100%">
-          <div class="card-b">
-            <div id="formWrap">
-              <form id="regForm" novalidate>
-                <div class="row two">
-                  <div>
-                    <label for="firstName">First name</label>
-                    <input id="firstName" name="firstName" autocomplete="given-name" placeholder="Alex" required />
-                    <div class="error" data-error-for="firstName"></div>
-                  </div>
-                  <div>
-                    <label for="lastName">Last name</label>
-                    <input id="lastName" name="lastName" autocomplete="family-name" placeholder="Martin" required />
-                    <div class="error" data-error-for="lastName"></div>
-                  </div>
-                </div>
-                <div>
-                  <label for="email">Email</label>
-                  <input id="email" name="email" type="email" inputmode="email" placeholder="alex@example.com" required />
-                  <div class="error" data-error-for="email"></div>
-                </div>
-                <div class="row two">
-                  <div>
-                    <label for="company">Company</label>
-                    <input id="company" name="company" placeholder="Acme Corp" />
-                  </div>
-                  <div>
-                    <label for="role">Role / Position</label>
-                    <input id="role" name="role" placeholder="Product Manager" />
-                  </div>
-                </div>
-                <div>
-                  <label for="ticket">Ticket type</label>
-                  <select id="ticket" name="ticket" required>
-                    <option value="standard">Standard (free)</option>
-                    <option value="entreprise">Corporate</option>
-                    <option value="etudiant">Student</option>
-                  </select>
-                </div>
-				<div>
-					<label for="country">Country:</label>
-					<select id="country">
-					  <option value="">Select your country</option>
-					</select>
-				</div>
-                <div>
-                  <label for="message">Message (optional)</label>
-                  <textarea id="message" name="message" rows="4" placeholder="Accessibility needs, invoice, etc."></textarea>
-                </div>
-                <div class="consent">
-                  <input id="consent" name="consent" type="checkbox" required />
-                  <label for="consent" class="hint">I agree that my data will be used to manage the event, according to the privacy policy.</label>
-                </div>
-                <div class="error" data-error-for="consent"></div>
-
-                <button class="btn" type="submit">Confirm registration</button>
-                <p class="hint" style="text-align:center">You will receive a confirmation email.</p>
-              </form>
-            </div>
-
-            <div id="success" class="success" hidden>
-              <h3>Thank you! 🎉</h3>
-              <p class="muted">Your registration has been recorded. We will get back to you very soon.</p>
-              <p style="margin-top:14px"><a class="btn" href="#top">Back to top</a></p>
-            </div>
-			
-			<div id="successAfricanCondition" class="success" hidden>
-              <h3>Thank you! 🎉</h3>
-              <p class="muted">Your registration has been recorded. We will get back to you very soon.</p>
-			  <p class="muted">Please finalize your reservation by transferring $50 to the following IBAN: ${IBAN}</p>
-              <p style="margin-top:14px"><a class="btn" href="#top">Back to top</a></p>
-            </div>
-			
-			<div id="successNonAfricanCondition" class="success" hidden>
-              <h3>Thank you! 🎉</h3>
-              <p class="muted">Your registration has been recorded. We will get back to you very soon. </p>
-			  <p class="muted">Please finalize your reservation by transferring $500 to the following IBAN: ${IBAN}</p>
-              <p style="margin-top:14px"><a class="btn" href="#top">Back to top</a></p>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-	<!-- =========================
-	VERTICAL AUTO-SCROLLING TOPICS — WITH SPACING
-	========================= -->
-	
-	<!-- Suggested Thematic Tracks -->
-	<section id="suggestedthematics" class="suggestedthematics">
-	  <div class="container">
-	    <h2>Suggested Thematic Tracks</h2>
-	    <p class="muted" style="margin-top:8px">Quick inspiration for submissions & sessions.</p>
-	
-	    <div class="vertical-scroll" aria-live="polite">
-	      <ul class="scroll-list">
-	        <li>Mathematics for Climate Change Adaptation</li>
-	        <li>Mathematical Modelling for Health and Medicine</li>
-	        <li>Data Science and Artificial Intelligence in Africa</li>
-	        <li>Mathematics for Sustainable Industry</li>
-	        <li>Optimization and Control for Energy Systems</li>
-	        <li>Mathematics Education and Capacity Building</li>
-	        <li>Computational Mathematics and Simulation</li>
-	      </ul>
-	    </div>
-	  </div>
-	</section>
-	
-	<!-- Keynote Topics -->
-	<section id="keynotetopics" class="keynotetopics">
-	  <div class="container">
-	    <h2>Keynote Topics</h2>
-	    <p class="muted" style="margin-top:8px">Inspiring keynote directions for discussion.</p>
-	
-	    <div class="vertical-scroll" aria-live="polite">
-	      <ul class="scroll-list">
-	        <li>Mathematics for Resilient Futures</li>
-	        <li>Bridging Mathematics and Industry</li>
-	        <li>Mathematical Innovations in Health Systems</li>
-	        <li>Mathematics for Climate and Environmental Solutions</li>
-	        <li>The Role of Mathematics in Artificial Intelligence</li>
-	      </ul>
-	    </div>
-	  </div>
-	</section>
-	
-	
-	<style>
-	.vertical-scroll {
-	  height: 300px; /* taller for better readability */
-	  overflow: hidden;
-	  position: relative;
-	  background: #e9f9ec; /* pale green background */
-	  border-radius: 15px;
-	  margin-top: 25px;
-	  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-	  padding: 10px 0;
-	}
-	
-	.scroll-list {
-	  list-style: none;
-	  margin: 0;
-	  padding: 0;
-	  animation: scrollUp 25s linear infinite;
-	}
-	
-	.scroll-list li {
-	  padding: 20px 24px;
-	  font-size: 1rem;
-	  font-weight: 500;
-	  background: #ffffff;
-	  border-radius: 10px;
-	  margin: 10px 18px; /* 👈 adds vertical space between items */
-	  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
-	  color: #2d4232;
-	  transition: transform 0.3s ease, background-color 0.3s ease;
-	}
-	
-	.scroll-list li:nth-child(even) {
-	  background: #f3fbf5; /* slightly lighter for alternation */
-	}
-	
-	/* Subtle hover effect for visual feedback */
-	.scroll-list li:hover {
-	  background: rgba(15,23,42,.04); /*#dff5e2;*/
-		
-	  transform: scale(1.02);
-	}
-	
-	@keyframes scrollUp {
-	  0% {
-	    transform: translateY(0);
-	  }
-	  100% {
-	    transform: translateY(-50%);
-	  }
-	}
-	
-	/* Pause scroll on hover */
-	.vertical-scroll:hover .scroll-list {
-	  animation-play-state: paused;
-	}
-	
-	/* Responsive styling */
-	@media (max-width: 868px) {
-	  .vertical-scroll {
-	    height: 300px;
-	  }
-	  .scroll-list li {
-	    font-size: 0.8rem;
-	    padding: 16px 18px;
-	    margin: 8px 12px;
-	  }
-	}
-	</style>
-	
-	
-	<script>
-	document.addEventListener("DOMContentLoaded", () => {
-	  document.querySelectorAll(".scroll-list").forEach(list => {
-	    const clone = list.cloneNode(true);
-	    list.parentElement.appendChild(clone);
-	  });
-	});
-	</script>
-
-    <!-- Rotator -->
-    <!--<section id="suggestedthematics" class="suggestedthematics">
-      <div class="container">
-        <h2>Suggested Thematic Tracks</h2>
-        <p class="muted" style="margin-top:8px">Quick inspiration for submissions & sessions.</p>
-        <div class="rotator" aria-live="polite">
-          <article class="slide fade show" id="slide" aria-atomic="true">
-            <div class="time" id="time"></div>
-            <h3 id="title" style="margin:6px 0 4px; margin-top: 4%;">Loading…</h3>
-            <div class="track" id="track"></div>
-          </article>
-          <div class="controls">
-            <button class="ctrl" id="prev" type="button" aria-label="Précédent">◀</button>
-            <button class="ctrl" id="play" type="button" aria-label="Pause/lecture">⏯</button>
-            <button class="ctrl" id="next" type="button" aria-label="Suivant">▶</button>
-            <div class="dots" id="dots" aria-hidden="true"></div>
-          </div>
-        </div>
-      </div>
-    </section>-->
-	
-	
-	<!-- Rotator -->
-    <!--<section id="keynotetopics" class="keynotetopics">
-      <div class="container">
-        <h2>Keynote Topics</h2>
-        <p class="muted" style="margin-top:8px">Quick inspiration for submissions & sessions.</p>
-        <div class="rotatorkt" aria-live="polite">
-          <article class="slidekt fade show" id="slidekt" aria-atomic="true">
-            <div class="timekt" id="timekt"></div>
-            <h3 id="titlekt" style="margin:6px 0 4px; margin-top: 4%;">Loading…</h3>
-            <div class="trackkt" id="trackkt"></div>
-          </article>
-          <div class="controls">
-            <button class="ctrl" id="prevkt" type="button" aria-label="Précédent">◀</button>
-            <button class="ctrl" id="playkt" type="button" aria-label="Pause/lecture">⏯</button>
-            <button class="ctrl" id="nextkt" type="button" aria-label="Suivant">▶</button>
-            <div class="dotskt" id="dotskt" aria-hidden="true"></div>
-          </div>
-        </div>
-      </div>
-    </section>-->
-	
-	
-	<!-- Sponsors -->
-    <section id="sponsors" class="sponsors section">
-		<div class="container">
-			<h2>Sponsors and Partners</h2>
-			<p class="muted">We proudly acknowledge the support of our sponsors and partners.</p>		
-
-			<div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 40px; max-width: 1000px; height: 300px; margin: 0 auto;">
-				<!-- Logo 1 -->
-				<div style="flex: 0 1 180px; text-align: center;">
-					<img src="https://en.csiam.org.cn/upload/shuxueen/63a2bb6068ac9.png" alt="China Society for Industrial and Applied Mathematics" style="width:150px; height:150px; border-radius:50%; object-fit:cover; border:3px solid #ddd;">
-				</div>
-			  
-				<!-- Logo 2 -->
-				<div style="flex: 0 1 180px; text-align: center;">
-					<img src="https://lirp.cdn-website.com/839d468e/dms3rep/multi/opt/UMA-1920w.png" alt="African Mathematical Union" style="width:150px; height:150px; border-radius:50%; object-fit:cover; border:3px solid #ddd;">
-				</div>
-				
-				<!-- Logo 3 -->
-				<div style="flex: 0 1 180px; text-align: center;">
-					<img src="./images/Ouaga3S_logo.png" alt="University of Ouaga3s" style="width:150px; height:150px; border-radius:50%; object-fit:cover; border:3px solid #ddd;">
-				</div>
+		<header>
+			<div class="nav container">
+				<div class="brand">ACIAM 2026</div>
+				<nav aria-label="Navigation du site">
+					<ul>
+						<li><a href="#aim">About</a></li>
+						<li><a href="#committees">Committees</a>
+							<ul role="menu" aria-label="Committee categories">
+								<li><a role="menuitem" href="#honorarycommitee">Honorary Committee</a></li>
+								<li><a role="menuitem" href="#localorganisingcommitee">Local Organising Committee Members</a></li>
+								<li><a role="menuitem" href="#internationalorganisingcommitee">International Organising Committee Members</a></li>
+							</ul>
+						</li>
+						<li><a  href="#speakers">Speakers</a>
+							<ul role="menu" aria-label="Speakers categories">
+								<li><a role="menuitem" href="#keynotespeakers">Keynote Speakers</a></li>
+								<li><a role="menuitem" href="#plenaryspeakers">Plenary Speakers</a></li>
+								<li><a role="menuitem" href="#invitedspeakers">Invited Speakers</a></li>
+								<li><a role="menuitem" href="#specialspeakers">Special Speakers</a></li>
+							</ul>
+						</li>
+						<li><a href="#thematicstopics">Thematics & Topics</a>
+							<ul role="menu" aria-label="Thematics and Topics categories">
+								<li><a role="menuitem" href="#suggestedthematics">Suggested Thematics</a></li>
+								<li><a role="menuitem" href="#keynotetopics">Keynote Topics</a></li>
+							</ul>
+						</li>
+						<li><a href="#sponsors">Sponsors and Partners</a></li>
+						<li><a href="#gallery">Gallery</a></li>
+						<li><a href="#accommodations">Accommodations</a></li>
+					</ul>
+				</nav>
+				<a href="#register" class="btn">Register</a>
 			</div>
+		</header>
+
+		<main>
+			<section class="hero2">
+					<img src="./images/Family_Photo_ACIAM_2023.jpeg" alt="Audience in auditorium">
+					<img src="./images/Workshop_2_ACIAM_2024.jpeg" class="active" alt="Conference hall">
+					<img src="./images/Workshop_1_ACIAM_2024.jpeg" alt="Workshop session">
+					<img src="./images/ACIAM_2023_State_Representation.jpeg" alt="Audience in auditorium">
+					<img src="./images/Prof_ATANGANA_Delegation_Aciam_2023.jpeg" alt="Keynote on stage">
+					<img src="./images/ACIAM_Festivities.jpeg" alt="Networking break">
+					<img src="./images/Guests_Hosts_ACIAM_2024.jpeg" alt="Panel discussion">
+
+					<div class="overlay"></div>
+
+					<div class="hero2-content">
+						<h1>ACIAM 2026 BURKINA FASO</h1>
+						<div class="hero2-buttons">
+							<a href="#register">Register</a>
+						</div>
+					</div>
+				</section>
+
+				<script>
+				// Simple background image slideshow
+					const images = document.querySelectorAll('.hero2 img');
+				let current = 0;
+
+				setInterval(() => {
+				images[current].classList.remove('active');
+				current = (current + 1) % images.length;
+				images[current].classList.add('active');
+			  }, 5000);
+			</script>
+			
+			<!-- HERO -->
+			<section class="hero">
+			  <div class="container grid two" style="align-items:center">
+				<div>
+				  <h1>Mathematics for Resilient Futures</h1>
+				  <p class="muted" style="margin-top:10px;font-size:18px">Join leaders in mathematics, computing and industry for concrete learning and impactful connections.</p>
+				  <div class="kpi" aria-label="Key information">
+					<span>📅 17–21 septembre 2026</span>
+					<span>📍 University of Ouagadougou, Burkina Faso</span>
+					<span>🎙️ 15+ speakers</span>
+				  </div>
+				  <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap">
+					<a class="btn" href="#register">Register</a>
+					<a class="btn outline" href="#suggestedthematics">See Suggested Thematic Tracks</a>
+				  </div>
+				</div>
+
+				<!-- Compact countdown in hero -->
+				<div>
+				  <div class="countdown compact" id="countdown" aria-label="Countdown before the opening of the Conference">
+					<h2>Countdown before the opening of the Conference</h2>
+					<p class="muted">See you soon for ACIAM 2026 — ready?</p>
+
+					<div class="flip-wrap" aria-live="polite">
+					  <div class="flip-unit" data-unit="days">
+						<div class="label">Days</div>
+						<div class="flip"><div class="card"><span class="front">000</span><span class="back">000</span></div></div>
+					  </div>
+					  <div class="flip-unit" data-unit="hours">
+						<div class="label">Hours</div>
+						<div class="flip"><div class="card"><span class="front">00</span><span class="back">00</span></div></div>
+					  </div>
+					  <div class="flip-unit" data-unit="minutes">
+						<div class="label">Minutes</div>
+						<div class="flip"><div class="card"><span class="front">00</span><span class="back">00</span></div></div>
+					  </div>
+					  <div class="flip-unit" data-unit="seconds">
+						<div class="label">Seconds</div>
+						<div class="flip"><div class="card"><span class="front">00</span><span class="back">00</span></div></div>
+					  </div>
+					</div>
+
+					<div class="tictac-row">
+					  <button id="tickSound" class="btn outline" type="button" aria-pressed="false">Activate the tick-tock sound</button>
+					  <div class="tictac" aria-hidden="true" title="Tic-Tac visuel"></div>
+					</div>
+
+					<div class="fireworks-wrap" aria-hidden="true">
+					  <canvas id="fireworks"></canvas>
+					  <div class="fw-message">
+						<h3>🚀 C’est parti !</h3>
+						<p>Bienvenue à ACIAM 2026</p>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			</section>
+
+			<!-- AIM -->
+			<section id="aim" class="aim section">
+			  <div class="container">
+				<h2>Welcome address from the Chair and Co-Chair of ACIAM</h2>
+				<p class="muted">Africa is inventing its future, fast, bold and resolute. ACIAM Burkina Faso 2026 celebrates mathematics as the spark that lights this transformation: the models that predict storms and protect communities, the algorithms that power factories and scale healthy systems, and the data-driven insights that unlock opportunity for millions. Here, ideas meet action, students, start-ups, researchers and policymakers will gather to imagine new possibilities and build partnerships that turn rigorous thinking into tangible progress. Join us to be part of a movement that harnesses mathematical creativity to strengthen communities, energize industry, and create a more resilient, equitable future for Africa and the world. <br>
+
+		The African Conference for Industrial and Applied Mathematics (ACIAM) returns in September 2026 in Burkina Faso. Under the theme “Mathematics for Resilient Futures: Climate, Health and Industry”, ACIAM 2026 invites original contributions that harness mathematical theory, computation and data science to address pressing societal challenges.
+				<div class="aim-grid" id="aimGrid" aria-live="polite"></div>
+			  </div>
+			</section>
+			
+			<!-- HONORARY COMMITTEE -->
+			<section id="honorarycommitee" class="honorarycommitee section">
+			  <div class="container">
+				<h2>Honorary Committee</h2>
+				<p class="muted"></p>
+				<!-- <div id="honorarycommittee-grid" id="keyNoteSpeakerGrid" class="committee-grid" aria-live="polite"></div> -->
+				<div class="honorarycommittee-grid" id="honoraryCommitteeGrid" aria-live="polite"></div>
+			  </div>
+			</section>
+			
+			<!-- LOCAL ORGANISING COMMITTEE -->
+			<section id="localorganisingcommitee" class="committee">
+			  <div class="container">
+				<h2>Local Organising Committee</h2>
+				<p class="muted"></p>
+				<div id="localCommitteeGrid" class="committee-grid" aria-live="polite"></div>
+			  </div>
+			</section>
+
+			<!-- INTERNATIONAL ORGANISING COMMITTEE -->
+			<section id="internationalorganisingcommitee" class="committee">
+			  <div class="container">
+				<h2>International Organising Committee</h2>
+				<p class="muted"></p>
+				<div id="internationalCommitteeGrid" class="international-committee-grid" aria-live="polite"></div>
+			  </div>
+			</section>
+
+			<!-- Keynote Speakers -->
+			<section id="keynotespeakers" class="keynotespeakers section">
+			  <div class="container">
+				<h2>Keynote Speakers</h2>
+				<p class="muted">Our conference brings together distinguished voices from across the world of applied mathematics.</p>
+				<div class="keynotespeaker-grid" id="keyNoteSpeakerGrid" aria-live="polite"></div>
+			  </div>
+			</section>
+
+			<!-- Plenary Speakers -->
+			<section id="plenaryspeakers" class="plenaryspeakers section">
+			  <div class="container">
+				<h2>Plenary Speakers (To update...)</h2>
+				<p class="muted">Our conferences brings also around 8–12 plenary/keynote talks from internationally recognized experts.</p>
+				<div class="plenaryspeaker-grid" id="plenarySpeakerGrid" aria-live="polite"></div>
+			  </div>
+			</section>
+
+			<!-- Invited Speakers -->
+			<section id="invitedspeakers" class="invitedspeakers section">
+			  <div class="container">
+				<h2>Invited Speakers (To update...)</h2>
+				<p class="muted"></p>
+				<div class="invitedspeaker-grid" id="invitedSpeakerGrid" aria-live="polite"></div>
+			  </div>
+			</section>
+
+			<!-- Special Speakers -->
+			<section id="specialspeakers" class="specialspeakers section">
+			  <div class="container">
+				<h2>Special Speakers</h2>
+				<p class="muted"></p>
+				<div class="specialspeaker-grid" id="specialSpeakerGrid" aria-live="polite"></div>
+			  </div>
+			</section>
+
+			<!-- Register -->
+			<section id="register" class="register">
+			  <div class="container grid two" style="align-items:flex-start">
+				<div>
+				  <h2>Register</h2>
+				  <p class="muted">Reserve your seat in seconds. A confirmation email will be sent to you.</p>
+				  <ul class="muted" style="margin-top:14px">
+					<li>Limited seats</li>
+					<li>Free cancellation up to 7 days before</li>
+					<li>Corporate and student rates</li>
+				  </ul>
+				  <p style="margin-top:10px"><a href="mailto:orga@example.com?subject=ACIAM%202026%20Registration">Or write to us ✉️</a></p>
+				</div>
+
+				<article class="card" style="width:100%">
+				  <div class="card-b">
+					<div id="formWrap">
+					  <form id="regForm" novalidate>
+						<div class="row two">
+						  <div>
+							<label for="firstName">First name</label>
+							<input id="firstName" name="firstName" autocomplete="given-name" placeholder="Alex" required />
+							<div class="error" data-error-for="firstName"></div>
+						  </div>
+						  <div>
+							<label for="lastName">Last name</label>
+							<input id="lastName" name="lastName" autocomplete="family-name" placeholder="Martin" required />
+							<div class="error" data-error-for="lastName"></div>
+						  </div>
+						</div>
+						<div>
+						  <label for="email">Email</label>
+						  <input id="email" name="email" type="email" inputmode="email" placeholder="alex@example.com" required />
+						  <div class="error" data-error-for="email"></div>
+						</div>
+						<div class="row two">
+						  <div>
+							<label for="company">Company</label>
+							<input id="company" name="company" placeholder="Acme Corp" />
+						  </div>
+						  <div>
+							<label for="role">Role / Position</label>
+							<input id="role" name="role" placeholder="Product Manager" />
+						  </div>
+						</div>
+						<div>
+						  <label for="ticket">Ticket type</label>
+						  <select id="ticket" name="ticket" required>
+							<option value="standard">Standard (free)</option>
+							<option value="entreprise">Corporate</option>
+							<option value="etudiant">Student</option>
+						  </select>
+						</div>
+						<div>
+							<label for="country">Country:</label>
+							<select id="country">
+							  <option value="">Select your country</option>
+							</select>
+						</div>
+						<div>
+						  <label for="message">Message (optional)</label>
+						  <textarea id="message" name="message" rows="4" placeholder="Accessibility needs, invoice, etc."></textarea>
+						</div>
+						<div class="consent">
+						  <input id="consent" name="consent" type="checkbox" required />
+						  <label for="consent" class="hint">I agree that my data will be used to manage the event, according to the privacy policy.</label>
+						</div>
+						<div class="error" data-error-for="consent"></div>
+
+						<button class="btn" type="submit">Confirm registration</button>
+						<p class="hint" style="text-align:center">You will receive a confirmation email.</p>
+					  </form>
+					</div>
+
+					<div id="success" class="success" hidden>
+					  <h3>Thank you! 🎉</h3>
+					  <p class="muted">Your registration has been recorded. We will get back to you very soon.</p>
+					  <p style="margin-top:14px"><a class="btn" href="#top">Back to top</a></p>
+					</div>
+					
+					<div id="successAfricanCondition" class="success" hidden>
+					  <h3>Thank you! 🎉</h3>
+					  <p class="muted">Your registration has been recorded. We will get back to you very soon.</p>
+					  <p class="muted">Please finalize your reservation by transferring $50 to the following IBAN: ${IBAN}</p>
+					  <p style="margin-top:14px"><a class="btn" href="#top">Back to top</a></p>
+					</div>
+					
+					<div id="successNonAfricanCondition" class="success" hidden>
+					  <h3>Thank you! 🎉</h3>
+					  <p class="muted">Your registration has been recorded. We will get back to you very soon. </p>
+					  <p class="muted">Please finalize your reservation by transferring $500 to the following IBAN: ${IBAN}</p>
+					  <p style="margin-top:14px"><a class="btn" href="#top">Back to top</a></p>
+					</div>
+				  </div>
+				</article>
+			  </div>
+			</section>
+
+			<!-- =========================
+			VERTICAL AUTO-SCROLLING TOPICS — WITH SPACING
+			========================= -->
+			
+			<!-- Suggested Thematic Tracks -->
+			<section id="suggestedthematics" class="suggestedthematics">
+			  <div class="container">
+				<h2>Suggested Thematic Tracks</h2>
+				<p class="muted" style="margin-top:8px">Quick inspiration for submissions & sessions.</p>
+			
+				<div class="vertical-scroll" aria-live="polite">
+				  <ul class="scroll-list">
+					<li>Mathematics for Climate Change Adaptation</li>
+					<li>Mathematical Modelling for Health and Medicine</li>
+					<li>Data Science and Artificial Intelligence in Africa</li>
+					<li>Mathematics for Sustainable Industry</li>
+					<li>Optimization and Control for Energy Systems</li>
+					<li>Mathematics Education and Capacity Building</li>
+					<li>Computational Mathematics and Simulation</li>
+				  </ul>
+				</div>
+			  </div>
+			</section>
+			
+			<!-- Keynote Topics -->
+			<section id="keynotetopics" class="keynotetopics">
+			  <div class="container">
+				<h2>Keynote Topics</h2>
+				<p class="muted" style="margin-top:8px">Inspiring keynote directions for discussion.</p>
+			
+				<div class="vertical-scroll" aria-live="polite">
+				  <ul class="scroll-list">
+					<li>Mathematics for Resilient Futures</li>
+					<li>Bridging Mathematics and Industry</li>
+					<li>Mathematical Innovations in Health Systems</li>
+					<li>Mathematics for Climate and Environmental Solutions</li>
+					<li>The Role of Mathematics in Artificial Intelligence</li>
+				  </ul>
+				</div>
+			  </div>
+			</section>
+			
+			<!-- Sponsors -->
+			<section id="sponsors" class="sponsors section">
+				<div class="container">
+					<h2>Sponsors and Partners</h2>
+					<p class="muted">We proudly acknowledge the support of our sponsors and partners.</p>		
+
+					<div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 40px; max-width: 1000px; height: 300px; margin: 0 auto;">
+						<!-- Logo 1 -->
+						<div style="flex: 0 1 180px; text-align: center;">
+							<img src="https://en.csiam.org.cn/upload/shuxueen/63a2bb6068ac9.png" alt="China Society for Industrial and Applied Mathematics" style="width:150px; height:150px; border-radius:50%; object-fit:cover; border:3px solid #ddd;">
+						</div>
+					  
+						<!-- Logo 2 -->
+						<div style="flex: 0 1 180px; text-align: center;">
+							<img src="https://lirp.cdn-website.com/839d468e/dms3rep/multi/opt/UMA-1920w.png" alt="African Mathematical Union" style="width:150px; height:150px; border-radius:50%; object-fit:cover; border:3px solid #ddd;">
+						</div>
+						
+						<!-- Logo 3 -->
+						<div style="flex: 0 1 180px; text-align: center;">
+							<img src="./images/Ouaga3S_logo.png" alt="University of Ouaga3s" style="width:150px; height:150px; border-radius:50%; object-fit:cover; border:3px solid #ddd;">
+						</div>
+					</div>
+				</div>
+		    </section>
+
+
+			<!-- Gallery -->
+			<section id="gallery" class="gallery">
+			  <div class="container">
+				<h2>Previous editions</h2>
+				<p class="muted">A look back at moments from past ACIAM events.</p>
+				<div class="gallery-grid" id="galleryGrid" aria-live="polite"></div>
+			  </div>
+			</section>
+
+			<!-- Accommodations -->
+			<section id="accommodations" class="accommodations">
+				<div class="container">
+					<h2>Accommodations in Ouagadougou</h2>
+					<p class="muted" style="margin-top:8px">
+					  Options near Université Joseph Ki-Zerbo and the city center. Times are typical taxi rides (traffic-dependent).
+					</p>
+					<div class="hotel-grid" id="hotelGrid" aria-live="polite"></div>
+					<div style="margin-top:16px">
+					  <a class="btn outline" href="https://www.google.com/maps/search/?api=1&query=hotel+Ouagadougou" target="_blank" rel="noopener">Browse more on Google Maps</a>
+					</div>
+				</div>
+			</section>
+
+			<dialog id="lightbox" class="lightbox" aria-label="Image preview">
+			  <img alt="" id="lightboxImg" decoding="async" />
+			  <button class="close" aria-label="Close">✕</button>
+			</dialog>
+
+			<!-- Venue -->
+			<section class="venue">
+			  <div class="container">
+				<h2>Venue</h2>
+				<p class="muted">University of Ouagadougou, Ouagadougou – Burkina Faso.</p>
+				<div style="margin-top:16px;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden">
+				  <iframe title="Plan"
+					src="https://www.openstreetmap.org/export/embed.html?bbox=-1.5353661775588991%2C12.363766340018941%2C-1.5328556299209595%2C12.365534835996145&amp;layer=mapnik"
+					loading="lazy" style="width:100%;height:340px;border:0" referrerpolicy="no-referrer-when-downgrade"></iframe>
+				</div>
+			  </div>
+			</section>
+			<section class="hero">
+				<a href="#top" class="top" aria-label="Retour en haut">↑</a>
+			</section>
+		</main>
+
+	  <footer>
+		<div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+		  <div>© <span id="year"></span> ACIAM 2026 · All rights reserved</div>
+		  <div class="links">
+			<a href="#register">Registration</a>
+			<a href="#keynotespeakers">Speakers</a>
+			<a href="#">Legal</a>
+		  </div>
 		</div>
-  </section>
+	  </footer>
+
+	  <script>
+		// ---------- Utils ----------
+		const $ = (s,r=document)=>r.querySelector(s);
+		const $$ = (s,r=document)=>Array.from(r.querySelectorAll(s));
+		$('#year').textContent = new Date().getFullYear();
+
+		// ---------- Data ----------
+		const AIM = [
+		  { name:"Prof. Abdon ATANGANA", title:"Chair of African Conference of Industrial and Applied Mathematics (ACIAM).", avatar:"https://fr.journalducameroun.com/wp-content/uploads/2023/08/abdon-m.jpg" },//"https://aciam-bf2026.com/images/prof-abdon.jpg" },
+		  { name:"Prof. Dr. Oluwole Daniel MAKINDE", title:"Co-Chair of African Conference of Industrial and Applied Mathematics (ACIAM).", avatar:"./images/Professor_MAKINDE_Award.jpg" } //"https://aciam-bf2026.com/images/ASIAM1-1-300x300-1.webp" },
+		]
+
+		/* International Organising Committee list */
+		const INTERNATIONAL_COMMITTEE = [
+		  { name:"Prof. Abdon ATANGANA", title:"South Africa" },
+		  { name:"Prof. Dr. Oluwole Daniel MAKINDE", title:"South Africa" },
+		  { name:"Pr Mamadou Abdoul DIOP", title:"Senegal" },
+		  { name:"Prof Emmanuel BAKARE", title:"Nigeria" },
+		  { name:"Pr. Dr. Martin Le Doux MBELE BIDIMA", title:"Cameroon" },
+		  { name:"Prof. Dr GETACHEW TESHOME Tilahun", title:"Ethiopia" },
+		  { name:"Prof Sara ABDELSALAM", title:"Egypt" },
+		  { name:"Prof. Dr. Raseelo Joel MOITSHEKI", title:"South Africa" },
+		  { name:"Prof. M. F. OUEDRAOGO", title:"Burkina Faso" },
+		  { name:"Prof. Lazarus RUNDORA", title:"South Africa" },
+		  { name:"Prof. Solly Lebelo", title:"South Africa" },
+		  { name:"Prof. Dr. Hassirou Mouhamadou", title:"Niger" },
+		  { name:"Prof Dr. Zakia Hammouch", title:"Morocco" },
+		  { name:"Professor Olaniyi Samuel Iyiola", title:"United State of America" },
+		  { name:"Prof Khalid Ouarghi", title:"Morocco" },
+		  { name:"Prof. Chinedu Nwaigwe", title:"Nigeria" },
+		  { name:"Dr. Makosha Ishmaeline Charlotte Morakaladi", title:"South Africa" },
+		  { name:"Eng, MBA Rocky TSANE ZEDONG", title:"France" },
+		  { name:"Councillor Jacki Mpondo-Hendricks", title:"South Africa" },
+		  { name:"Mr. Zahi Olivier Zabo", title:"Ivory Coast" },
+		  { name:"Prof. Calvin TADMON", title:"Cameroon" },
+		  { name:"Pr. Jocelyn GONESSA", title:"Central African Republic" },
+		  { name:"Pr. Dr. Bakari ABBO", title:"Chad" },
+		  { name:"Dr. Cyr-Séraphin NGAMOUYIH MOUSSATA", title:"Congo Brazzaville" },
+		  { name:"Professor Justin Bazimaziki Munyakazi", title:"Democratic Republic of Congo" },
+		  { name:"Prof. Carmelo EBANG NDONG", title:"Equatorial Guinea" },
+		  { name:"Prof. Hugues Calixte EYI NDONG", title:"Gabon" },
+		  { name:"Dr. Vianney MBAZUMUTIMA", title:"Burundi" },
+		  { name:"Prof. Gemechis File Duressa", title:"Ethiopia" },
+		  { name:"Dr. Jane A. ADUDA", title:"Kenya" },
+		  { name:"Prof. Denis NDANGUZA", title:"Rwanda" },
+		  { name:"Dr. Sunday PETE", title:"South Sudan" },
+		  { name:"Dr. Entisar ALRASHEED", title:"Sudan" },
+		  { name:"Prof. Benjamin Aina PETER", title:"Uganda" },
+		  { name:"Dr. Idrissa Said AMOUR", title:"Tanzania" },
+		  { name:"Pr. Amar DEBBOUCHE", title:"Algeria" },
+		  { name:"Pr.  Zeinab MANSOUR", title:"Egypt" },
+		  { name:"Pr. Dr. Haniyah A. Saed BEN HAMDIN", title:"Libya" },
+		  { name:"Pr. Khalid HATTAF", title:"Morocco" },
+		  { name:"Prof. Omar NAIFAR", title:"Tunisia" },
+		  { name:"Prof. Maria DE NATIVIDADE", title:"Angola" },
+		  { name:"Dr. T. G. MOTSUMI", title:"Botswana" },
+		  { name:"Dr. Peter MHONE", title:"Malawi" },
+		  { name:"Pr. Dr. Sansao PEDRO", title:"Mozambique" },
+		  { name:"Dr. David IIYAMBO", title:"Namibia" },
+		  { name:"Prof M. KHUMALO", title:"South Africa" },
+		  { name:"Dr. Sandile MOTSA", title:"Swaziland" },
+		  { name:"Mervis KIKONKO", title:"Zambia" },
+		  { name:"Dr. Gift MUTCHATIBAYA", title:"Zimbabwe" },
+		  { name:"Assoc. Prof. Guy DEGLA", title:"Benin" },
+		  { name:"Prof Delfim F. M. TORRES", title:"Cape Verde" },
+		  { name:"Ms. Naffie AIDARA", title:"Gambia" },
+		  { name:"Prof. Ebenezer BONYAH", title:"Ghana" },
+		  { name:"Prof. Dr. Abdoulaye BANIRE DIALLO", title:"Guinea Conakry" },
+		  { name:"Dr. Tenan YEO", title:"Ivory Coast" },  
+		  { name:"Prof. Saley BISSO", title:"Niger" },
+		  { name:"Dr. Afeez ABIDEMI", title:"Nigeria" },
+		  { name:"Professor Diene NGOM", title:"Senegal" },
+		  { name:"Assoc. Prof. Kwassi ANANI", title:"Togo" }
+		];
+
+		/* Local Organising Committee list */
+		const LOCAL_COMMITTEE = [
+		  { name:"Prof. Boureima SANGARE", title:" Unité de Formation et de Recherche en Sciences Exactes et Appliquées (UFR SEA), Burkina Faso" },
+		  { name:"Dr. Ibrahim NONKANE", title:"Université Thomas SANKARA, Ouagadougou, Burkina Faso" },
+		  //{ name:"Dr.Sanogo Satafa", title:"Université Paul Sabatier - Toulouse, France" },
+		  { name:"Dr. Abdoulaye KABORE", title:"Université Nazi Boni, Burkina Faso" },
+		  { name:"Prof. M. F. OUEDRAOGO", title:"Université Joseph Ki-Zerbo, Burkina Faso" },
+		  { name:"Matthieu Sobom SOME", title:"Université Sankara (Secrétaire), Burkina Faso" },
+		  { name:"Rodrigue Aimé SANOU", title:"Université Thomas Sankara (Rapporteur), Burkina Faso" },
+		  { name:"Mathieu Romaric POODA", title:"Université Thomas Sankara (Rapporteur), Burkina Faso" },
+		  { name:"Ibrahime KONATE", title:"Université Thomas Sankara" },
+		  { name:"Dominique BONKOUGOU", title:"Université Thomas Sankara" },
+		  { name:"Frédéric D.Y. ZONGO", title:"Ecole Normale Supérieure" },
+		  { name:"Luc T. BAMBARA", title:"Ecole Normale Supérieure" },
+		  { name:"Gaëlle Kafira KO", title:"Ecole Normale Supérieure" },
+		  { name:"Abdoul Aziz Kalifa DIANDA", title:"Université Thomas Sankara" }
+
+		];
 
 
-    <!-- Gallery -->
-    <section id="gallery" class="gallery">
-      <div class="container">
-        <h2>Previous editions</h2>
-        <p class="muted">A look back at moments from past ACIAM events.</p>
-        <div class="gallery-grid" id="galleryGrid" aria-live="polite"></div>
-      </div>
-    </section>
+		/* Honorary Committee list */
+		const HONORARY_COMMITTEE = [
+		  { name:"Prof. Ousseynou NAKOULIMA", title:"President of the University Ouaga 3S, Burkina Faso", avatar:"./images/Prof_Ousseynou_NAKOULIMA.jpg" },
+		  { name:"HE Mr. Moriba Alain KONE", title:"His Excellency the Ambassador of the Republic of Guinea to the Republic of South Africa", avatar:"./images/Ambassador_Kone_Moriba_2.jpg" },
+		];
 
-	<!-- Accommodations -->
-    <section id="accommodations" class="accommodations">
-      <div class="container">
-        <h2>Accommodations in Ouagadougou</h2>
-        <p class="muted" style="margin-top:8px">
-          Options near Université Joseph Ki-Zerbo and the city center. Times are typical taxi rides (traffic-dependent).
-        </p>
-        <div class="hotel-grid" id="hotelGrid" aria-live="polite"></div>
-        <div style="margin-top:16px">
-          <a class="btn outline" href="https://www.google.com/maps/search/?api=1&query=hotel+Ouagadougou" target="_blank" rel="noopener">Browse more on Google Maps</a>
-        </div>
-      </div>
-    </section>
+		const KEYNOTESPEAKERS = [
+		  { name:"Prof. Wil SCHILDERS", title:"President of ECMI & ICIAM; advocate for industrial & societal mathematics.", avatar:"https://assets.w3.tue.nl/w/uploads/_processed_/0/3/csm_Schilders_Wil_BvOF230317ADP_4x3_LR_aa2b16cb9a.jpg" },
+		  { name:"Prof. Gaston Mandata N'GUEREKATA", title:"University Distinguished Professor and Associate Dean at Morgan State University in Baltimore, Maryland, USA", avatar:"./images/Prof_Gaston_Mandata_NGUEREKATA.jpg" }
+		];
+		const PLENARYSPEAKERS = [
+		  { name:"Prof. Dr. Oluwole Daniel MAKINDE", title:"Stellenbosch University, South Africa", avatar:"./images/ASIAM_Prof_MAKINDE.webp" },
+		  { name:"Prof. Abdon ATANGANA", title:"University of the Free State, South Africa.", avatar:"./images/ASIAM_Prof_ATANGANA.webp" },
+		  { name:"Prof. Marie Françoise OUEDRAOGO", title:"Université Joseph Ki-Zerbo, Burkina Faso.", avatar:"https://mentalidadesmatematicas.org.br/wp-content/webp-express/webp-images/uploads/2021/05/dia-das-mulheres-matematicas-marie-1.jpg.webp" },
+		  { name:"Prof. Shen ZUOWEI", title:"National University of Singapore, Singapore.", avatar:"https://www.polyu.edu.hk/ama/-/media/Department/AMA/People/people/Visiting-Honorary-Professors/Shen-Zuowei.jpg?bc=ffffff&h=430&w=280" },
+		  { name:"Prof. Bao WEIZHU", title:"National University of Singapore, Singapore.", avatar:"https://www.math.nus.edu.sg/wp-content/uploads/sites/4/2020/02/matbaowz.jpg" },
+		  { name:"Prof. Tao TANG", title:"Hong Kong University of Science and Technology, Hong Kong", avatar:"https://gbaaa.org.hk/uploads/image/202206/cba7047a188db3d4657f28d0fbdf74d5.jpg" },
+		  { name:"Prof. Gang BAO", title:"Zhejiang University, China.", avatar:"https://www.eurasc.eu/wp-content/uploads/2025/10/FOTOS-PERFIL-EURASC-2.jpg" },
+		  { name:"Prof. Yang XIANG", title:"Hong Kong University of Science and Technology, Hong Kong", avatar:"https://facultyprofiles.hkust.edu.hk/profiles/images/P000001206.jpg" },
+		  { name:"Prof. Gisèle MOPHOU", title:"University of the French Antilles", avatar:"https://fegu.org/wp-content/uploads/2021/10/Pr-Gisele-Mophou.png" },
+		  { name:"Prof. Dr. Kovalnogov VLADISLAV N", title:"Ulyanovsk State Technical University", avatar:"./images/Prof_Dr_Kovalnogov_Vladislav.webp" },
+		];
+		const INVITEDSPEAKERS = [
+		  { name:"Prof. Zhonghua QIAO", title:"The Hong Kong Polytechnic University, Hong Kong", avatar:"https://awards.ugc.edu.hk/f/awardee/13610/560c560/RFS_Dr%20QIAO%20Zhonghua.jpg" },
+		  { name:"Prof. Jae KYOUNG KIM", title:"KAIST, South Korea.", avatar:"https://mathsci.kaist.ac.kr/~jaekkim/img/NYJ30062-1.jpg" },
+		  { name:"Professoressa Ordinaria Stefania BELLAVIA", title:"UNIVERSITÀ DEGLI STUDI DI FIRENZE - Dipartimento di Ingegneria Industriale (DIEF), Italy.", avatar:"https://0.academia-photos.com/209216194/69077530/57470511/s200_stefania.bellavia.png" },
+		  { name:"Prof. Samir ADLY", title:"President, SMAI (French Society for Industrial and Applied Mathematics) Professor of Applied Mathematics, University of Limoges (XLIM), France.", avatar:"https://www.unilim.fr/acsyon/wp-content/uploads/2020/02/Samir_Adly.jpg" },
+		  { name:"Prof Elena BRAVERMAN", title:"University of Caglary, Canada", avatar:"https://profiles.ucalgary.ca/sites/default/files/styles/ucws_profile_picture/public/Elena%2520Braverman.jpg?itok=Uj62Oqim" },
+		  { name:"Ibtissam MEDARHRI, PhD", title:"Head of Industrial Engineering Department, Head of Mathematical Modeling and Scientific Calculation (MMCS), Laboratory of Applied Mathematics and Business Intelligence (LMAID)", avatar:"./images/MEDARHRI_Ibtissam.jpeg" }
+		];
+		const SPECIALSPEAKERS = [
+		  { name:"Dr. Arsene Stephane TEMA BIWOLE", title:"Massachusetts Institute of Technology", avatar:"https://media.licdn.com/dms/image/v2/D4E03AQElfrfbBp1q0w/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1686657969858?e=2147483647&v=beta&t=XUJhkAJ2T5EkxlAxY6mmlsG0jd7rst0tPOh6tdDuUiM" },
+		  { name:"Eng, MBA Rocky TSANE ZEDONG", title:"Cloud DevOps Architect", avatar:"https://media.licdn.com/dms/image/v2/C4D03AQG9RJMP6f8kqw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1608207904148?e=1763596800&v=beta&t=TwydFXrJ1U-TZteHabYRsrOHpTkh_nmyzF2QMg9LybQ" },
+		  { name:"Eng, Bertin NGA OHANDZA", title:"RedHat Automation Expert", avatar:"https://media.licdn.com/dms/image/v2/C4D03AQHVFj8vCg172w/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1575475587113?e=1763596800&v=beta&t=NEobDe6uBjMWqWPT7svIYzk8SFD8BA3Z81wrW8qTUr0" },
+		  { name:"Abdoul-Aziz Zakari MADOUGOU", title:"Cloud / DevOps Architect", avatar:"https://media.licdn.com/dms/image/v2/D4E03AQEHg1HNjj6DkQ/profile-displayphoto-shrink_400_400/B4EZbhwq8bGkAg-/0/1747544355166?e=1763596800&v=beta&t=A_ZKQJ7Pvgqc2Mihm1IKnlPdKhB1UbK3d19pM7kHE88" },
+		  { name:"Prof. Dr. Zakia HAMMOUCH", title:"Mathematical modelling & fractional differential equations.", avatar:"https://tse2.mm.bing.net/th/id/OIP.n5r-UlkXbEpmc0n9DhWyNgAAAA?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" },
+		  { name:"Eng, Francklin LAPO", title:"Database Administrator.", avatar:"./images/Franklin_LAPO.jpeg" }
+		];
+		const GALLERY = [
+		  { src:'./images/Workshop_2_ACIAM_2024.jpeg', alt:'Conference hall' },
+		  { src:'./images/Workshop_1_ACIAM_2024.jpeg', alt:'Workshop session' },
+		  { src:'./images/ACIAM_2023_State_Representation.jpeg', alt:'Audience in auditorium' },
+		  { src:'./images/Prof_ATANGANA_Delegation_Aciam_2023.jpeg', alt:'Keynote on stage' },
+		  { src:'./images/ACIAM_Festivities.jpeg', alt:'Networking break' },
+		  { src:'./images/Guests_Hosts_ACIAM_2024.jpeg', alt:'Panel discussion' },
+		  { src:'./images/Family_Photo_ACIAM_2023.jpeg', alt:'Audience in auditorium' }
+		];
 
-    <dialog id="lightbox" class="lightbox" aria-label="Image preview">
-      <img alt="" id="lightboxImg" decoding="async" />
-      <button class="close" aria-label="Close">✕</button>
-    </dialog>
-
-    <!-- Venue -->
-    <section class="venue">
-      <div class="container">
-        <h2>Venue</h2>
-        <p class="muted">University of Ouagadougou, Ouagadougou – Burkina Faso.</p>
-        <div style="margin-top:16px;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden">
-          <iframe title="Plan"
-            src="https://www.openstreetmap.org/export/embed.html?bbox=-1.5353661775588991%2C12.363766340018941%2C-1.5328556299209595%2C12.365534835996145&amp;layer=mapnik"
-            loading="lazy" style="width:100%;height:340px;border:0" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-      </div>
-    </section>
-	<section class="hero">
-		<a href="#top" class="top" aria-label="Retour en haut">↑</a>
-	</section>
-  </main>
-
-  <footer>
-    <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
-      <div>© <span id="year"></span> ACIAM 2026 · All rights reserved</div>
-      <div class="links">
-        <a href="#register">Registration</a>
-        <a href="#keynotespeakers">Speakers</a>
-        <a href="#">Legal</a>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    // ---------- Utils ----------
-    const $ = (s,r=document)=>r.querySelector(s);
-    const $$ = (s,r=document)=>Array.from(r.querySelectorAll(s));
-    $('#year').textContent = new Date().getFullYear();
-
-    // ---------- Data ----------
-	const AIM = [
-      { name:"Prof. Abdon ATANGANA", title:"Chair of African Conference of Industrial and Applied Mathematics (ACIAM).", avatar:"https://fr.journalducameroun.com/wp-content/uploads/2023/08/abdon-m.jpg" },//"https://aciam-bf2026.com/images/prof-abdon.jpg" },
-      { name:"Prof. Dr. Oluwole Daniel MAKINDE", title:"Co-Chair of African Conference of Industrial and Applied Mathematics (ACIAM).", avatar:"./images/Professor_MAKINDE_Award.jpg" } //"https://aciam-bf2026.com/images/ASIAM1-1-300x300-1.webp" },
-    ]
-
-    /* International Organising Committee list */
-    const INTERNATIONAL_COMMITTEE = [
-      { name:"Prof. Abdon ATANGANA", title:"South Africa" },
-	  { name:"Prof. Dr. Oluwole Daniel MAKINDE", title:"South Africa" },
-      { name:"Pr Mamadou Abdoul DIOP", title:"Senegal" },
-      { name:"Prof Emmanuel BAKARE", title:"Nigeria" },
-      { name:"Pr. Dr. Martin Le Doux MBELE BIDIMA", title:"Cameroon" },
-      { name:"Prof. Dr GETACHEW TESHOME Tilahun", title:"Ethiopia" },
-      { name:"Prof Sara ABDELSALAM", title:"Egypt" },
-      { name:"Prof. Dr. Raseelo Joel MOITSHEKI", title:"South Africa" },
-      { name:"Prof. M. F. OUEDRAOGO", title:"Burkina Faso" },
-      { name:"Prof. Lazarus RUNDORA", title:"South Africa" },
-      { name:"Prof. Solly Lebelo", title:"South Africa" },
-	  { name:"Prof. Dr. Hassirou Mouhamadou", title:"Niger" },
-      { name:"Prof Dr. Zakia Hammouch", title:"Morocco" },
-      { name:"Professor Olaniyi Samuel Iyiola", title:"United State of America" },
-      { name:"Prof Khalid Ouarghi", title:"Morocco" },
-      { name:"Prof. Chinedu Nwaigwe", title:"Nigeria" },
-      { name:"Dr. Makosha Ishmaeline Charlotte Morakaladi", title:"South Africa" },
-      { name:"Eng, MBA Rocky TSANE ZEDONG", title:"France" },
-      { name:"Councillor Jacki Mpondo-Hendricks", title:"South Africa" },
-      { name:"Mr. Zahi Olivier Zabo", title:"Ivory Coast" },
-	  { name:"Prof. Calvin TADMON", title:"Cameroon" },
-	  { name:"Pr. Jocelyn GONESSA", title:"Central African Republic" },
-	  { name:"Pr. Dr. Bakari ABBO", title:"Chad" },
-	  { name:"Dr. Cyr-Séraphin NGAMOUYIH MOUSSATA", title:"Congo Brazzaville" },
-	  { name:"Professor Justin Bazimaziki Munyakazi", title:"Democratic Republic of Congo" },
-	  { name:"Prof. Carmelo EBANG NDONG", title:"Equatorial Guinea" },
-	  { name:"Prof. Hugues Calixte EYI NDONG", title:"Gabon" },
-	  { name:"Dr. Vianney MBAZUMUTIMA", title:"Burundi" },
-	  { name:"Prof. Gemechis File Duressa", title:"Ethiopia" },
-	  { name:"Dr. Jane A. ADUDA", title:"Kenya" },
-	  { name:"Prof. Denis NDANGUZA", title:"Rwanda" },
-	  { name:"Dr. Sunday PETE", title:"South Sudan" },
-	  { name:"Dr. Entisar ALRASHEED", title:"Sudan" },
-	  { name:"Prof. Benjamin Aina PETER", title:"Uganda" },
-	  { name:"Dr. Idrissa Said AMOUR", title:"Tanzania" },
-	  { name:"Pr. Amar DEBBOUCHE", title:"Algeria" },
-	  { name:"Pr.  Zeinab MANSOUR", title:"Egypt" },
-	  { name:"Pr. Dr. Haniyah A. Saed BEN HAMDIN", title:"Libya" },
-	  { name:"Pr. Khalid HATTAF", title:"Morocco" },
-	  { name:"Prof. Omar NAIFAR", title:"Tunisia" },
-	  { name:"Prof. Maria DE NATIVIDADE", title:"Angola" },
-	  { name:"Dr. T. G. MOTSUMI", title:"Botswana" },
-	  { name:"Dr. Peter MHONE", title:"Malawi" },
-	  { name:"Pr. Dr. Sansao PEDRO", title:"Mozambique" },
-	  { name:"Dr. David IIYAMBO", title:"Namibia" },
-	  { name:"Prof M. KHUMALO", title:"South Africa" },
-	  { name:"Dr. Sandile MOTSA", title:"Swaziland" },
-	  { name:"Mervis KIKONKO", title:"Zambia" },
-	  { name:"Dr. Gift MUTCHATIBAYA", title:"Zimbabwe" },
-	  { name:"Assoc. Prof. Guy DEGLA", title:"Benin" },
-	  { name:"Prof Delfim F. M. TORRES", title:"Cape Verde" },
-	  { name:"Ms. Naffie AIDARA", title:"Gambia" },
-	  { name:"Prof. Ebenezer BONYAH", title:"Ghana" },
-	  { name:"Prof. Dr. Abdoulaye BANIRE DIALLO", title:"Guinea Conakry" },
-	  { name:"Dr. Tenan YEO", title:"Ivory Coast" },  
-	  { name:"Prof. Saley BISSO", title:"Niger" },
-	  { name:"Dr. Afeez ABIDEMI", title:"Nigeria" },
-	  { name:"Professor Diene NGOM", title:"Senegal" },
-	  { name:"Assoc. Prof. Kwassi ANANI", title:"Togo" }
-    ];
-
-    /* Local Organising Committee list */
-    const LOCAL_COMMITTEE = [
-      { name:"Prof. Boureima SANGARE", title:" Unité de Formation et de Recherche en Sciences Exactes et Appliquées (UFR SEA), Burkina Faso" },
-	  { name:"Dr. Ibrahim NONKANE", title:"Université Thomas SANKARA, Ouagadougou, Burkina Faso" },
-      //{ name:"Dr.Sanogo Satafa", title:"Université Paul Sabatier - Toulouse, France" },
-      { name:"Dr. Abdoulaye KABORE", title:"Université Nazi Boni, Burkina Faso" },
-      { name:"Prof. M. F. OUEDRAOGO", title:"Université Joseph Ki-Zerbo, Burkina Faso" },
-	  { name:"Matthieu Sobom SOME", title:"Université Sankara (Secrétaire), Burkina Faso" },
-	  { name:"Rodrigue Aimé SANOU", title:"Université Thomas Sankara (Rapporteur), Burkina Faso" },
-	  { name:"Mathieu Romaric POODA", title:"Université Thomas Sankara (Rapporteur), Burkina Faso" },
-	  { name:"Ibrahime KONATE", title:"Université Thomas Sankara" },
-	  { name:"Dominique BONKOUGOU", title:"Université Thomas Sankara" },
-	  { name:"Frédéric D.Y. ZONGO", title:"Ecole Normale Supérieure" },
-	  { name:"Luc T. BAMBARA", title:"Ecole Normale Supérieure" },
-	  { name:"Gaëlle Kafira KO", title:"Ecole Normale Supérieure" },
-	  { name:"Abdoul Aziz Kalifa DIANDA", title:"Université Thomas Sankara" }
-
-    ];
-
-
-    /* Honorary Committee list */
-    const HONORARY_COMMITTEE = [
-      { name:"Prof. Ousseynou NAKOULIMA", title:"President of the University Ouaga 3S, Burkina Faso", avatar:"./images/Prof_Ousseynou_NAKOULIMA.jpg" },
-	  { name:"HE Mr. Moriba Alain KONE", title:"His Excellency the Ambassador of the Republic of Guinea to the Republic of South Africa", avatar:"./images/Ambassador_Kone_Moriba_2.jpg" },
-	];
-
-    const KEYNOTESPEAKERS = [
-      { name:"Prof. Wil SCHILDERS", title:"President of ECMI & ICIAM; advocate for industrial & societal mathematics.", avatar:"https://assets.w3.tue.nl/w/uploads/_processed_/0/3/csm_Schilders_Wil_BvOF230317ADP_4x3_LR_aa2b16cb9a.jpg" },
-      { name:"Prof. Gaston Mandata N'GUEREKATA", title:"University Distinguished Professor and Associate Dean at Morgan State University in Baltimore, Maryland, USA", avatar:"./images/Prof_Gaston_Mandata_NGUEREKATA.jpg" }
-    ];
-    const PLENARYSPEAKERS = [
-      { name:"Prof. Dr. Oluwole Daniel MAKINDE", title:"Stellenbosch University, South Africa", avatar:"./images/ASIAM_Prof_MAKINDE.webp" },
-      { name:"Prof. Abdon ATANGANA", title:"University of the Free State, South Africa.", avatar:"./images/ASIAM_Prof_ATANGANA.webp" },
-      { name:"Prof. Marie Françoise OUEDRAOGO", title:"Université Joseph Ki-Zerbo, Burkina Faso.", avatar:"https://mentalidadesmatematicas.org.br/wp-content/webp-express/webp-images/uploads/2021/05/dia-das-mulheres-matematicas-marie-1.jpg.webp" },
-      { name:"Prof. Shen ZUOWEI", title:"National University of Singapore, Singapore.", avatar:"https://www.polyu.edu.hk/ama/-/media/Department/AMA/People/people/Visiting-Honorary-Professors/Shen-Zuowei.jpg?bc=ffffff&h=430&w=280" },
-      { name:"Prof. Bao WEIZHU", title:"National University of Singapore, Singapore.", avatar:"https://www.math.nus.edu.sg/wp-content/uploads/sites/4/2020/02/matbaowz.jpg" },
-      { name:"Prof. Tao TANG", title:"Hong Kong University of Science and Technology, Hong Kong", avatar:"https://gbaaa.org.hk/uploads/image/202206/cba7047a188db3d4657f28d0fbdf74d5.jpg" },
-      { name:"Prof. Gang BAO", title:"Zhejiang University, China.", avatar:"https://www.eurasc.eu/wp-content/uploads/2025/10/FOTOS-PERFIL-EURASC-2.jpg" },
-      { name:"Prof. Yang XIANG", title:"Hong Kong University of Science and Technology, Hong Kong", avatar:"https://facultyprofiles.hkust.edu.hk/profiles/images/P000001206.jpg" },
-      { name:"Prof. Gisèle MOPHOU", title:"University of the French Antilles", avatar:"https://fegu.org/wp-content/uploads/2021/10/Pr-Gisele-Mophou.png" },
-	  { name:"Prof. Dr. Kovalnogov VLADISLAV N", title:"Ulyanovsk State Technical University", avatar:"./images/Prof_Dr_Kovalnogov_Vladislav.webp" },
-    ];
-    const INVITEDSPEAKERS = [
-      { name:"Prof. Zhonghua QIAO", title:"The Hong Kong Polytechnic University, Hong Kong", avatar:"https://awards.ugc.edu.hk/f/awardee/13610/560c560/RFS_Dr%20QIAO%20Zhonghua.jpg" },
-      { name:"Prof. Jae KYOUNG KIM", title:"KAIST, South Korea.", avatar:"https://mathsci.kaist.ac.kr/~jaekkim/img/NYJ30062-1.jpg" },
-      { name:"Professoressa Ordinaria Stefania BELLAVIA", title:"UNIVERSITÀ DEGLI STUDI DI FIRENZE - Dipartimento di Ingegneria Industriale (DIEF), Italy.", avatar:"https://0.academia-photos.com/209216194/69077530/57470511/s200_stefania.bellavia.png" },
-      { name:"Prof. Samir ADLY", title:"President, SMAI (French Society for Industrial and Applied Mathematics) Professor of Applied Mathematics, University of Limoges (XLIM), France.", avatar:"https://www.unilim.fr/acsyon/wp-content/uploads/2020/02/Samir_Adly.jpg" },
-      { name:"Prof Elena BRAVERMAN", title:"University of Caglary, Canada", avatar:"https://profiles.ucalgary.ca/sites/default/files/styles/ucws_profile_picture/public/Elena%2520Braverman.jpg?itok=Uj62Oqim" },
-      { name:"Ibtissam MEDARHRI, PhD", title:"Head of Industrial Engineering Department, Head of Mathematical Modeling and Scientific Calculation (MMCS), Laboratory of Applied Mathematics and Business Intelligence (LMAID)", avatar:"./images/MEDARHRI_Ibtissam.jpeg" }
-	];
-    const SPECIALSPEAKERS = [
-      { name:"Dr. Arsene Stephane TEMA BIWOLE", title:"Massachusetts Institute of Technology", avatar:"https://media.licdn.com/dms/image/v2/D4E03AQElfrfbBp1q0w/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1686657969858?e=2147483647&v=beta&t=XUJhkAJ2T5EkxlAxY6mmlsG0jd7rst0tPOh6tdDuUiM" },
-	  { name:"Eng, MBA Rocky TSANE ZEDONG", title:"Cloud DevOps Architect", avatar:"https://media.licdn.com/dms/image/v2/C4D03AQG9RJMP6f8kqw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1608207904148?e=1763596800&v=beta&t=TwydFXrJ1U-TZteHabYRsrOHpTkh_nmyzF2QMg9LybQ" },
-      { name:"Eng, Bertin NGA OHANDZA", title:"RedHat Automation Expert", avatar:"https://media.licdn.com/dms/image/v2/C4D03AQHVFj8vCg172w/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1575475587113?e=1763596800&v=beta&t=NEobDe6uBjMWqWPT7svIYzk8SFD8BA3Z81wrW8qTUr0" },
-      { name:"Abdoul-Aziz Zakari MADOUGOU", title:"Cloud / DevOps Architect", avatar:"https://media.licdn.com/dms/image/v2/D4E03AQEHg1HNjj6DkQ/profile-displayphoto-shrink_400_400/B4EZbhwq8bGkAg-/0/1747544355166?e=1763596800&v=beta&t=A_ZKQJ7Pvgqc2Mihm1IKnlPdKhB1UbK3d19pM7kHE88" },
-	  { name:"Prof. Dr. Zakia HAMMOUCH", title:"Mathematical modelling & fractional differential equations.", avatar:"https://tse2.mm.bing.net/th/id/OIP.n5r-UlkXbEpmc0n9DhWyNgAAAA?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" },
-      { name:"Eng, Francklin LAPO", title:"Database Administrator.", avatar:"./images/Franklin_LAPO.jpeg" }
-	];
-    const GALLERY = [
-      { src:'./images/Workshop_2_ACIAM_2024.jpeg', alt:'Conference hall' },
-      { src:'./images/Workshop_1_ACIAM_2024.jpeg', alt:'Workshop session' },
-      { src:'./images/ACIAM_2023_State_Representation.jpeg', alt:'Audience in auditorium' },
-      { src:'./images/Prof_ATANGANA_Delegation_Aciam_2023.jpeg', alt:'Keynote on stage' },
-      { src:'./images/ACIAM_Festivities.jpeg', alt:'Networking break' },
-      { src:'./images/Guests_Hosts_ACIAM_2024.jpeg', alt:'Panel discussion' },
-      { src:'./images/Family_Photo_ACIAM_2023.jpeg', alt:'Audience in auditorium' }
-    ];
-
-	const OLDGALLERY = [
-      { src:'https://aciam-bf2026.com/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-19-at-07.27.48.jpeg', alt:'Conference hall' },
-      { src:'https://aciam-bf2026.com/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-17-at-08.16.54.jpeg', alt:'Workshop session' },
-      { src:'https://aciam-bf2026.com/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-17-at-08.16.56-scaled.jpeg', alt:'Audience in auditorium' },
-      { src:'https://aciam-bf2026.com/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-17-at-08.16.59.jpeg', alt:'Keynote on stage' },
-      { src:'https://aciam-bf2026.com/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-17-at-08.16.53-scaled.jpeg', alt:'Networking break' },
-      { src:'https://aciam-bf2026.com/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-17-at-08.16.52-scaled.jpeg', alt:'Panel discussion' },
-      { src:'https://aciam-bf2026.com/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-19-at-07.26.19.jpeg', alt:'Audience in auditorium' }
-    ];
-	  
-    const SUGGESTEDTHEMATICS = [
-      { title:"Climate modelling, hydrology, and water resources (groundwater, extreme events)" },
-      { title:"Mathematical epidemiology, health systems modelling, and bio-mathematics" },
-      { title:"Data-driven methods, machine learning for scientific computing, and uncertainty quantification" },
-      { title:"Numerical analysis, fractional calculus, and advanced PDE methods" },
-      { title:"Optimization, control, and operations research for industry & logistics" },
-      { title:"High-performance computing, scalable algorithms, and computational infrastructure" },
-      { title:"Materials, energy systems, and industrial mathematics (renewables, storage)" },
-      { title:"Mathematics education, capacity building, and outreach in Africa" }
-    ];
-	
-	const KEYNOTETOPICS = [
-      { titlekt:"Mathematical approaches to climate-risk modeling and adaptation planning" },
-      { titlekt:"Data assimilation and AI for environmental forecasting" },
-      { titlekt:"Mathematical epidemiology: modeling, inference, and policy impact" },
-      { titlekt:"High-performance solvers for multi-scale, multiphysics models" },
-      { titlekt:"Inverse problems and uncertainty quantification in real-world systems" },
-      { titlekt:"Optimization for energy grids and resource allocation in developing economies" },
-      { titlekt:"Mathematical foundations of trustworthy machine learning" }
-    ];
-
-    // ---- Accommodations data
-    const HOTELS = [
-      {name:"Bravia Hotel Ouagadougou",area:"Centre-ville",time:"≈10–20 min taxi",price:"Upper-midrange",img:"./images/Bravia_Hotel.jpeg",perks:["Wi-Fi","Pool","Airport shuttle"],maps:"https://www.google.com/maps/search/?api=1&query=Bravia+Hotel+Ouagadougou",web:"https://www.google.com/search?q=Bravia+Hotel+Ouagadougou"},
-      {name:"Sopatel Silmande",area:"Zone du Bois",time:"≈15–25 min taxi",price:"Midrange",img:"./images/Sopatel_Hotel.jpg",perks:["Wi-Fi","Pool","Tennis"],maps:"https://maps.app.goo.gl/PY18RrEMdvvwjMNh9",web:"https://maps.app.goo.gl/PY18RrEMdvvwjMNh9" },
-      {name:"Laico Ouaga 2000",area:"Ouaga 2000",time:"≈20–30 min taxi",price:"Upscale",img:"./images/lancasterouaga2000.jpg",perks:["Wi-Fi","Pool","Fitness"],maps:"https://www.google.com/maps/search/?api=1&query=Laico+Ouaga+2000",web:"https://www.google.com/search?q=Laico+Ouaga+2000"},
-      {name:"Pacific Hotel",area:"Centre-ville",time:"≈10–20 min taxi",price:"Value",img:"./images/Pacific_Hotel_Ouagadougou.jpeg",perks:["Wi-Fi","Restaurant"],maps:"https://www.google.com/maps/search/?api=1&query=Pacific+Hotel+Ouagadougou",web:"https://www.google.com/search?q=Pacific+Hotel+Ouagadougou"},
-      {name:"Villa Kaya (Guesthouse)",area:"Quartier calme",time:"≈10–20 min taxi",price:"Budget",img:"./images/Villa_KAYA_Hotel.jpg",perks:["Wi-Fi","Breakfast"],maps:"https://www.google.com/maps/search/?api=1&query=Villa+Kaya+Ouagadougou",web:"https://www.google.com/search?q=Villa+Kaya+Ouagadougou"}
-    ];
-
-    // ---------- Render helpers ----------
-    function renderCards(data, containerSel, cls='card'){
-      const root = $(containerSel); if(!root) return;
-      const frag = document.createDocumentFragment();
-      data.forEach(s=>{
-        const el = document.createElement('article');
-        el.className = cls;
-        el.innerHTML = `
-          <img alt="${s.name}" src="${s.avatar}" loading="lazy" decoding="async" width="360" height="270">
-          <div class="meta">
-            <div class="name">${s.name}</div>
-            <div class="title">${s.title||''}</div>
-          </div>`;
-        frag.appendChild(el);
-      });
-      root.appendChild(frag);
-    }
-
-    /* NEW: simple list renderer for committee (no photos) */
-    function renderPeopleList(data, containerSel){
-      const root = $(containerSel); if(!root) return;
-      const frag = document.createDocumentFragment();
-      data.forEach(p=>{
-        const el = document.createElement('article');
-        el.className = 'card';
-        el.innerHTML = `
-          <div class="card-b">
-            <div class="name">${p.name}</div>
-            <div class="title">${p.title||''}</div>
-          </div>`;
-        frag.appendChild(el);
-      });
-      root.appendChild(frag);
-    }
-
-    // Render sections
-	
-	renderPeopleList(LOCAL_COMMITTEE, '#localCommitteeGrid');
-    renderPeopleList(INTERNATIONAL_COMMITTEE, '#internationalCommitteeGrid');
-	//renderPeopleList(HONORARY_COMMITTEE, '#honoraryCommitteeGrid');
-	
-	renderCards(AIM, '#aimGrid', 'card aim');
-	renderCards(HONORARY_COMMITTEE, '#honoraryCommitteeGrid', 'card honorarycommittee');
-    renderCards(KEYNOTESPEAKERS, '#keyNoteSpeakerGrid', 'card keynotespeaker');
-    renderCards(PLENARYSPEAKERS, '#plenarySpeakerGrid', 'card plenaryspeaker');
-    renderCards(INVITEDSPEAKERS, '#invitedSpeakerGrid', 'card invitedspeaker');
-    renderCards(SPECIALSPEAKERS, '#specialSpeakerGrid', 'card specialspeaker');
-
-    // ---------- Gallery ----------
-    const galleryGrid = $('#galleryGrid');
-    if (galleryGrid) {
-      const gfrag = document.createDocumentFragment();
-      GALLERY.forEach(img => {
-        const btn = document.createElement('button');
-        btn.setAttribute('aria-label','Open image');
-        btn.innerHTML = `<img alt="${img.alt}" src="${img.src}" loading="lazy" decoding="async">`;
-        btn.addEventListener('click', () => openLightbox(img.src, img.alt));
-        gfrag.appendChild(btn);
-      });
-      galleryGrid.appendChild(gfrag);
-    }
-    const lightbox = $('#lightbox'), lightboxImg = $('#lightboxImg'), closeBtn = lightbox?.querySelector('.close');
-    function openLightbox(src, alt){ if(!lightbox||!lightboxImg) return; lightboxImg.src=src; lightboxImg.alt=alt||''; lightbox.showModal(); }
-    closeBtn?.addEventListener('click',()=>lightbox.close());
-    lightbox?.addEventListener('click',e=>{ if(e.target===lightbox) lightbox.close(); });
-    document.addEventListener('keydown',e=>{ if(e.key==='Escape' && lightbox?.open) lightbox.close(); });
-
-    // ---------- Countdown ----------
-    const EVENT_START = new Date('2026-09-17T09:00:00+02:00');
-    const tictac = document.querySelector('.tictac');
-    function setFlipValue(unit, value){
-      const el = document.querySelector(`.flip-unit[data-unit="${unit}"] .flip`); if(!el) return;
-      const front = el.querySelector('.front'); const back  = el.querySelector('.back');
-      const nextStr = value.toString().padStart(unit==='days'?3:2,'0');
-      if (front.textContent === nextStr) return;
-      back.textContent = nextStr; el.classList.remove('anim'); void el.offsetWidth; el.classList.add('anim');
-      setTimeout(()=>{ front.textContent = nextStr; }, 560);
-    }
-    let audioCtx = null, tickEnabled = false;
-    const tickBtn = document.getElementById('tickSound');
-    tickBtn?.addEventListener('click', ()=>{
-      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      tickEnabled = !tickEnabled; tickBtn.setAttribute('aria-pressed', String(tickEnabled));
-      tickBtn.classList.toggle('outline', !tickEnabled);
-      tickBtn.textContent = tickEnabled ? 'Deactivate the tick-tock sound' : 'Activate the tick-tock sound';
-    });
-    function playTick(){
-      if (!audioCtx) return;
-      const o = audioCtx.createOscillator(), g = audioCtx.createGain();
-      o.type='square'; o.frequency.value=880;
-      g.gain.setValueAtTime(0.0001, audioCtx.currentTime);
-      g.gain.exponentialRampToValueAtTime(0.2, audioCtx.currentTime + 0.005);
-      g.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.07);
-      o.connect(g); g.connect(audioCtx.destination); o.start(); o.stop(audioCtx.currentTime + 0.08);
-    }
-    let fwStarted=false, fwRAF=0;
-    function startFireworks(){
-      const wrap = document.querySelector('.fireworks-wrap'); const canvas = document.getElementById('fireworks'); const ctx = canvas.getContext('2d');
-      if(!wrap||!canvas||!ctx) return;
-      wrap.classList.add('show');
-      function resize(){ canvas.width = wrap.clientWidth; canvas.height = 300; }
-      resize(); addEventListener('resize', resize);
-      const sparks=[];
-      function burst(x,y,count=60){
-        for(let i=0;i<count;i++){
-          const angle = (Math.PI*2)*(i/count) + Math.random()*0.2;
-          const speed = 2 + Math.random()*3;
-          sparks.push({x,y,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,life:60+Math.random()*20,age:0});
-        }
-      }
-      const cx = canvas.width/2, cy = canvas.height*0.45;
-      burst(cx,cy); setTimeout(()=>burst(cx-120,cy+20),300); setTimeout(()=>burst(cx+130,cy-10),650);
-      function step(){
-        ctx.clearRect(0,0,canvas.width,canvas.height);
-        for(let i=sparks.length-1;i>=0;i--){
-          const p=sparks[i]; p.x+=p.vx; p.y+=p.vy; p.vy+=0.03; p.age++; const t=1-(p.age/p.life);
-          if(t<=0){sparks.splice(i,1); continue;}
-          ctx.globalAlpha=Math.max(0,t); ctx.beginPath(); ctx.arc(p.x,p.y,2.2*t+0.6,0,Math.PI*2); ctx.fillStyle='#10b981'; ctx.fill();
-        }
-        fwRAF=requestAnimationFrame(step);
-      }
-      step(); setTimeout(()=>cancelAnimationFrame(fwRAF),7000);
-    }
-    function tickCountdown(){
-      const now = new Date(); let diff = Math.max(0, EVENT_START - now);
-      const days = Math.floor(diff/86400000); diff -= days*86400000;
-      const hours = Math.floor(diff/3600000); diff -= hours*3600000;
-      const minutes = Math.floor(diff/60000); diff -= minutes*60000;
-      const seconds = Math.floor(diff/1000);
-      setFlipValue('days', days); setFlipValue('hours', hours); setFlipValue('minutes', minutes); setFlipValue('seconds', seconds);
-      tictac?.classList.remove('on'); void tictac?.offsetWidth; tictac?.classList.add('on');
-      if (tickEnabled) playTick();
-      if(days===0 && hours===0 && minutes===0 && seconds===0 && !fwStarted){ fwStarted=true; startFireworks(); }
-    }
-    tickCountdown();
-    const countdownTimer = setInterval(tickCountdown,1000);
-
-    // ---------- Form ----------
-    const form = $('#regForm'); const success = $('#success'); const formWrap = $('#formWrap');
-    function setError(id,msg){ const el = document.querySelector(`[data-error-for="${id}"]`); if(el) el.textContent = msg||''; }
-    function validate(){
-      let ok=true;
-      const firstName=form.firstName.value.trim();
-      const lastName=form.lastName.value.trim();
-      const email=form.email.value.trim();
-
-      const consent=form.consent.checked;
-      setError('firstName','');setError('lastName','');setError('email','');setError('consent','');
-      if(!firstName){setError('firstName','First name required');ok=false}
-      if(!lastName){setError('lastName','Last name required');ok=false}
-      if(!/^([^\s@]+)@([^\s@]+)\.[^\s@]+$/.test(email)){setError('email','Invalid email');ok=false}
-      if(!consent){setError('consent','Please accept data processing');ok=false}
-      return ok;
-    }
-	
-	
-	
-	document.addEventListener("DOMContentLoaded", () => {
-	 const countrySelect = document.getElementById("country");
-	 const message = document.getElementById("message");
-
-	// List of African countries (simplified)
-	const africanCountries = [
-		"Algeria", "Angola", "Benin", "Botswana", "Burkina Faso", "Burundi",
-		"Cameroon", "Cape Verde", "Central African Republic", "Chad", "Comoros",
-		"Congo", "Djibouti", "Egypt", "Equatorial Guinea", "Eritrea", "Eswatini",
-		"Ethiopia", "Gabon", "Gambia", "Ghana", "Guinea", "Guinea-Bissau",
-		"Ivory Coast", "Kenya", "Lesotho", "Liberia", "Libya", "Madagascar",
-		"Malawi", "Mali", "Mauritania", "Mauritius", "Morocco", "Mozambique",
-		"Namibia", "Niger", "Nigeria", "Rwanda", "São Tomé and Príncipe",
-		"Senegal", "Seychelles", "Sierra Leone", "Somalia", "South Africa",
-		"South Sudan", "Sudan", "Tanzania", "Togo", "Tunisia", "Uganda",
-		"Zambia", "Zimbabwe"
-	];
-
-	// Optionally: populate the select list
-	const allCountries = [...africanCountries, "France", "Germany", "India", "United States"];
-	allCountries.sort().forEach(c => {
-		const opt = document.createElement("option");
-		opt.value = c;
-		opt.textContent = c;
-		countrySelect.appendChild(opt);
-	});
-
-	// Detect change
-	countrySelect.addEventListener("change", () => {
-		const selected = countrySelect.value;
-		if (!selected) {
-		  message.textContent = "";
-		  return;
-		}
-
-		if (africanCountries.includes(selected)) {
-		  message.textContent = `🌍 Welcome! ${selected} is an African country.`;
-		  message.style.color = "green";
-		  selectedCountry = "African"
-		} else {
-		  message.textContent = `${selected} is not in Africa.`;
-		  message.style.color = "gray";
-		  selectedCountry = "NonAfrican"
-		}
-	  });
-	});
-
-	
-	
-	
-    form.addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      if(!validate()) return;
-      try{
-        console.log('Registration payload', Object.fromEntries(new FormData(form).entries()));
-        //formWrap.hidden=true; success.hidden=false; form.reset();
+		const OLDGALLERY = [
+		  { src:'https://aciam-bf2026.com/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-19-at-07.27.48.jpeg', alt:'Conference hall' },
+		  { src:'https://aciam-bf2026.com/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-17-at-08.16.54.jpeg', alt:'Workshop session' },
+		  { src:'https://aciam-bf2026.com/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-17-at-08.16.56-scaled.jpeg', alt:'Audience in auditorium' },
+		  { src:'https://aciam-bf2026.com/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-17-at-08.16.59.jpeg', alt:'Keynote on stage' },
+		  { src:'https://aciam-bf2026.com/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-17-at-08.16.53-scaled.jpeg', alt:'Networking break' },
+		  { src:'https://aciam-bf2026.com/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-17-at-08.16.52-scaled.jpeg', alt:'Panel discussion' },
+		  { src:'https://aciam-bf2026.com/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-19-at-07.26.19.jpeg', alt:'Audience in auditorium' }
+		];
+		  
+		const SUGGESTEDTHEMATICS = [
+		  { title:"Climate modelling, hydrology, and water resources (groundwater, extreme events)" },
+		  { title:"Mathematical epidemiology, health systems modelling, and bio-mathematics" },
+		  { title:"Data-driven methods, machine learning for scientific computing, and uncertainty quantification" },
+		  { title:"Numerical analysis, fractional calculus, and advanced PDE methods" },
+		  { title:"Optimization, control, and operations research for industry & logistics" },
+		  { title:"High-performance computing, scalable algorithms, and computational infrastructure" },
+		  { title:"Materials, energy systems, and industrial mathematics (renewables, storage)" },
+		  { title:"Mathematics education, capacity building, and outreach in Africa" }
+		];
 		
-		if (selectedCountry == "African") {
-		  formWrap.hidden=true; successAfricanCondition.hidden=false; form.reset();
-		} else {
-		  formWrap.hidden=true; successNonAfricanCondition.hidden=false; form.reset();
+		const KEYNOTETOPICS = [
+		  { titlekt:"Mathematical approaches to climate-risk modeling and adaptation planning" },
+		  { titlekt:"Data assimilation and AI for environmental forecasting" },
+		  { titlekt:"Mathematical epidemiology: modeling, inference, and policy impact" },
+		  { titlekt:"High-performance solvers for multi-scale, multiphysics models" },
+		  { titlekt:"Inverse problems and uncertainty quantification in real-world systems" },
+		  { titlekt:"Optimization for energy grids and resource allocation in developing economies" },
+		  { titlekt:"Mathematical foundations of trustworthy machine learning" }
+		];
+
+		// ---- Accommodations data
+		const HOTELS = [
+		  {name:"Bravia Hotel Ouagadougou",area:"Centre-ville",time:"≈10–20 min taxi",price:"Upper-midrange",img:"./images/Bravia_Hotel.jpeg",perks:["Wi-Fi","Pool","Airport shuttle"],maps:"https://www.google.com/maps/search/?api=1&query=Bravia+Hotel+Ouagadougou",web:"https://www.google.com/search?q=Bravia+Hotel+Ouagadougou"},
+		  {name:"Sopatel Silmande",area:"Zone du Bois",time:"≈15–25 min taxi",price:"Midrange",img:"./images/Sopatel_Hotel.jpg",perks:["Wi-Fi","Pool","Tennis"],maps:"https://maps.app.goo.gl/PY18RrEMdvvwjMNh9",web:"https://maps.app.goo.gl/PY18RrEMdvvwjMNh9" },
+		  {name:"Laico Ouaga 2000",area:"Ouaga 2000",time:"≈20–30 min taxi",price:"Upscale",img:"./images/lancasterouaga2000.jpg",perks:["Wi-Fi","Pool","Fitness"],maps:"https://www.google.com/maps/search/?api=1&query=Laico+Ouaga+2000",web:"https://www.google.com/search?q=Laico+Ouaga+2000"},
+		  {name:"Pacific Hotel",area:"Centre-ville",time:"≈10–20 min taxi",price:"Value",img:"./images/Pacific_Hotel_Ouagadougou.jpeg",perks:["Wi-Fi","Restaurant"],maps:"https://www.google.com/maps/search/?api=1&query=Pacific+Hotel+Ouagadougou",web:"https://www.google.com/search?q=Pacific+Hotel+Ouagadougou"},
+		  {name:"Villa Kaya (Guesthouse)",area:"Quartier calme",time:"≈10–20 min taxi",price:"Budget",img:"./images/Villa_KAYA_Hotel.jpg",perks:["Wi-Fi","Breakfast"],maps:"https://www.google.com/maps/search/?api=1&query=Villa+Kaya+Ouagadougou",web:"https://www.google.com/search?q=Villa+Kaya+Ouagadougou"}
+		];
+
+		// ---------- Render helpers ----------
+		function renderCards(data, containerSel, cls='card'){
+		  const root = $(containerSel); if(!root) return;
+		  const frag = document.createDocumentFragment();
+		  data.forEach(s=>{
+			const el = document.createElement('article');
+			el.className = cls;
+			el.innerHTML = `
+			  <img alt="${s.name}" src="${s.avatar}" loading="lazy" decoding="async" width="360" height="270">
+			  <div class="meta">
+				<div class="name">${s.name}</div>
+				<div class="title">${s.title||''}</div>
+			  </div>`;
+			frag.appendChild(el);
+		  });
+		  root.appendChild(frag);
+		}
+
+		/* NEW: simple list renderer for committee (no photos) */
+		function renderPeopleList(data, containerSel){
+		  const root = $(containerSel); if(!root) return;
+		  const frag = document.createDocumentFragment();
+		  data.forEach(p=>{
+			const el = document.createElement('article');
+			el.className = 'card';
+			el.innerHTML = `
+			  <div class="card-b">
+				<div class="name">${p.name}</div>
+				<div class="title">${p.title||''}</div>
+			  </div>`;
+			frag.appendChild(el);
+		  });
+		  root.appendChild(frag);
+		}
+
+		// Render sections
+		
+		renderPeopleList(LOCAL_COMMITTEE, '#localCommitteeGrid');
+		renderPeopleList(INTERNATIONAL_COMMITTEE, '#internationalCommitteeGrid');
+		//renderPeopleList(HONORARY_COMMITTEE, '#honoraryCommitteeGrid');
+		
+		renderCards(AIM, '#aimGrid', 'card aim');
+		renderCards(HONORARY_COMMITTEE, '#honoraryCommitteeGrid', 'card honorarycommittee');
+		renderCards(KEYNOTESPEAKERS, '#keyNoteSpeakerGrid', 'card keynotespeaker');
+		renderCards(PLENARYSPEAKERS, '#plenarySpeakerGrid', 'card plenaryspeaker');
+		renderCards(INVITEDSPEAKERS, '#invitedSpeakerGrid', 'card invitedspeaker');
+		renderCards(SPECIALSPEAKERS, '#specialSpeakerGrid', 'card specialspeaker');
+
+		// ---------- Gallery ----------
+		const galleryGrid = $('#galleryGrid');
+		if (galleryGrid) {
+		  const gfrag = document.createDocumentFragment();
+		  GALLERY.forEach(img => {
+			const btn = document.createElement('button');
+			btn.setAttribute('aria-label','Open image');
+			btn.innerHTML = `<img alt="${img.alt}" src="${img.src}" loading="lazy" decoding="async">`;
+			btn.addEventListener('click', () => openLightbox(img.src, img.alt));
+			gfrag.appendChild(btn);
+		  });
+		  galleryGrid.appendChild(gfrag);
+		}
+		const lightbox = $('#lightbox'), lightboxImg = $('#lightboxImg'), closeBtn = lightbox?.querySelector('.close');
+		function openLightbox(src, alt){ if(!lightbox||!lightboxImg) return; lightboxImg.src=src; lightboxImg.alt=alt||''; lightbox.showModal(); }
+		closeBtn?.addEventListener('click',()=>lightbox.close());
+		lightbox?.addEventListener('click',e=>{ if(e.target===lightbox) lightbox.close(); });
+		document.addEventListener('keydown',e=>{ if(e.key==='Escape' && lightbox?.open) lightbox.close(); });
+
+		// ---------- Countdown ----------
+		const EVENT_START = new Date('2026-09-17T09:00:00+02:00');
+		const tictac = document.querySelector('.tictac');
+		function setFlipValue(unit, value){
+		  const el = document.querySelector(`.flip-unit[data-unit="${unit}"] .flip`); if(!el) return;
+		  const front = el.querySelector('.front'); const back  = el.querySelector('.back');
+		  const nextStr = value.toString().padStart(unit==='days'?3:2,'0');
+		  if (front.textContent === nextStr) return;
+		  back.textContent = nextStr; el.classList.remove('anim'); void el.offsetWidth; el.classList.add('anim');
+		  setTimeout(()=>{ front.textContent = nextStr; }, 560);
+		}
+		let audioCtx = null, tickEnabled = false;
+		const tickBtn = document.getElementById('tickSound');
+		tickBtn?.addEventListener('click', ()=>{
+		  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+		  tickEnabled = !tickEnabled; tickBtn.setAttribute('aria-pressed', String(tickEnabled));
+		  tickBtn.classList.toggle('outline', !tickEnabled);
+		  tickBtn.textContent = tickEnabled ? 'Deactivate the tick-tock sound' : 'Activate the tick-tock sound';
+		});
+		function playTick(){
+		  if (!audioCtx) return;
+		  const o = audioCtx.createOscillator(), g = audioCtx.createGain();
+		  o.type='square'; o.frequency.value=880;
+		  g.gain.setValueAtTime(0.0001, audioCtx.currentTime);
+		  g.gain.exponentialRampToValueAtTime(0.2, audioCtx.currentTime + 0.005);
+		  g.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.07);
+		  o.connect(g); g.connect(audioCtx.destination); o.start(); o.stop(audioCtx.currentTime + 0.08);
+		}
+		let fwStarted=false, fwRAF=0;
+		function startFireworks(){
+		  const wrap = document.querySelector('.fireworks-wrap'); const canvas = document.getElementById('fireworks'); const ctx = canvas.getContext('2d');
+		  if(!wrap||!canvas||!ctx) return;
+		  wrap.classList.add('show');
+		  function resize(){ canvas.width = wrap.clientWidth; canvas.height = 300; }
+		  resize(); addEventListener('resize', resize);
+		  const sparks=[];
+		  function burst(x,y,count=60){
+			for(let i=0;i<count;i++){
+			  const angle = (Math.PI*2)*(i/count) + Math.random()*0.2;
+			  const speed = 2 + Math.random()*3;
+			  sparks.push({x,y,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,life:60+Math.random()*20,age:0});
+			}
+		  }
+		  const cx = canvas.width/2, cy = canvas.height*0.45;
+		  burst(cx,cy); setTimeout(()=>burst(cx-120,cy+20),300); setTimeout(()=>burst(cx+130,cy-10),650);
+		  function step(){
+			ctx.clearRect(0,0,canvas.width,canvas.height);
+			for(let i=sparks.length-1;i>=0;i--){
+			  const p=sparks[i]; p.x+=p.vx; p.y+=p.vy; p.vy+=0.03; p.age++; const t=1-(p.age/p.life);
+			  if(t<=0){sparks.splice(i,1); continue;}
+			  ctx.globalAlpha=Math.max(0,t); ctx.beginPath(); ctx.arc(p.x,p.y,2.2*t+0.6,0,Math.PI*2); ctx.fillStyle='#10b981'; ctx.fill();
+			}
+			fwRAF=requestAnimationFrame(step);
+		  }
+		  step(); setTimeout(()=>cancelAnimationFrame(fwRAF),7000);
+		}
+		function tickCountdown(){
+		  const now = new Date(); let diff = Math.max(0, EVENT_START - now);
+		  const days = Math.floor(diff/86400000); diff -= days*86400000;
+		  const hours = Math.floor(diff/3600000); diff -= hours*3600000;
+		  const minutes = Math.floor(diff/60000); diff -= minutes*60000;
+		  const seconds = Math.floor(diff/1000);
+		  setFlipValue('days', days); setFlipValue('hours', hours); setFlipValue('minutes', minutes); setFlipValue('seconds', seconds);
+		  tictac?.classList.remove('on'); void tictac?.offsetWidth; tictac?.classList.add('on');
+		  if (tickEnabled) playTick();
+		  if(days===0 && hours===0 && minutes===0 && seconds===0 && !fwStarted){ fwStarted=true; startFireworks(); }
+		}
+		tickCountdown();
+		const countdownTimer = setInterval(tickCountdown,1000);
+
+		// ---------- Form ----------
+		const form = $('#regForm'); const success = $('#success'); const formWrap = $('#formWrap');
+		function setError(id,msg){ const el = document.querySelector(`[data-error-for="${id}"]`); if(el) el.textContent = msg||''; }
+		function validate(){
+		  let ok=true;
+		  const firstName=form.firstName.value.trim();
+		  const lastName=form.lastName.value.trim();
+		  const email=form.email.value.trim();
+
+		  const consent=form.consent.checked;
+		  setError('firstName','');setError('lastName','');setError('email','');setError('consent','');
+		  if(!firstName){setError('firstName','First name required');ok=false}
+		  if(!lastName){setError('lastName','Last name required');ok=false}
+		  if(!/^([^\s@]+)@([^\s@]+)\.[^\s@]+$/.test(email)){setError('email','Invalid email');ok=false}
+		  if(!consent){setError('consent','Please accept data processing');ok=false}
+		  return ok;
 		}
 		
-      }catch(err){
-        alert('Unable to submit the form. Please try again later.');
-        console.error(err);
-      }
-    });
+		
+		
+		document.addEventListener("DOMContentLoaded", () => {
+		 const countrySelect = document.getElementById("country");
+		 const message = document.getElementById("message");
 
-    // ---------- Rotator ----------
-    const slide = $('#slide'), titleE = $('#title'), timeEl = $('#time'), trackEl = $('#track');
-    const dots = $('#dots'); const nextBtn = $('#next'); const prevBtn = $('#prev'); const playBtn = $('#play');
+		// List of African countries (simplified)
+		const africanCountries = [
+			"Algeria", "Angola", "Benin", "Botswana", "Burkina Faso", "Burundi",
+			"Cameroon", "Cape Verde", "Central African Republic", "Chad", "Comoros",
+			"Congo", "Djibouti", "Egypt", "Equatorial Guinea", "Eritrea", "Eswatini",
+			"Ethiopia", "Gabon", "Gambia", "Ghana", "Guinea", "Guinea-Bissau",
+			"Ivory Coast", "Kenya", "Lesotho", "Liberia", "Libya", "Madagascar",
+			"Malawi", "Mali", "Mauritania", "Mauritius", "Morocco", "Mozambique",
+			"Namibia", "Niger", "Nigeria", "Rwanda", "São Tomé and Príncipe",
+			"Senegal", "Seychelles", "Sierra Leone", "Somalia", "South Africa",
+			"South Sudan", "Sudan", "Tanzania", "Togo", "Tunisia", "Uganda",
+			"Zambia", "Zimbabwe"
+		];
 
-    const dfrag = document.createDocumentFragment();
-    SUGGESTEDTHEMATICS.forEach((it,i)=>{
-      const d=document.createElement('button');
-      d.className='dot'+(i===0?' active':'');
-      d.type='button';
-      d.setAttribute('aria-label',`Go to: ${it.title}`);
-      d.dataset.index=i;
-      dfrag.appendChild(d);
-    });
-    dots.appendChild(dfrag);
+		// Optionally: populate the select list
+		const allCountries = [...africanCountries, "France", "Germany", "India", "United States"];
+		allCountries.sort().forEach(c => {
+			const opt = document.createElement("option");
+			opt.value = c;
+			opt.textContent = c;
+			countrySelect.appendChild(opt);
+		});
 
-    let idx=0, timer=null, playing=true;
-    const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+		// Detect change
+		countrySelect.addEventListener("change", () => {
+			const selected = countrySelect.value;
+			if (!selected) {
+			  message.textContent = "";
+			  return;
+			}
 
-    function render(i){
-      const it = SUGGESTEDTHEMATICS[i];
-      titleE.textContent = it.title || '';
-      timeEl.textContent = it.time || '';
-      trackEl.textContent = it.track || '';
-      if(!reduceMotion){
-        requestAnimationFrame(()=>{slide.classList.remove('show');requestAnimationFrame(()=>slide.classList.add('show'))});
-      }
-      $$('.dot',dots).forEach((d,k)=>d.classList.toggle('active',k===i));
-      idx=i;
-    }
-    const next=()=>render((idx+1)%SUGGESTEDTHEMATICS.length);
-    const prev=()=>render((idx-1+SUGGESTEDTHEMATICS.length)%SUGGESTEDTHEMATICS.length);
+			if (africanCountries.includes(selected)) {
+			  message.textContent = `🌍 Welcome! ${selected} is an African country.`;
+			  message.style.color = "green";
+			  selectedCountry = "African"
+			} else {
+			  message.textContent = `${selected} is not in Africa.`;
+			  message.style.color = "gray";
+			  selectedCountry = "NonAfrican"
+			}
+		  });
+		});
 
-    function start(){
-      if(timer) clearInterval(timer);
-      if(!reduceMotion){ timer = setInterval(next,5000); }
-      playing=true; if(playBtn) playBtn.textContent='⏸';
-    }
-    function stop(){
-      if(timer) clearInterval(timer);
-      timer=null; playing=false; if(playBtn) playBtn.textContent='▶';
-    }
+		
+		
+		
+		form.addEventListener('submit', async (e)=>{
+		  e.preventDefault();
+		  if(!validate()) return;
+		  try{
+			console.log('Registration payload', Object.fromEntries(new FormData(form).entries()));
+			//formWrap.hidden=true; success.hidden=false; form.reset();
+			
+			if (selectedCountry == "African") {
+			  formWrap.hidden=true; successAfricanCondition.hidden=false; form.reset();
+			} else {
+			  formWrap.hidden=true; successNonAfricanCondition.hidden=false; form.reset();
+			}
+			
+		  }catch(err){
+			alert('Unable to submit the form. Please try again later.');
+			console.error(err);
+		  }
+		});
 
-    nextBtn?.addEventListener('click',()=>{stop();next()},{passive:true});
-    prevBtn?.addEventListener('click',()=>{stop();prev()},{passive:true});
-    playBtn?.addEventListener('click',()=> playing?stop():start());
-    slide.addEventListener('mouseenter',stop);
-    slide.addEventListener('mouseleave',start);
+		// ---------- Rotator ----------
+		const slide = $('#slide'), titleE = $('#title'), timeEl = $('#time'), trackEl = $('#track');
+		const dots = $('#dots'); const nextBtn = $('#next'); const prevBtn = $('#prev'); const playBtn = $('#play');
 
-    document.addEventListener('visibilitychange',()=> document.hidden?stop():start());
-    const io = new IntersectionObserver(([e])=>{ e.isIntersecting?start():stop(); }, {threshold:0.2});
-    io.observe(slide);
+		const dfrag = document.createDocumentFragment();
+		SUGGESTEDTHEMATICS.forEach((it,i)=>{
+		  const d=document.createElement('button');
+		  d.className='dot'+(i===0?' active':'');
+		  d.type='button';
+		  d.setAttribute('aria-label',`Go to: ${it.title}`);
+		  d.dataset.index=i;
+		  dfrag.appendChild(d);
+		});
+		dots.appendChild(dfrag);
 
-    dots.addEventListener('click',e=>{
-      const t=e.target.closest('.dot');
-      if(!t) return; stop(); render(+t.dataset.index);
-    });
+		let idx=0, timer=null, playing=true;
+		const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    render(0); start();
-
-
-
-
-	    // ---------- Rotator ----------
-    const slidekt = $('#slidekt'), titleEkt = $('#titlekt'), timeElkt = $('#timekt'), trackElkt = $('#trackkt');
-    const dotskt = $('#dotskt'); const nextBtnkt = $('#nextkt'); const prevBtnkt = $('#prevkt'); const playBtnkt = $('#playkt');
-
-    const dfragkt = document.createDocumentFragment();
-    KEYNOTETOPICS.forEach((itkt,j)=>{
-      const dkt=document.createElement('button');
-      dkt.className='dotkt'+(j===0?' active':'');
-      dkt.type='button';
-      dkt.setAttribute('aria-label',`Go to: ${itkt.titlekt}`);
-      dkt.dataset.index=j;
-      dfragkt.appendChild(dkt);
-    });
-    dotskt.appendChild(dfragkt);
-
-    let idxkt=0, timerkt=null, playingkt=true;
-    const reduceMotionkt = matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    function renderKeynoteTopics(j){
-      const itkt = KEYNOTETOPICS[j];
-      titleEkt.textContent = itkt.titlekt || '';
-      timeElkt.textContent = itkt.timekt || '';
-      trackElkt.textContent = itkt.trackkt || '';
-      if(!reduceMotionkt){
-        requestAnimationFrame(()=>{slidekt.classList.remove('show');requestAnimationFrame(()=>slidekt.classList.add('show'))});
-      }
-      $$('.dotkt',dotskt).forEach((dkt,kkt)=>dkt.classList.toggle('active',kkt===j));
-      idxkt=j;
-    }
-    const nextkt=()=>renderKeynoteTopics((idxkt+1)%KEYNOTETOPICS.length);
-    const prevkt=()=>renderKeynoteTopics((idxkt-1+KEYNOTETOPICS.length)%KEYNOTETOPICS.length);
-
-    function startkt(){
-      if(timerkt) clearInterval(timerkt);
-      if(!reduceMotionkt){ timerkt = setInterval(nextkt,5000); }
-      playingkt=true; if(playBtnkt) playBtnkt.textContent='⏸';
-    }
-    function stopkt(){
-      if(timerkt) clearInterval(timerkt);
-      timerkt=null; playingkt=false; if(playBtnkt) playBtnkt.textContent='▶';
-    }
-
-    nextBtnkt?.addEventListener('click',()=>{stopkt();nextkt()},{passive:true});
-    prevBtnkt?.addEventListener('click',()=>{stopkt();prevkt()},{passive:true});
-    playBtnkt?.addEventListener('click',()=> playing?stopkt():startkt());
-    slidekt.addEventListener('mouseenter',stopkt);
-    slidekt.addEventListener('mouseleave',startkt);
-
-    document.addEventListener('visibilitychange',()=> document.hidden?stopkt():startkt());
-    const iokt = new IntersectionObserver(([ekt])=>{ ekt.isIntersecting?startkt():stopkt(); }, {threshold:0.2});
-    iokt.observe(slidekt);
-
-    dotskt.addEventListener('click',ekt=>{
-      const tkt=ekt.target.closest('.dotkt');
-      if(!tkt) return; stopkt(); renderKeynoteTopics(+tkt.dataset.index);
-    });
-
-    renderKeynoteTopics(0); startkt();
-
-
-
-
-
-    // ---- Accommodations render
-    function renderHotels(list, sel){
-      const root = $(sel); if(!root) return;
-      const frag = document.createDocumentFragment();
-      list.forEach(h=>{
-        const el = document.createElement('article');
-        el.className = 'card hotel';
-        el.innerHTML = `
-          <div class="img"><img src="${h.img}" alt="${h.name}" loading="lazy" decoding="async"></div>
-          <div class="card-b">
-            <div class="name" style="font-weight:800">${h.name}</div>
-            <div class="title">${h.area} · ${h.time} · ${h.price}</div>
-            <div class="tags">${(h.perks||[]).map(p=>`<span class="tag">${p}</span>`).join('')}</div>
-            <div class="actions">
-              <a class="btn" href="${h.maps}" target="_blank" rel="noopener">Map</a>
-              <a class="btn outline" href="${h.web}" target="_blank" rel="noopener">Search/Book</a>
-            </div>
-          </div>`;
-        frag.appendChild(el);
-      });
-      root.appendChild(frag);
-    }
-    renderHotels(HOTELS, '#hotelGrid');
-	
-	
-	
-	fetch("https://ipapi.co/json/")
-	  .then(res => res.json())
-	  .then(data => {
-		if (data && data.country_name) {
-		  countrySelect.value = data.country_name;
-		  countrySelect.dispatchEvent(new Event("change"));
+		function render(i){
+		  const it = SUGGESTEDTHEMATICS[i];
+		  titleE.textContent = it.title || '';
+		  timeEl.textContent = it.time || '';
+		  trackEl.textContent = it.track || '';
+		  if(!reduceMotion){
+			requestAnimationFrame(()=>{slide.classList.remove('show');requestAnimationFrame(()=>slide.classList.add('show'))});
+		  }
+		  $$('.dot',dots).forEach((d,k)=>d.classList.toggle('active',k===i));
+		  idx=i;
 		}
-	})
-  .catch(() => console.log("Could not detect location"));
-  </script>
-</body>
+		const next=()=>render((idx+1)%SUGGESTEDTHEMATICS.length);
+		const prev=()=>render((idx-1+SUGGESTEDTHEMATICS.length)%SUGGESTEDTHEMATICS.length);
+
+		function start(){
+		  if(timer) clearInterval(timer);
+		  if(!reduceMotion){ timer = setInterval(next,5000); }
+		  playing=true; if(playBtn) playBtn.textContent='⏸';
+		}
+		function stop(){
+		  if(timer) clearInterval(timer);
+		  timer=null; playing=false; if(playBtn) playBtn.textContent='▶';
+		}
+
+		nextBtn?.addEventListener('click',()=>{stop();next()},{passive:true});
+		prevBtn?.addEventListener('click',()=>{stop();prev()},{passive:true});
+		playBtn?.addEventListener('click',()=> playing?stop():start());
+		slide.addEventListener('mouseenter',stop);
+		slide.addEventListener('mouseleave',start);
+
+		document.addEventListener('visibilitychange',()=> document.hidden?stop():start());
+		const io = new IntersectionObserver(([e])=>{ e.isIntersecting?start():stop(); }, {threshold:0.2});
+		io.observe(slide);
+
+		dots.addEventListener('click',e=>{
+		  const t=e.target.closest('.dot');
+		  if(!t) return; stop(); render(+t.dataset.index);
+		});
+
+		render(0); start();
+
+
+
+
+			// ---------- Rotator ----------
+		const slidekt = $('#slidekt'), titleEkt = $('#titlekt'), timeElkt = $('#timekt'), trackElkt = $('#trackkt');
+		const dotskt = $('#dotskt'); const nextBtnkt = $('#nextkt'); const prevBtnkt = $('#prevkt'); const playBtnkt = $('#playkt');
+
+		const dfragkt = document.createDocumentFragment();
+		KEYNOTETOPICS.forEach((itkt,j)=>{
+		  const dkt=document.createElement('button');
+		  dkt.className='dotkt'+(j===0?' active':'');
+		  dkt.type='button';
+		  dkt.setAttribute('aria-label',`Go to: ${itkt.titlekt}`);
+		  dkt.dataset.index=j;
+		  dfragkt.appendChild(dkt);
+		});
+		dotskt.appendChild(dfragkt);
+
+		let idxkt=0, timerkt=null, playingkt=true;
+		const reduceMotionkt = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+		function renderKeynoteTopics(j){
+		  const itkt = KEYNOTETOPICS[j];
+		  titleEkt.textContent = itkt.titlekt || '';
+		  timeElkt.textContent = itkt.timekt || '';
+		  trackElkt.textContent = itkt.trackkt || '';
+		  if(!reduceMotionkt){
+			requestAnimationFrame(()=>{slidekt.classList.remove('show');requestAnimationFrame(()=>slidekt.classList.add('show'))});
+		  }
+		  $$('.dotkt',dotskt).forEach((dkt,kkt)=>dkt.classList.toggle('active',kkt===j));
+		  idxkt=j;
+		}
+		const nextkt=()=>renderKeynoteTopics((idxkt+1)%KEYNOTETOPICS.length);
+		const prevkt=()=>renderKeynoteTopics((idxkt-1+KEYNOTETOPICS.length)%KEYNOTETOPICS.length);
+
+		function startkt(){
+		  if(timerkt) clearInterval(timerkt);
+		  if(!reduceMotionkt){ timerkt = setInterval(nextkt,5000); }
+		  playingkt=true; if(playBtnkt) playBtnkt.textContent='⏸';
+		}
+		function stopkt(){
+		  if(timerkt) clearInterval(timerkt);
+		  timerkt=null; playingkt=false; if(playBtnkt) playBtnkt.textContent='▶';
+		}
+
+		nextBtnkt?.addEventListener('click',()=>{stopkt();nextkt()},{passive:true});
+		prevBtnkt?.addEventListener('click',()=>{stopkt();prevkt()},{passive:true});
+		playBtnkt?.addEventListener('click',()=> playing?stopkt():startkt());
+		slidekt.addEventListener('mouseenter',stopkt);
+		slidekt.addEventListener('mouseleave',startkt);
+
+		document.addEventListener('visibilitychange',()=> document.hidden?stopkt():startkt());
+		const iokt = new IntersectionObserver(([ekt])=>{ ekt.isIntersecting?startkt():stopkt(); }, {threshold:0.2});
+		iokt.observe(slidekt);
+
+		dotskt.addEventListener('click',ekt=>{
+		  const tkt=ekt.target.closest('.dotkt');
+		  if(!tkt) return; stopkt(); renderKeynoteTopics(+tkt.dataset.index);
+		});
+
+		renderKeynoteTopics(0); startkt();
+
+
+		document.addEventListener("DOMContentLoaded", () => {
+			document.querySelectorAll(".scroll-list").forEach(list => {
+				const clone = list.cloneNode(true);
+				list.parentElement.appendChild(clone);
+			});
+		});
+
+
+		// ---- Accommodations render
+		function renderHotels(list, sel){
+		  const root = $(sel); if(!root) return;
+		  const frag = document.createDocumentFragment();
+		  list.forEach(h=>{
+			const el = document.createElement('article');
+			el.className = 'card hotel';
+			el.innerHTML = `
+			  <div class="img"><img src="${h.img}" alt="${h.name}" loading="lazy" decoding="async"></div>
+			  <div class="card-b">
+				<div class="name" style="font-weight:800">${h.name}</div>
+				<div class="title">${h.area} · ${h.time} · ${h.price}</div>
+				<div class="tags">${(h.perks||[]).map(p=>`<span class="tag">${p}</span>`).join('')}</div>
+				<div class="actions">
+				  <a class="btn" href="${h.maps}" target="_blank" rel="noopener">Map</a>
+				  <a class="btn outline" href="${h.web}" target="_blank" rel="noopener">Search/Book</a>
+				</div>
+			  </div>`;
+			frag.appendChild(el);
+		  });
+		  root.appendChild(frag);
+		}
+		renderHotels(HOTELS, '#hotelGrid');
+		
+		
+		
+		fetch("https://ipapi.co/json/")
+		  .then(res => res.json())
+		  .then(data => {
+			if (data && data.country_name) {
+			  countrySelect.value = data.country_name;
+			  countrySelect.dispatchEvent(new Event("change"));
+			}
+		})
+	  .catch(() => console.log("Could not detect location"));
+	  </script>
+	</body>
 </html>
