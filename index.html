@@ -626,130 +626,130 @@ The African Conference for Industrial and Applied Mathematics (ACIAM) returns in
       </div>
     </section>
 
-<!-- =========================
-VERTICAL AUTO-SCROLLING TOPICS — WITH SPACING
-========================= -->
-
-<!-- Suggested Thematic Tracks -->
-<section id="suggestedthematics" class="suggestedthematics">
-  <div class="container">
-    <h2>Suggested Thematic Tracks</h2>
-    <p class="muted" style="margin-top:8px">Quick inspiration for submissions & sessions.</p>
-
-    <div class="vertical-scroll">
-      <ul class="scroll-list">
-        <li>Mathematics for Climate Change Adaptation</li>
-        <li>Mathematical Modelling for Health and Medicine</li>
-        <li>Data Science and Artificial Intelligence in Africa</li>
-        <li>Mathematics for Sustainable Industry</li>
-        <li>Optimization and Control for Energy Systems</li>
-        <li>Mathematics Education and Capacity Building</li>
-        <li>Computational Mathematics and Simulation</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- Keynote Topics -->
-<section id="keynotetopics" class="keynotetopics">
-  <div class="container">
-    <h2>Keynote Topics</h2>
-    <p class="muted" style="margin-top:8px">Inspiring keynote directions for discussion.</p>
-
-    <div class="vertical-scroll">
-      <ul class="scroll-list">
-        <li>Mathematics for Resilient Futures</li>
-        <li>Bridging Mathematics and Industry</li>
-        <li>Mathematical Innovations in Health Systems</li>
-        <li>Mathematics for Climate and Environmental Solutions</li>
-        <li>The Role of Mathematics in Artificial Intelligence</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-
-<style>
-.vertical-scroll {
-  height: 300px; /* taller for better readability */
-  overflow: hidden;
-  position: relative;
-  background: #e9f9ec; /* pale green background */
-  border-radius: 15px;
-  margin-top: 25px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 10px 0;
-}
-
-.scroll-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  animation: scrollUp 25s linear infinite;
-}
-
-.scroll-list li {
-  padding: 20px 24px;
-  font-size: 1rem;
-  font-weight: 500;
-  background: #ffffff;
-  border-radius: 10px;
-  margin: 10px 18px; /* 👈 adds vertical space between items */
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
-  color: #2d4232;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-.scroll-list li:nth-child(even) {
-  background: #f3fbf5; /* slightly lighter for alternation */
-}
-
-/* Subtle hover effect for visual feedback */
-.scroll-list li:hover {
-  background: rgba(15,23,42,.04); /*#dff5e2;*/
+	<!-- =========================
+	VERTICAL AUTO-SCROLLING TOPICS — WITH SPACING
+	========================= -->
 	
-  transform: scale(1.02);
-}
-
-@keyframes scrollUp {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-50%);
-  }
-}
-
-/* Pause scroll on hover */
-.vertical-scroll:hover .scroll-list {
-  animation-play-state: paused;
-}
-
-/* Responsive styling */
-@media (max-width: 868px) {
-  .vertical-scroll {
-    height: 300px;
-  }
-  .scroll-list li {
-    font-size: 0.8rem;
-    padding: 16px 18px;
-    margin: 8px 12px;
-  }
-}
-</style>
-
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".scroll-list").forEach(list => {
-    const clone = list.cloneNode(true);
-    list.parentElement.appendChild(clone);
-  });
-});
-</script>
+	<!-- Suggested Thematic Tracks -->
+	<section id="suggestedthematics" class="suggestedthematics">
+	  <div class="container">
+	    <h2>Suggested Thematic Tracks</h2>
+	    <p class="muted" style="margin-top:8px">Quick inspiration for submissions & sessions.</p>
+	
+	    <div class="vertical-scroll">
+	      <ul class="scroll-list">
+	        <li>Mathematics for Climate Change Adaptation</li>
+	        <li>Mathematical Modelling for Health and Medicine</li>
+	        <li>Data Science and Artificial Intelligence in Africa</li>
+	        <li>Mathematics for Sustainable Industry</li>
+	        <li>Optimization and Control for Energy Systems</li>
+	        <li>Mathematics Education and Capacity Building</li>
+	        <li>Computational Mathematics and Simulation</li>
+	      </ul>
+	    </div>
+	  </div>
+	</section>
+	
+	<!-- Keynote Topics -->
+	<section id="keynotetopics" class="keynotetopics">
+	  <div class="container">
+	    <h2>Keynote Topics</h2>
+	    <p class="muted" style="margin-top:8px">Inspiring keynote directions for discussion.</p>
+	
+	    <div class="vertical-scroll">
+	      <ul class="scroll-list">
+	        <li>Mathematics for Resilient Futures</li>
+	        <li>Bridging Mathematics and Industry</li>
+	        <li>Mathematical Innovations in Health Systems</li>
+	        <li>Mathematics for Climate and Environmental Solutions</li>
+	        <li>The Role of Mathematics in Artificial Intelligence</li>
+	      </ul>
+	    </div>
+	  </div>
+	</section>
+	
+	
+	<style>
+	.vertical-scroll {
+	  height: 300px; /* taller for better readability */
+	  overflow: hidden;
+	  position: relative;
+	  background: #e9f9ec; /* pale green background */
+	  border-radius: 15px;
+	  margin-top: 25px;
+	  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	  padding: 10px 0;
+	}
+	
+	.scroll-list {
+	  list-style: none;
+	  margin: 0;
+	  padding: 0;
+	  animation: scrollUp 25s linear infinite;
+	}
+	
+	.scroll-list li {
+	  padding: 20px 24px;
+	  font-size: 1rem;
+	  font-weight: 500;
+	  background: #ffffff;
+	  border-radius: 10px;
+	  margin: 10px 18px; /* 👈 adds vertical space between items */
+	  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
+	  color: #2d4232;
+	  transition: transform 0.3s ease, background-color 0.3s ease;
+	}
+	
+	.scroll-list li:nth-child(even) {
+	  background: #f3fbf5; /* slightly lighter for alternation */
+	}
+	
+	/* Subtle hover effect for visual feedback */
+	.scroll-list li:hover {
+	  background: rgba(15,23,42,.04); /*#dff5e2;*/
+		
+	  transform: scale(1.02);
+	}
+	
+	@keyframes scrollUp {
+	  0% {
+	    transform: translateY(0);
+	  }
+	  100% {
+	    transform: translateY(-50%);
+	  }
+	}
+	
+	/* Pause scroll on hover */
+	.vertical-scroll:hover .scroll-list {
+	  animation-play-state: paused;
+	}
+	
+	/* Responsive styling */
+	@media (max-width: 868px) {
+	  .vertical-scroll {
+	    height: 300px;
+	  }
+	  .scroll-list li {
+	    font-size: 0.8rem;
+	    padding: 16px 18px;
+	    margin: 8px 12px;
+	  }
+	}
+	</style>
+	
+	
+	<script>
+	document.addEventListener("DOMContentLoaded", () => {
+	  document.querySelectorAll(".scroll-list").forEach(list => {
+	    const clone = list.cloneNode(true);
+	    list.parentElement.appendChild(clone);
+	  });
+	});
+	</script>
 
     <!-- Rotator -->
-    <section id="suggestedthematics" class="suggestedthematics">
+    <!--<section id="suggestedthematics" class="suggestedthematics">
       <div class="container">
         <h2>Suggested Thematic Tracks</h2>
         <p class="muted" style="margin-top:8px">Quick inspiration for submissions & sessions.</p>
@@ -767,11 +767,11 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         </div>
       </div>
-    </section>
+    </section>-->
 	
 	
 	<!-- Rotator -->
-    <section id="keynotetopics" class="keynotetopics">
+    <!--<section id="keynotetopics" class="keynotetopics">
       <div class="container">
         <h2>Keynote Topics</h2>
         <p class="muted" style="margin-top:8px">Quick inspiration for submissions & sessions.</p>
@@ -789,7 +789,7 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         </div>
       </div>
-    </section>
+    </section>-->
 	
 	
 	<!-- Sponsors -->
