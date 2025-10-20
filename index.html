@@ -423,8 +423,8 @@
 						</li>
 						<li><a href="#sponsorsbenefactors">Sponsors & Benefactors</a>
 							<ul role="menu" aria-label="Sponsors and Benefactors categories">
-								<li><a role="menuitem" href="#sponsors">Sponsors and Partners</a></li>
-								<li><a role="menuitem" href="#donators">Become a Donator</a></li>
+								<li><a role="menuitem" href="#sponsors" id="sponsorsandpartner">Sponsors and Partners</a></li>
+								<li><a role="menuitem" href="#donators" id="becomedonator">Become a Donator</a></li>
 							</ul>
 						</li>
 						<li><a href="#gallery">Gallery</a></li>
@@ -1236,127 +1236,6 @@
 		  }
 		});
 
-		// ---------- Rotator ----------
-		/*const slide = $('#slide'), titleE = $('#title'), timeEl = $('#time'), trackEl = $('#track');
-		const dots = $('#dots'); const nextBtn = $('#next'); const prevBtn = $('#prev'); const playBtn = $('#play');
-
-		const dfrag = document.createDocumentFragment();
-		SUGGESTEDTHEMATICS.forEach((it,i)=>{
-		  const d=document.createElement('button');
-		  d.className='dot'+(i===0?' active':'');
-		  d.type='button';
-		  d.setAttribute('aria-label',`Go to: ${it.title}`);
-		  d.dataset.index=i;
-		  dfrag.appendChild(d);
-		});
-		dots.appendChild(dfrag);
-
-		let idx=0, timer=null, playing=true;
-		const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-		function render(i){
-		  const it = SUGGESTEDTHEMATICS[i];
-		  titleE.textContent = it.title || '';
-		  timeEl.textContent = it.time || '';
-		  trackEl.textContent = it.track || '';
-		  if(!reduceMotion){
-			requestAnimationFrame(()=>{slide.classList.remove('show');requestAnimationFrame(()=>slide.classList.add('show'))});
-		  }
-		  $$('.dot',dots).forEach((d,k)=>d.classList.toggle('active',k===i));
-		  idx=i;
-		}
-		const next=()=>render((idx+1)%SUGGESTEDTHEMATICS.length);
-		const prev=()=>render((idx-1+SUGGESTEDTHEMATICS.length)%SUGGESTEDTHEMATICS.length);
-
-		function start(){
-		  if(timer) clearInterval(timer);
-		  if(!reduceMotion){ timer = setInterval(next,5000); }
-		  playing=true; if(playBtn) playBtn.textContent='⏸';
-		}
-		function stop(){
-		  if(timer) clearInterval(timer);
-		  timer=null; playing=false; if(playBtn) playBtn.textContent='▶';
-		}
-
-		nextBtn?.addEventListener('click',()=>{stop();next()},{passive:true});
-		prevBtn?.addEventListener('click',()=>{stop();prev()},{passive:true});
-		playBtn?.addEventListener('click',()=> playing?stop():start());
-		slide.addEventListener('mouseenter',stop);
-		slide.addEventListener('mouseleave',start);
-
-		document.addEventListener('visibilitychange',()=> document.hidden?stop():start());
-		const io = new IntersectionObserver(([e])=>{ e.isIntersecting?start():stop(); }, {threshold:0.2});
-		io.observe(slide);
-
-		dots.addEventListener('click',e=>{
-		  const t=e.target.closest('.dot');
-		  if(!t) return; stop(); render(+t.dataset.index);
-		});
-
-		render(0); start();
-
-
-
-
-			// ---------- Rotator ----------
-		const slidekt = $('#slidekt'), titleEkt = $('#titlekt'), timeElkt = $('#timekt'), trackElkt = $('#trackkt');
-		const dotskt = $('#dotskt'); const nextBtnkt = $('#nextkt'); const prevBtnkt = $('#prevkt'); const playBtnkt = $('#playkt');
-
-		const dfragkt = document.createDocumentFragment();
-		KEYNOTETOPICS.forEach((itkt,j)=>{
-		  const dkt=document.createElement('button');
-		  dkt.className='dotkt'+(j===0?' active':'');
-		  dkt.type='button';
-		  dkt.setAttribute('aria-label',`Go to: ${itkt.titlekt}`);
-		  dkt.dataset.index=j;
-		  dfragkt.appendChild(dkt);
-		});
-		dotskt.appendChild(dfragkt);
-
-		let idxkt=0, timerkt=null, playingkt=true;
-		const reduceMotionkt = matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-		function renderKeynoteTopics(j){
-		  const itkt = KEYNOTETOPICS[j];
-		  titleEkt.textContent = itkt.titlekt || '';
-		  timeElkt.textContent = itkt.timekt || '';
-		  trackElkt.textContent = itkt.trackkt || '';
-		  if(!reduceMotionkt){
-			requestAnimationFrame(()=>{slidekt.classList.remove('show');requestAnimationFrame(()=>slidekt.classList.add('show'))});
-		  }
-		  $$('.dotkt',dotskt).forEach((dkt,kkt)=>dkt.classList.toggle('active',kkt===j));
-		  idxkt=j;
-		}
-		const nextkt=()=>renderKeynoteTopics((idxkt+1)%KEYNOTETOPICS.length);
-		const prevkt=()=>renderKeynoteTopics((idxkt-1+KEYNOTETOPICS.length)%KEYNOTETOPICS.length);
-
-		function startkt(){
-		  if(timerkt) clearInterval(timerkt);
-		  if(!reduceMotionkt){ timerkt = setInterval(nextkt,5000); }
-		  playingkt=true; if(playBtnkt) playBtnkt.textContent='⏸';
-		}
-		function stopkt(){
-		  if(timerkt) clearInterval(timerkt);
-		  timerkt=null; playingkt=false; if(playBtnkt) playBtnkt.textContent='▶';
-		}
-
-		nextBtnkt?.addEventListener('click',()=>{stopkt();nextkt()},{passive:true});
-		prevBtnkt?.addEventListener('click',()=>{stopkt();prevkt()},{passive:true});
-		playBtnkt?.addEventListener('click',()=> playing?stopkt():startkt());
-		slidekt.addEventListener('mouseenter',stopkt);
-		slidekt.addEventListener('mouseleave',startkt);
-
-		document.addEventListener('visibilitychange',()=> document.hidden?stopkt():startkt());
-		const iokt = new IntersectionObserver(([ekt])=>{ ekt.isIntersecting?startkt():stopkt(); }, {threshold:0.2});
-		iokt.observe(slidekt);
-
-		dotskt.addEventListener('click',ekt=>{
-		  const tkt=ekt.target.closest('.dotkt');
-		  if(!tkt) return; stopkt(); renderKeynoteTopics(+tkt.dataset.index);
-		});
-
-		renderKeynoteTopics(0); startkt();*/
-
 
 		document.addEventListener("DOMContentLoaded", () => {
 			document.querySelectorAll(".scroll-list").forEach(list => {
@@ -1366,6 +1245,14 @@
 		});
 
 
+		// ---------- donatorForm ----------
+		const donatorForm = $('#becomedonator');
+		donatorForm.addEventListener('submit', async (e)=>{
+		  e.preventDefault();
+
+			
+	    });
+		  
 		// ---- Accommodations render
 		function renderHotels(list, sel){
 		  const root = $(sel); if(!root) return;
