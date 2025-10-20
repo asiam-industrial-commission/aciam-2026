@@ -627,7 +627,7 @@ The African Conference for Industrial and Applied Mathematics (ACIAM) returns in
     </section>
 
 <!-- =========================
-VERTICAL AUTO-SCROLLING TOPICS
+VERTICAL AUTO-SCROLLING TOPICS — WITH SPACING
 ========================= -->
 
 <!-- Suggested Thematic Tracks -->
@@ -671,31 +671,43 @@ VERTICAL AUTO-SCROLLING TOPICS
 
 <style>
 .vertical-scroll {
-  height: 160px; /* visible area — adjust as needed */
+  height: 240px; /* taller for better readability */
   overflow: hidden;
   position: relative;
-  background: #f8f8f8;
-  border-radius: 10px;
-  margin-top: 20px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  background: #e9f9ec; /* pale green background */
+  border-radius: 15px;
+  margin-top: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
 }
 
 .scroll-list {
   list-style: none;
   margin: 0;
   padding: 0;
-  animation: scrollUp 15s linear infinite;
+  animation: scrollUp 25s linear infinite;
 }
 
 .scroll-list li {
-  padding: 12px 20px;
-  font-size: 1.1rem;
-  border-bottom: 1px solid #eee;
-  background: #fff;
+  padding: 20px 24px;
+  font-size: 1rem;
+  font-weight: 500;
+  background: #ffffff;
+  border-radius: 10px;
+  margin: 10px 18px; /* 👈 adds vertical space between items */
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
+  color: #2d4232;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .scroll-list li:nth-child(even) {
-  background: #f7f9ff;
+  background: #f3fbf5; /* slightly lighter for alternation */
+}
+
+/* Subtle hover effect for visual feedback */
+.scroll-list li:hover {
+  background: #dff5e2;
+  transform: scale(1.02);
 }
 
 @keyframes scrollUp {
@@ -703,13 +715,25 @@ VERTICAL AUTO-SCROLLING TOPICS
     transform: translateY(0);
   }
   100% {
-    transform: translateY(-50%); /* moves half the height, loops seamlessly */
+    transform: translateY(-50%);
   }
 }
 
-/* Optional hover pause */
+/* Pause scroll on hover */
 .vertical-scroll:hover .scroll-list {
   animation-play-state: paused;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  .vertical-scroll {
+    height: 200px;
+  }
+  .scroll-list li {
+    font-size: 0.8rem;
+    padding: 16px 18px;
+    margin: 8px 12px;
+  }
 }
 </style>
 
@@ -722,7 +746,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 </script>
-
 
     <!-- Rotator -->
     <section id="suggestedthematics" class="suggestedthematics">
