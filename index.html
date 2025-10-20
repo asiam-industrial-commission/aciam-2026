@@ -626,6 +626,103 @@ The African Conference for Industrial and Applied Mathematics (ACIAM) returns in
       </div>
     </section>
 
+<!-- =========================
+VERTICAL AUTO-SCROLLING TOPICS
+========================= -->
+
+<!-- Suggested Thematic Tracks -->
+<section id="suggestedthematics" class="suggestedthematics">
+  <div class="container">
+    <h2>Suggested Thematic Tracks</h2>
+    <p class="muted" style="margin-top:8px">Quick inspiration for submissions & sessions.</p>
+
+    <div class="vertical-scroll">
+      <ul class="scroll-list">
+        <li>Mathematics for Climate Change Adaptation</li>
+        <li>Mathematical Modelling for Health and Medicine</li>
+        <li>Data Science and Artificial Intelligence in Africa</li>
+        <li>Mathematics for Sustainable Industry</li>
+        <li>Optimization and Control for Energy Systems</li>
+        <li>Mathematics Education and Capacity Building</li>
+        <li>Computational Mathematics and Simulation</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Keynote Topics -->
+<section id="keynotetopics" class="keynotetopics">
+  <div class="container">
+    <h2>Keynote Topics</h2>
+    <p class="muted" style="margin-top:8px">Inspiring keynote directions for discussion.</p>
+
+    <div class="vertical-scroll">
+      <ul class="scroll-list">
+        <li>Mathematics for Resilient Futures</li>
+        <li>Bridging Mathematics and Industry</li>
+        <li>Mathematical Innovations in Health Systems</li>
+        <li>Mathematics for Climate and Environmental Solutions</li>
+        <li>The Role of Mathematics in Artificial Intelligence</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<style>
+.vertical-scroll {
+  height: 160px; /* visible area — adjust as needed */
+  overflow: hidden;
+  position: relative;
+  background: #f8f8f8;
+  border-radius: 10px;
+  margin-top: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.scroll-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  animation: scrollUp 15s linear infinite;
+}
+
+.scroll-list li {
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  border-bottom: 1px solid #eee;
+  background: #fff;
+}
+
+.scroll-list li:nth-child(even) {
+  background: #f7f9ff;
+}
+
+@keyframes scrollUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%); /* moves half the height, loops seamlessly */
+  }
+}
+
+/* Optional hover pause */
+.vertical-scroll:hover .scroll-list {
+  animation-play-state: paused;
+}
+</style>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".scroll-list").forEach(list => {
+    const clone = list.cloneNode(true);
+    list.parentElement.appendChild(clone);
+  });
+});
+</script>
+
 
     <!-- Rotator -->
     <section id="suggestedthematics" class="suggestedthematics">
