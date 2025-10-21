@@ -1046,7 +1046,7 @@
 		  const root = $(containerSel); if(!root) return;
 		  const fragTopic = document.createDocumentFragment();
 		  data.forEach(to=>{
-			const topi = document.createElement('topic');
+			const topi = document.createElement('div');
 			topi.className = cls;
 			topi.innerHTML = `
 			  <li>${to.titlekt||''}</li>`;
@@ -1060,7 +1060,7 @@
 		  const root = $(containerSel); if(!root) return;
 		  const fragThema = document.createDocumentFragment();
 		  data.forEach(tm=>{
-			const thema = document.createElement('thema');
+			const thema = document.createElement('div');
 			thema.className = cls;
 			thema.innerHTML = `
 			  <li>${tm.title||''}</li>`;
