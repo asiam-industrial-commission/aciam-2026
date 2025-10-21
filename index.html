@@ -711,7 +711,7 @@
 
 
 				<div class="vertical-scroll" aria-live="polite">
-					<ul class="scroll-list" id="scroll-list">
+					<ul class="scroll-list" id="scroll-list-kt">
 					</ul>
 				</div>
 			  </div>
@@ -729,7 +729,7 @@
 				<p class="muted" style="margin-top:8px">Quick inspiration for submissions & sessions.</p>
 			
 				<div class="vertical-scroll" aria-live="polite">
-				  <ul class="scroll-list">
+				  <ul class="scroll-list" id="scroll-list-st">
 <!--				<li>Mathematics for Climate Change Adaptation</li>
 					<li>Mathematical Modelling for Health and Medicine</li>
 					<li>Data Science and Artificial Intelligence in Africa</li>
@@ -1069,7 +1069,8 @@
 		renderCards(INVITEDSPEAKERS, '#invitedSpeakerGrid', 'card invitedspeaker');
 		renderCards(SPECIALSPEAKERS, '#specialSpeakerGrid', 'card specialspeaker');
 
-		renderTopicsThematics(KEYNOTETOPICS, '#scroll-list', 'scroll-list');
+		renderTopicsThematics(KEYNOTETOPICS, '#scroll-list-kt', 'scroll-list');
+		renderTopicsThematics(SUGGESTEDTHEMATICS, '#scroll-list-st', 'scroll-list');
 
 		// ---------- Gallery ----------
 		const galleryGrid = $('#galleryGrid');
