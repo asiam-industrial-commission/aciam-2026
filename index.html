@@ -715,9 +715,8 @@
 				<p class="muted" style="margin-top:8px">Inspiring keynote directions for discussion.</p>
 
 
-				<div class="vertical-scroll" aria-live="polite">
-					<ul class="scroll-list" id="scroll-list-kt">
-					</ul>
+				<div class="vertical-scroll" id="vertical-scroll-kt" aria-live="polite">
+
 				</div>
 			  </div>
 			</section>
@@ -733,9 +732,8 @@
 				<h2>Suggested Thematic Tracks</h2>
 				<p class="muted" style="margin-top:8px">Quick inspiration for submissions & sessions.</p>
 			
-				<div class="vertical-scroll" aria-live="polite">
-				  <ul class="scroll-list" id="scroll-list-st">
-				  </ul>
+				<div class="vertical-scroll" id="vertical-scroll-st" aria-live="polite">
+
 				</div>
 			  </div>
 			</section>
@@ -1046,7 +1044,7 @@
 		  const root = $(containerSel); if(!root) return;
 		  const fragTopic = document.createDocumentFragment();
 		  data.forEach(to=>{
-			const topi = document.createElement('div');
+			const topi = document.createElement('ul');
 			topi.className = cls;
 			topi.innerHTML = `
 			  <li>${to.titlekt||''}</li>`;
@@ -1060,7 +1058,7 @@
 		  const root = $(containerSel); if(!root) return;
 		  const fragThema = document.createDocumentFragment();
 		  data.forEach(tm=>{
-			const thema = document.createElement('div');
+			const thema = document.createElement('ul');
 			thema.className = cls;
 			thema.innerHTML = `
 			  <li>${tm.title||''}</li>`;
@@ -1082,8 +1080,8 @@
 		renderCards(INVITEDSPEAKERS, '#invitedSpeakerGrid', 'card invitedspeaker');
 		renderCards(SPECIALSPEAKERS, '#specialSpeakerGrid', 'card specialspeaker');
 
-		renderTopics(KEYNOTETOPICS, '#scroll-list-kt', 'scroll-list');
-		renderThematics(SUGGESTEDTHEMATICS, '#scroll-list-st', 'scroll-list');
+		renderTopics(KEYNOTETOPICS, '#vertical-scroll-kt', 'scroll-list');
+		renderThematics(SUGGESTEDTHEMATICS, '#vertical-scroll-st', 'scroll-list');
 
 		// ---------- Gallery ----------
 		const galleryGrid = $('#galleryGrid');
