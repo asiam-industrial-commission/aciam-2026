@@ -1024,12 +1024,12 @@
 		function renderThematics(data, containerSel, cls = 'scroll-list') {
   			const root = document.querySelector(containerSel);
   			if (!root || !Array.isArray(data) || !data.length) return;
-			 const fragTms = document.createDocumentFragment();
+			 const fragTms = document.createDocumentFragment('ul');
+			 const htmlTms = `${data.map(tm => `<li>${tm.title || ''}</li>`).join('')}`
   			// Build markup once (more efficient than multiple DOM appends)
-			const htmlTms = document.createElement();
-  			htmlTms.innerHTML = `<ul class="${cls}">
+  			/*const htmlTms = `<ul class="${cls}">
     			${data.map(tm => `<li>${tm.title || ''}</li>`).join('')}
-  			</ul>`;
+  			</ul>`;*/
 			fragTms.appendChild(htmlTms);
   			//root.insertAdjacentHTML('beforeend', html);
 		}
