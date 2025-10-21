@@ -1046,11 +1046,11 @@
 		function renderTopicsThematics(data, containerSel, cls='scroll-list'){
 		  const root = $(containerSel); if(!root) return;
 		  const fragTopic = document.createDocumentFragment();
-		  data.forEach(s=>{
+		  data.forEach(tt=>{
 			const topi = document.createElement('topic');
 			topi.className = cls;
 			topi.innerHTML = `
-			  <li>Mathematics for Resilient Futures</li>`;
+			  <li>${tt.title||''}</li>`;
 			fragTopic.appendChild(topi);
 		  });
 		  root.appendChild(fragTopic);
