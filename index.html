@@ -1029,7 +1029,7 @@
   			const htmlTms = `<ul class="${cls}">
     			${data.map(tm => `<li>${tm.title || ''}</li>`).join('')}
   			</ul>`;
-			fragTms.appendChild(htmlTms);
+			fragTms.insertAdjacentHTML(htmlTms);
   			//root.insertAdjacentHTML('beforeend', html);
 		}
 		  
