@@ -1022,15 +1022,15 @@
 		}
 
 		function renderThematics(data, containerSel, cls = 'scroll-list') {
-  const root = document.querySelector(containerSel);
-  if (!root || !Array.isArray(data) || !data.length) return;
-
-  // Build markup once (more efficient than multiple DOM appends)
-  const html = `<ul class="${cls}">
-    ${data.map(tm => `<li>${tm.title || ''}</li>`).join('')}
-  </ul>`;
-
-  root.insertAdjacentHTML('beforeend', html);
+  			const root = document.querySelector(containerSel);
+  			if (!root || !Array.isArray(data) || !data.length) return;
+			 const fragTms = document.createDocumentFragment();
+  			// Build markup once (more efficient than multiple DOM appends)
+  			const htmlTms = `<ul class="${cls}">
+    			${data.map(tm => `<li>${tm.title || ''}</li>`).join('')}
+  			</ul>`;
+			frag.appendChild(htmlTms);
+  			//root.insertAdjacentHTML('beforeend', html);
 		}
 		  
 
