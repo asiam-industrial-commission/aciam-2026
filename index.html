@@ -1045,10 +1045,12 @@
 		  const fragTopic = document.createDocumentFragment();
 		  const topi = document.createElement('ul');
 		  topi.className = cls;
-		  data.forEach(to=>{
-			topi.innerHTML = `
-			  <li>${to.titlekt||''}</li>`;
-		  });
+		  topi.innerHTML =
+			data.forEach(tm=>{
+				`
+				<li>${to.titlekt||''}</li>`
+			});
+		  ;
 		  fragTopic.appendChild(topi);
 		  root.appendChild(fragTopic);
 		}
@@ -1059,10 +1061,12 @@
 		  const fragThema = document.createDocumentFragment();
 		  const thema = document.createElement('ul');
 		  thema.className = cls;
-		  data.forEach(tm=>{
-			thema.innerHTML = `
-			  <li>${tm.title||''}</li>`;
-		  });
+		  thema.innerHTML =
+			data.forEach(tm=>{
+				`
+				<li>${tm.title||''}</li>`
+			});
+		  ;
 		  fragThema.appendChild(thema);
 		  root.appendChild(fragThema);
 		}
