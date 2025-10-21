@@ -708,8 +708,15 @@
 			  <div class="container">
 				<h2>Keynote Topics</h2>
 				<p class="muted" style="margin-top:8px">Inspiring keynote directions for discussion.</p>
-			
+
+
 				<div class="vertical-scroll" aria-live="polite">
+					<ul class="scroll-list">
+					</ul>
+				</div>
+
+				  
+				<!--<div class="vertical-scroll" aria-live="polite">
 				  <ul class="scroll-list">
 					<li>Mathematics for Resilient Futures</li>
 					<li>Bridging Mathematics and Industry</li>
@@ -717,7 +724,7 @@
 					<li>Mathematics for Climate and Environmental Solutions</li>
 					<li>The Role of Mathematics in Artificial Intelligence</li>
 				  </ul>
-				</div>
+				</div>-->
 			  </div>
 			</section>
 			
@@ -1045,6 +1052,21 @@
 		  root.appendChild(frag);
 		}
 
+
+		// ---------- Render helpers ----------
+		function renderTopicsThematics(data, containerSel, cls='scroll-list'){
+		  const root = $(containerSel); if(!root) return;
+		  const fragTopic = document.createDocumentFragment();
+		  data.forEach(s=>{
+			const topi = document.createElement('topic');
+			topi.className = cls;
+			topi.innerHTML = `
+			  <li>Mathematics for Resilient Futures</li>`;
+			fragTopic.appendChild(topi);
+		  });
+		  root.appendChild(fragTopic);
+		}
+
 		// Render sections
 		
 		renderPeopleList(LOCAL_COMMITTEE, '#localCommitteeGrid');
@@ -1057,6 +1079,8 @@
 		renderCards(PLENARYSPEAKERS, '#plenarySpeakerGrid', 'card plenaryspeaker');
 		renderCards(INVITEDSPEAKERS, '#invitedSpeakerGrid', 'card invitedspeaker');
 		renderCards(SPECIALSPEAKERS, '#specialSpeakerGrid', 'card specialspeaker');
+
+		renderTopicsThematics(SPECIALSPEAKERS, '#specialSpeakerGrid', 'scroll-list');
 
 		// ---------- Gallery ----------
 		const galleryGrid = $('#galleryGrid');
