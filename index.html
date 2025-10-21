@@ -1051,7 +1051,7 @@
 			 const fragTps = document.createDocumentFragment();
 			 const htmlTps = document.createElement('article');
 			 htmlTps.className = cls;
-			 htmlTps.innerHTML = `${data.map(tp => `<div class="titlekt">${tm.titlekt || ''}</div>`).join('')}`
+			 htmlTps.innerHTML = `${data.map(tp => `<div class="titlekt">${tp.titlekt || ''}</div>`).join('')}`
   	
 			fragTps.appendChild(htmlTps);
 			root.appendChild(fragTps);
