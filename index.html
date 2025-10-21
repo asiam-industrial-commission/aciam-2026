@@ -974,14 +974,26 @@
 		];
 		  
 		const SUGGESTEDTHEMATICS = [
-		  { title:"Climate modelling, hydrology, and water resources (groundwater, extreme events)" },
-		  { title:"Mathematical epidemiology, health systems modelling, and bio-mathematics" },
-		  { title:"Data-driven methods, machine learning for scientific computing, and uncertainty quantification" },
-		  { title:"Numerical analysis, fractional calculus, and advanced PDE methods" },
-		  { title:"Optimization, control, and operations research for industry & logistics" },
-		  { title:"High-performance computing, scalable algorithms, and computational infrastructure" },
-		  { title:"Materials, energy systems, and industrial mathematics (renewables, storage)" },
-		  { title:"Mathematics education, capacity building, and outreach in Africa" }
+		  { title:"Physics-Informed & Structure-Preserving Machine Learning" },
+		  { title:"Uncertainty Quantification & Probabilistic Numerics" },
+		  { title:"Scalable Inverse Problems & Imaging for Resource-Limited Settings" },
+		  { title:"Fractional & Nonlocal Models for Complex Media" },
+		  { title:"Data-Driven Digital Twins & Real-Time Decision Support" },
+		  { title:"Mathematical Approaches to Climate Resilience & Water Security" },
+		  { title:"Graph & Geometric Deep Learning for Physical Systems" },
+		  { title:"Multiscale & Multiphysics Modeling: Bridging Scales Efficiently" },
+		  { title:"Optimization under Constraints, Robust & Distributionally-Robust Optimization." },
+		  { title:"Stochastic Modeling, Rare Events & Extreme Value Analysis" },
+		  { title:"Reinforcement Learning for Control of Physical Systems" },
+		  { title:"Explainable, Fair & Accountable AI in Engineering Applications" },
+		  { title:"High-Performance & Heterogeneous Computing for Scientific Simulations" },
+		  { title:"Inverse Design & Generative Models for Materials and Structures" },
+		  { title:"Mathematical Epidemiology & Agent-Based Models with Data " },
+		  { title:"Sparse & Adaptive Numerical Methods for Next-Gen Simulations" },
+		  { title:"Computational Finance & Risk Modeling with Machine Learning" },
+		  { title:"Quantum-Inspired Algorithms & Numerical Linear Algebra" },
+		  { title:"Mathematics of Networks: Resilience, Flow & Contagion" },
+		  { title:"Applied Topology & Geometric Methods for Complex Data" }
 		];
 		
 		const KEYNOTETOPICS = [
@@ -1020,6 +1032,7 @@
 		  root.appendChild(frag);
 		}
 
+		  // ---------- Render helpers ----------
 		function renderThematics(data, containerSel, cls = 'scroll-list') {
   			const root = document.querySelector(containerSel);
   			if (!root || !Array.isArray(data) || !data.length) return;
@@ -1030,6 +1043,18 @@
   	
 			fragTms.appendChild(htmlTms);
 			root.appendChild(fragTms);
+		}
+
+		function renderTopics(data, containerSel, cls = 'scroll-list') {
+  			const root = document.querySelector(containerSel);
+  			if (!root || !Array.isArray(data) || !data.length) return;
+			 const fragTps = document.createDocumentFragment();
+			 const htmlTps = document.createElement('article');
+			 htmlTps.className = cls;
+			 htmlTps.innerHTML = `${data.map(tp => `<div class="titlekt">${tm.titlekt || ''}</div>`).join('')}`
+  	
+			fragTps.appendChild(htmlTps);
+			root.appendChild(fragTps);
 		}
 		  
 
@@ -1096,7 +1121,7 @@
 		renderCards(INVITEDSPEAKERS, '#invitedSpeakerGrid', 'card invitedspeaker');
 		renderCards(SPECIALSPEAKERS, '#specialSpeakerGrid', 'card specialspeaker');
 
-		//renderTopics(KEYNOTETOPICS, '#vertical-scroll-kt', 'scroll-list');
+		renderTopics(KEYNOTETOPICS, '#vertical-scroll-kt', 'scroll-list');
 		renderThematics(SUGGESTEDTHEMATICS, '#vertical-scroll-st', 'scroll-list');
 
 		// ---------- Gallery ----------
