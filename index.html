@@ -1026,6 +1026,7 @@
   			if (!root || !Array.isArray(data) || !data.length) return;
 			 const fragTms = document.createDocumentFragment();
 			 const htmlTms = document.createElement('ul');
+			 htmlTms.className = cls;
 			 htmlTms.innerHTML = `${data.map(tm => `<li>${tm.title || ''}</li>`).join('')}`
   			// Build markup once (more efficient than multiple DOM appends)
   			/*const htmlTms = `<ul class="${cls}">
