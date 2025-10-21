@@ -1043,9 +1043,9 @@
 		function renderTopics(data, containerSel, cls='scroll-list'){
 		  const root = $(containerSel); if(!root) return;
 		  const fragTopic = document.createDocumentFragment();
+		  const topi = document.createElement('ul');
+		  topi.className = cls;
 		  data.forEach(to=>{
-			const topi = document.createElement('ul');
-			topi.className = cls;
 			topi.innerHTML = `
 			  <li>${to.titlekt||''}</li>`;
 			fragTopic.appendChild(topi);
@@ -1057,9 +1057,9 @@
 		function renderThematics(data, containerSel, cls='scroll-list'){
 		  const root = $(containerSel); if(!root) return;
 		  const fragThema = document.createDocumentFragment();
+		  const thema = document.createElement('ul');
+		  thema.className = cls;
 		  data.forEach(tm=>{
-			const thema = document.createElement('ul');
-			thema.className = cls;
 			thema.innerHTML = `
 			  <li>${tm.title||''}</li>`;
 			  fragThema.appendChild(thema);
