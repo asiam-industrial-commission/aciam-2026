@@ -1,1 +1,248 @@
 
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ACIAM 2026 — Mathematics for Resilient Futures</title>
+<meta name="description" content="ACIAM 2026 — Mathematics for Resilient Futures: Climate, Health & Industry." />
+<meta name="theme-color" content="#0B6B4F" />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+
+<style>
+/* === Root === */
+:root {
+  --ink:#0F172A; --muted:#5B647A; --brand:#0B6B4F; --paper:#fff;
+  --bg-top:#FAFBF7; --bg-bottom:#E9F7F1; --cta:var(--brand); --cta-ink:#fff;
+  --line:rgba(15,23,42,.12); --radius:16px; --ring:0 0 0 3px rgba(11,107,79,.25);
+  --flip-h:120px; --flip-fs:54px; --flip-min:140px;
+}
+
+/* === Base === */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial;
+  color:var(--ink); background:linear-gradient(180deg,var(--bg-top),var(--bg-bottom));
+  min-height:100vh; overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:none;box-shadow:var(--ring)}
+
+/* === Decorative background === */
+body::before{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:url("https://upload.wikimedia.org/wikipedia/commons/9/9e/Burkina_Faso_location_map.svg") no-repeat center/contain;
+  opacity:.08;
+}
+
+/* === Containers === */
+.container{max-width:1100px;margin:auto;padding:0 20px}
+.section{padding:56px 0}
+
+/* === Buttons === */
+.btn{
+  display:inline-block;background:var(--cta);color:var(--cta-ink);
+  padding:10px 16px;border-radius:10px;font-weight:700;border:0;cursor:pointer;
+  transition:filter .3s;
+}
+.btn:hover{filter:brightness(1.05)}
+.btn.outline{background:#fff;color:var(--ink);border:1px solid var(--line)}
+
+/* === Layout grid === */
+.grid{display:grid;gap:48px}
+.two{grid-template-columns:1fr}
+@media(min-width:900px){.two{grid-template-columns:1.1fr .9fr}}
+
+/* === Header === */
+header{
+  position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);
+  backdrop-filter:blur(6px);border-bottom:1px solid rgba(15,23,36,.08)
+}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+.brand{font-family:"Merriweather",serif;font-weight:700;font-size:16px;color:var(--brand)}
+nav ul{list-style:none;display:flex;gap:18px}
+nav li{position:relative}
+nav a{color:var(--muted);font-weight:600}
+nav a:hover{color:var(--ink)}
+nav li ul{
+  display:none;position:absolute;top:100%;left:0;background:#fff;
+  border:1px solid var(--line);border-radius:var(--radius);padding:8px 0;
+  min-width:180px;box-shadow:0 4px 12px rgba(0,0,0,.1)
+}
+nav li:hover>ul{display:block}
+nav li ul a{display:block;padding:8px 14px}
+nav li ul a:hover{background:rgba(15,23,42,.04)}
+
+/* === Hero slideshow === */
+.hero2{
+  position:relative;width:100%;height:100vh;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;
+}
+.hero2 img{
+  position:absolute;width:100%;height:100%;object-fit:cover;opacity:0;
+  transition:opacity 1s ease-in-out;
+}
+.hero2 img.active{opacity:1}
+.overlay{
+  position:absolute;inset:0;background:rgba(0,0,0,0.45);
+}
+.hero2-content{position:relative;z-index:2}
+.hero2-content h1{font-size:3rem;font-family:"Merriweather",serif;letter-spacing:2px;margin-bottom:20px;text-transform:uppercase}
+.hero2-buttons{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
+.hero2-buttons a{
+  background:#d32f2f;color:#fff;padding:14px 32px;border-radius:6px;font-weight:600;transition:.3s;
+}
+.hero2-buttons a:hover{background:#b71c1c}
+@media(max-width:768px){.hero2-content h1{font-size:2.2rem}}
+
+/* === Cards and sections === */
+.card{
+  background:var(--paper);border:1px solid var(--line);
+  border-radius:var(--radius);box-shadow:0 6px 24px rgba(16,24,40,.06);
+}
+.card-b{padding:16px 20px}
+.name{font-weight:700}
+.title{font-size:14px;color:var(--muted)}
+.muted{color:var(--muted)}
+h2{font-family:"Merriweather",serif;margin-bottom:8px}
+
+/* === Scrolling lists === */
+.vertical-scroll{
+  height:580px;overflow:auto;background:#e9f9ec;border-radius:15px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);padding:10px 0;margin-top:25px;
+}
+.scroll-list{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));
+  gap:18px;margin-top:18px;
+}
+.scroll-list li{
+  background:#fff;border-radius:10px;padding:20px 24px;
+  font-size:1rem;font-weight:500;box-shadow:0 3px 8px rgba(0,0,0,.06);
+  color:#2d4232;transition:.3s;
+}
+.scroll-list li:nth-child(even){background:#f3fbf5}
+.scroll-list li:hover{background:rgba(15,23,42,.04);transform:scale(1.02)}
+
+/* === Footer === */
+footer{
+  border-top:1px solid var(--line);padding:24px 0;
+  color:var(--muted);text-align:center;
+}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="container nav">
+    <div class="brand">ACIAM 2026</div>
+    <nav>
+      <ul>
+        <li><a href="#aim">About</a></li>
+        <li><a href="#speakers">Speakers</a></li>
+        <li><a href="#register">Register</a></li>
+      </ul>
+    </nav>
+    <a href="#register" class="btn">Register</a>
+  </div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="hero2">
+    <img src="./images/Workshop_1_ACIAM_2024.jpeg" class="active" alt="">
+    <img src="./images/Workshop_2_ACIAM_2024.jpeg" alt="">
+    <div class="overlay"></div>
+    <div class="hero2-content">
+      <h1>ACIAM 2026 Burkina Faso</h1>
+      <div class="hero2-buttons"><a href="#register">Register</a></div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="aim" class="section">
+    <div class="container">
+      <h2>Welcome to ACIAM 2026</h2>
+      <p class="muted">
+        Africa is inventing its future — fast, bold and resolute.
+        ACIAM 2026 celebrates mathematics as the spark that lights this transformation...
+      </p>
+    </div>
+  </section>
+
+  <!-- Speakers -->
+  <section id="speakers" class="section">
+    <div class="container">
+      <h2>Speakers</h2>
+      <div id="speakersGrid" class="grid two"></div>
+    </div>
+  </section>
+
+  <!-- Topics -->
+  <section id="topics" class="section">
+    <div class="container">
+      <h2>Keynote Topics</h2>
+      <div class="vertical-scroll">
+        <ul class="scroll-list" id="scroll-list-kt"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Registration -->
+  <section id="register" class="section">
+    <div class="container">
+      <h2>Register</h2>
+      <form id="regForm" novalidate>
+        <input name="firstName" placeholder="First name" required />
+        <input name="email" type="email" placeholder="Email" required />
+        <button class="btn" type="submit">Confirm Registration</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © <span id="year"></span> ACIAM 2026 · All rights reserved
+</footer>
+
+<script>
+// === Utilities ===
+const $ = s=>document.querySelector(s);
+$('#year').textContent = new Date().getFullYear();
+
+// === Hero slideshow ===
+const slides = document.querySelectorAll('.hero2 img');
+let current = 0;
+setInterval(()=>{
+  slides[current].classList.remove('active');
+  current = (current+1)%slides.length;
+  slides[current].classList.add('active');
+},5000);
+
+// === Simple list render ===
+const KEYNOTETOPICS = [
+  {title:"Physics-Informed AI for Scientific Discovery"},
+  {title:"Mathematics of Climate Resilience & Water Security"},
+  {title:"Next-Gen High-Performance Computing for Africa"}
+];
+const list = $('#scroll-list-kt');
+KEYNOTETOPICS.forEach(t=>{
+  const li=document.createElement('li');
+  li.textContent=t.title;
+  list.appendChild(li);
+});
+
+// === Form handler ===
+$('#regForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  alert('Thank you for registering for ACIAM 2026!');
+  e.target.reset();
+});
+</script>
+</body>
+</html>
