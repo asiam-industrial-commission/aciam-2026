@@ -1053,7 +1053,7 @@
 
 
 		// ---------- Render helpers ----------
-		function renderTopics(data, containerSel, cls='scroll-list'){
+		/*function renderTopics(data, containerSel, cls='scroll-list'){
 		  const root = $(containerSel); if(!root) return;
 		  const fragTopic = document.createDocumentFragment();
 		  const topi = document.createElement('ul');
@@ -1066,10 +1066,10 @@
 		  ;
 		  fragTopic.appendChild(topi);
 		  root.appendChild(fragTopic);
-		}
+		}*/
 
 		// ---------- Render helpers ----------
-		function renderThematicsOld(data, containerSel, cls='scroll-list'){
+		/*function renderThematicsOld(data, containerSel, cls='scroll-list'){
 		  const root = $(containerSel); if(!root) return;
 		  const fragThema = document.createDocumentFragment();
 		  const thema = document.createElement('ul');
@@ -1082,7 +1082,7 @@
 		  ;
 		  fragThema.appendChild(thema);
 		  root.appendChild(fragThema);
-		}
+		}*/
 
 		// Render sections
 		
@@ -1097,7 +1097,7 @@
 		renderCards(INVITEDSPEAKERS, '#invitedSpeakerGrid', 'card invitedspeaker');
 		renderCards(SPECIALSPEAKERS, '#specialSpeakerGrid', 'card specialspeaker');
 
-		renderTopics(KEYNOTETOPICS, '#vertical-scroll-kt', 'scroll-list');
+		//renderTopics(KEYNOTETOPICS, '#vertical-scroll-kt', 'scroll-list');
 		renderThematics(SUGGESTEDTHEMATICS, '#vertical-scroll-st', 'scroll-list');
 
 		// ---------- Gallery ----------
