@@ -232,7 +232,7 @@
 
 	.vertical-scroll {
 
-			height: 500px; /* taller for better readability */
+			height: 580px; /* taller for better readability */
 			  overflow: auto;
 			  position: relative;
 			  background: #e9f9ec; /* pale green background */
@@ -245,9 +245,9 @@
 			.scroll-list {
 			
 			  display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:18px;margin-top:18px;
-			  list-style: none;
+			  /*list-style: none;
 			  margin: 0;
-			  padding: 0;
+			  padding: 0;*/
 			  /*animation: scrollUp 25s linear infinite;*/
 			}
 
@@ -290,9 +290,9 @@
 			}
 			
 			/* Responsive styling */
-			@media (max-width: 908px) {
+			@media (max-width: 868px) {
 			  .vertical-scroll {
-				height: 500px;
+				height: 580px;
 			  }
 			  .scroll-list li {
 				font-size: 0.8rem;
