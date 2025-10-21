@@ -730,13 +730,6 @@
 			
 				<div class="vertical-scroll" aria-live="polite">
 				  <ul class="scroll-list" id="scroll-list-st">
-<!--				<li>Mathematics for Climate Change Adaptation</li>
-					<li>Mathematical Modelling for Health and Medicine</li>
-					<li>Data Science and Artificial Intelligence in Africa</li>
-					<li>Mathematics for Sustainable Industry</li>
-					<li>Optimization and Control for Energy Systems</li>
-					<li>Mathematics Education and Capacity Building</li>
-					<li>Computational Mathematics and Simulation</li> -->	
 				  </ul>
 				</div>
 			  </div>
@@ -1043,17 +1036,31 @@
 
 
 		// ---------- Render helpers ----------
-		function renderTopicsThematics(data, containerSel, cls='scroll-list'){
+		function renderTopics(data, containerSel, cls='scroll-list'){
 		  const root = $(containerSel); if(!root) return;
 		  const fragTopic = document.createDocumentFragment();
-		  data.forEach(tt=>{
+		  data.forEach(to=>{
 			const topi = document.createElement('topic');
 			topi.className = cls;
 			topi.innerHTML = `
-			  <li>${tt.titlekt||''}</li>`;
+			  <li>${to.titlekt||''}</li>`;
 			fragTopic.appendChild(topi);
 		  });
 		  root.appendChild(fragTopic);
+		}
+
+		// ---------- Render helpers ----------
+		function renderThematics(data, containerSel, cls='scroll-list'){
+		  const root = $(containerSel); if(!root) return;
+		  const fragThema = document.createDocumentFragment();
+		  data.forEach(tm=>{
+			const thema = document.createElement('thema');
+			thema.className = cls;
+			thema.innerHTML = `
+			  <li>${tm.title||''}</li>`;
+			  fragThema.appendChild(thema);
+		  });
+		  root.appendChild(fragThema);
 		}
 
 		// Render sections
@@ -1069,8 +1076,8 @@
 		renderCards(INVITEDSPEAKERS, '#invitedSpeakerGrid', 'card invitedspeaker');
 		renderCards(SPECIALSPEAKERS, '#specialSpeakerGrid', 'card specialspeaker');
 
-		renderTopicsThematics(KEYNOTETOPICS, '#scroll-list-kt', 'scroll-list');
-		renderTopicsThematics(SUGGESTEDTHEMATICS, '#scroll-list-st', 'scroll-list');
+		renderTopics(KEYNOTETOPICS, '#scroll-list-kt', 'scroll-list');
+		renderThematics(SUGGESTEDTHEMATICS, '#scroll-list-st', 'scroll-list');
 
 		// ---------- Gallery ----------
 		const galleryGrid = $('#galleryGrid');
