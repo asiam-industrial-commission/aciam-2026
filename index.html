@@ -393,6 +393,7 @@
     .international-committee-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin-top:18px}
 	.committee .card .name{font-weight:800}
   </style>
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
 </head>
 	<body>
 		<a id="top" tabindex="-1"></a>
@@ -1303,6 +1304,20 @@
 			  selectedCountry = "NonAfrican";
 			  renderIBAN(IBAN, "#ibanNonAfricanId");
 			}
+
+
+			Email.send({
+                Host: "mail.aciam-bf206.com", /*smtp.yourisp.com",*/
+                Username: "info@aciam-bf2026.com",
+                Password: "burkina@4321",
+                To: "${email}",
+                From: "tzrocky@yahoo.fr",
+                Subject: "Test Email",
+                Body: "This is a test email sent using SMTP.js"
+            })
+            .then(function (message) {
+                alert("Mail sent successfully") // Alert message on successful email delivery
+            });
 			
 		  });
 		});
