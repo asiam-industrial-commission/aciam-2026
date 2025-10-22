@@ -689,14 +689,16 @@
 					<div id="successAfricanCondition" class="success" hidden>
 					  <h3>Thank you! 🎉</h3>
 					  <p class="muted">Your registration has been recorded. We will get back to you very soon.</p>
-					  <p class="muted">Please finalize your reservation by transferring $50 to the following IBAN: ${IBAN}</p>
+					  <p class="muted">Please finalize your reservation by transferring $50 to the following IBAN: </p>
+					  <p class="muted" id="ibanId"></p>
 					  <p style="margin-top:14px"><a class="btn" href="/aciam-2026/index.html">Back to top</a></p>
 					</div>
 					
 					<div id="successNonAfricanCondition" class="success" hidden>
 					  <h3>Thank you! 🎉</h3>
 					  <p class="muted">Your registration has been recorded. We will get back to you very soon. </p>
-					  <p class="muted">Please finalize your reservation by transferring $500 to the following IBAN: ${IBAN}</p>
+					  <p class="muted">Please finalize your reservation by transferring $500 to the following IBAN:</p>
+					  <p class="muted" id="ibanId"></p>
 					  <p style="margin-top:14px"><a class="btn" href="/aciam-2026/index.html">Back to top</a></p>
 					</div>
 				  </div>
@@ -975,6 +977,13 @@
 		  { src:'https://aciam-bf2026.com/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-17-at-08.16.52-scaled.jpeg', alt:'Panel discussion' },
 		  { src:'https://aciam-bf2026.com/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-19-at-07.26.19.jpeg', alt:'Audience in auditorium' }
 		];
+
+		const IBAN = [
+		  { key:'Bank', value:'NEDBANK' },
+		  { key:'Account_Number', value:'1310137943' },
+		  { key:'Branch_Code', value:'198765' },
+		  { key:'Swift_Code_BIC', value:'NEDSZAJJ' }
+		];
 		  
 		const SUGGESTEDTHEMATICS = [
 		  { title:"Physics-Informed & Structure-Preserving Machine Learning" },
@@ -1076,6 +1085,18 @@
 			frag.appendChild(el);
 		  });
 		  root.appendChild(frag);
+		}
+
+		 // ---------- Render helpers ----------
+		function renderIBAN(data, containerSel) {
+  			const root = document.querySelector(containerSel);
+  			if (!root || !Array.isArray(data) || !data.length) return;
+			 const fragIban = document.createDocumentFragment();
+			 const htmlIban = document.createElement('div');
+			 htmlIban.innerHTML = `${data.map(ib => `<div class="title">${ib.key || ''} : ${ib.value || ''}</div>`).join('')}`
+  	
+			fragTms.appendChild(htmlIban);
+			root.appendChild(fragIban);
 		}
 
 
@@ -1270,7 +1291,7 @@
 			  message.textContent = "";
 			  return;
 			}
-
+			
 			if (africanCountries.includes(selected)) {
 			  /* message.textContent = `🌍 Welcome! ${selected} is an African country.`;
 			  message.style.color = "green";*/
@@ -1280,6 +1301,7 @@
 			  message.style.color = "gray";*/
 			  selectedCountry = "NonAfrican"
 			}
+			renderIBAN(IBAN, "#ibanId");
 		  });
 		});
 
