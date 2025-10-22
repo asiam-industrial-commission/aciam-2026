@@ -1357,13 +1357,13 @@ function amountFromCriteria(dataOptions, optionName, isAfrican) {
 			//formWrap.hidden=true; success.hidden=false; form.reset();
 			
 			if (selectedCountry == "African") {
+			  renderAmountFromCriteria(TICKETOPTIONS, optionType.value, true);
 			  formWrap.hidden=true; successAfricanCondition.hidden=false; form.reset();
 			   //const amountAfrican = amountFromCriteria(TICKETOPTIONS, optionType.value, true);
-			   renderAmountFromCriteria(TICKETOPTIONS, optionType.value, true);
 			} else {
+			  renderAmountFromCriteria(TICKETOPTIONS, "#amountNonAfrican", optionType.value, false);
 			  formWrap.hidden=true; successNonAfricanCondition.hidden=false; form.reset();
 			  //const amountNonAfrican = amountFromCriteria(TICKETOPTIONS, "#amountAfrican", optionType.value, false);
-				renderAmountFromCriteria(TICKETOPTIONS, "#amountNonAfrican", optionType.value, false);
 			}
 
 			
