@@ -1346,10 +1346,10 @@ function amountFromCriteria(dataOptions, optionName, isAfrican) {
 			
 			if (selectedCountry == "African") {
 			  formWrap.hidden=true; successAfricanCondition.hidden=false; form.reset();
-			  amount = amountFromCriteria(TICKETOPTIONS, optionType, true);
+			  amount = amountFromCriteria(TICKETOPTIONS, optionType.value, true);
 			} else {
 			  formWrap.hidden=true; successNonAfricanCondition.hidden=false; form.reset();
-			  amount = amountFromCriteria(TICKETOPTIONS, optionType, false);
+			  amount = amountFromCriteria(TICKETOPTIONS, optionType.value, false);
 			}
 
 			
