@@ -1287,7 +1287,6 @@ function amountFromCriteria(dataOptions, optionName, isAfrican) {
 		document.addEventListener("DOMContentLoaded", () => {
 		 const countrySelect = document.getElementById("country");
 		 const message = document.getElementById("message");
-		 const optionType = document.getElementById("ticket");
 
 		// List of African countries (simplified)
 		const africanCountries = [
@@ -1339,6 +1338,7 @@ function amountFromCriteria(dataOptions, optionName, isAfrican) {
 		
 		form.addEventListener('submit', async (e)=>{
 		  e.preventDefault();
+		  const optionType = document.getElementById("ticket");
 		  if(!validate()) return;
 		  try{
 			console.log('Registration payload', Object.fromEntries(new FormData(form).entries()));
