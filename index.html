@@ -689,7 +689,7 @@
 					<div id="successAfricanCondition" class="success" hidden>
 					  <h3>Thank you! 🎉</h3>
 					  <p class="muted">Your registration has been recorded. We will get back to you very soon.</p>
-					  <p class="muted">Please finalize your reservation by transferring $50 to the following IBAN: </p>
+					  <p class="muted">Please finalize your reservation by transferring $50 to the following Account: </p>
 					  <p class="muted" id="ibanId"></p>
 					  <p style="margin-top:14px"><a class="btn" href="/aciam-2026/index.html">Back to top</a></p>
 					</div>
@@ -697,8 +697,8 @@
 					<div id="successNonAfricanCondition" class="success" hidden>
 					  <h3>Thank you! 🎉</h3>
 					  <p class="muted">Your registration has been recorded. We will get back to you very soon. </p>
-					  <p class="muted">Please finalize your reservation by transferring $500 to the following IBAN:</p>
-					  <p class="muted" id="ibanId"></p>
+					  <p class="muted">Please finalize your reservation by transferring $500 to the following Account:</p>
+					  <p class="muted" id="ibanNonAfricanId"></p>
 					  <p style="margin-top:14px"><a class="btn" href="/aciam-2026/index.html">Back to top</a></p>
 					</div>
 				  </div>
@@ -1295,13 +1295,15 @@
 			if (africanCountries.includes(selected)) {
 			  /* message.textContent = `🌍 Welcome! ${selected} is an African country.`;
 			  message.style.color = "green";*/
-			  selectedCountry = "African"
+			  selectedCountry = "African";
+			  renderIBAN(IBAN, "#ibanId");
 			} else {
 			  /* message.textContent = `${selected} is not in Africa.`;
 			  message.style.color = "gray";*/
-			  selectedCountry = "NonAfrican"
+			  selectedCountry = "NonAfrican";
+			  renderIBAN(IBAN, "#ibanNonAfricanId");
 			}
-			renderIBAN(IBAN, "#ibanId");
+			
 		  });
 		});
 
