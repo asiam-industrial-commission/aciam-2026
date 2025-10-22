@@ -1133,7 +1133,7 @@ function amountFromCriteria(dataOptions, optionName, isAfrican) {
 			 const fragAmount = document.createDocumentFragment();
 			 const htmlAmount = document.createElement('div');
 			  const finalAmount = amountFromCriteria(dataOptions, optionName, isAfrican)
-			 htmlAmount.innerHTML = `<div class="title">Please finalize your reservation by transferring ${finalAmount} to the following Account:</div>`
+			 htmlAmount.innerHTML = `<div class="title">Please finalize your reservation by transferring $ ${finalAmount} to the following Account:</div>`
 			fragAmount.appendChild(htmlAmount);
 			root.appendChild(fragAmount);
 		}
