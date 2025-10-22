@@ -1094,7 +1094,7 @@
   			if (!root || !Array.isArray(data) || !data.length) return;
 			 const fragIban = document.createDocumentFragment();
 			 const htmlIban = document.createElement('div');
-			 htmlIban.innerHTML = `${data.map(ib => `<div class="title">${ib.key || ''} :  <h3>${ib.value || ''}</h3></div>`).join('')}`
+			 htmlIban.innerHTML = `${data.map(ib => `<div class="title">${ib.key || ''} :  <b>${ib.value || ''}</b></div>`).join('')}`
   	
 			fragIban.appendChild(htmlIban);
 			root.appendChild(fragIban);
