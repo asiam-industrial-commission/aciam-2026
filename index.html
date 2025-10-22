@@ -1304,20 +1304,6 @@
 			  selectedCountry = "NonAfrican";
 			  renderIBAN(IBAN, "#ibanNonAfricanId");
 			}
-
-
-			Email.send({
-                Host: "mail.aciam-bf206.com", /*smtp.yourisp.com",*/
-                Username: "info@aciam-bf2026.com",
-                Password: "burkina@4321",
-                To: "${email}",
-                From: "tzrocky@yahoo.fr",
-                Subject: "Test Email",
-                Body: "This is a test email sent using SMTP.js"
-            })
-            .then(function (message) {
-                alert("Mail sent successfully") // Alert message on successful email delivery
-            });
 			
 		  });
 		});
@@ -1337,6 +1323,19 @@
 			} else {
 			  formWrap.hidden=true; successNonAfricanCondition.hidden=false; form.reset();
 			}
+
+			Email.send({
+                Host: "mail.aciam-bf206.com", /*smtp.yourisp.com",*/
+                Username: "info@aciam-bf2026.com",
+                Password: "burkina@4321",
+                To: "${email}",
+                From: "info@aciam-bf2026.com",
+                Subject: "Test Email",
+                Body: "This is a test email sent using SMTP.js"
+            })
+            .then(function (message) {
+                alert("Mail sent successfully") // Alert message on successful email delivery
+            });
 			
 		  }catch(err){
 			alert('Unable to submit the form. Please try again later.');
