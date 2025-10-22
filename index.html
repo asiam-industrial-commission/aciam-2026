@@ -656,8 +656,8 @@
 						  <label for="ticket">Ticket type</label>
 						  <select id="ticket" name="ticket" required>
 							<option value="standard">Standard (free)</option>
-							<option value="entreprise">Corporate</option>
-							<option value="etudiant">Student</option>
+							<option value="company">Corporate</option>
+							<option value="student">Student</option>
 						  </select>
 						</div>
 						<div>
@@ -690,7 +690,7 @@
 					<div id="successAfricanCondition" class="success" hidden>
 					  <h3>Thank you! 🎉</h3>
 					  <p class="muted">Your registration has been recorded. We will get back to you very soon.</p>
-					  <p class="muted">Please finalize your reservation by transferring ${amount} to the following Account: </p>
+					  <p class="muted">Please finalize your reservation by transferring ${amountAfrican} to the following Account: </p>
 					  <p class="muted" id="ibanId"></p>
 					  <p style="margin-top:14px"><a class="btn" href="/aciam-2026/index.html">Back to top</a></p>
 					</div>
@@ -698,7 +698,7 @@
 					<div id="successNonAfricanCondition" class="success" hidden>
 					  <h3>Thank you! 🎉</h3>
 					  <p class="muted">Your registration has been recorded. We will get back to you very soon. </p>
-					  <p class="muted">Please finalize your reservation by transferring ${amount} to the following Account:</p>
+					  <p class="muted">Please finalize your reservation by transferring ${amountNonAfrican} to the following Account:</p>
 					  <p class="muted" id="ibanNonAfricanId"></p>
 					  <p style="margin-top:14px"><a class="btn" href="/aciam-2026/index.html">Back to top</a></p>
 					</div>
@@ -1346,10 +1346,10 @@ function amountFromCriteria(dataOptions, optionName, isAfrican) {
 			
 			if (selectedCountry == "African") {
 			  formWrap.hidden=true; successAfricanCondition.hidden=false; form.reset();
-			  amount = amountFromCriteria(TICKETOPTIONS, optionType.value, true);
+			   const amountAfrican = amountFromCriteria(TICKETOPTIONS, optionType.value, true);
 			} else {
 			  formWrap.hidden=true; successNonAfricanCondition.hidden=false; form.reset();
-			  amount = amountFromCriteria(TICKETOPTIONS, optionType.value, false);
+			  const amountNonAfrican = amountFromCriteria(TICKETOPTIONS, optionType.value, false);
 			}
 
 			
