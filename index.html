@@ -608,108 +608,108 @@
 
 			<!-- Register -->
 			<section id="register" class="register">
-			  <div class="container grid two" style="align-items:flex-start">
-				<div>
-				  <h2>Register</h2>
-				  <p class="muted">Reserve your seat in seconds. A confirmation email will be sent to you.</p>
-				  <ul class="muted" style="margin-top:14px">
-					   <p class="muted">
-					   		<li>Limited seats</li>
-							<li>Free cancellation up to 7 days before</li>
-							<li>Corporate and student rates</li>
-					   </p>
-				  </ul>
-				  <p style="margin-top:10px"><a href="mailto:asiam.industrial.commission@gmail.com?subject=ACIAM%202026%20Registration">Or write to us ✉️</a></p>
-				</div>
-
-				<article class="card" style="width:100%">
-				  <div class="card-b">
-					<div id="formWrap">
-					  <form id="regForm" novalidate>
-						<div class="row two">
-						  <div>
-							<label for="firstName">First name</label>
-							<input id="firstName" name="firstName" autocomplete="given-name" placeholder="Alex" required />
-							<div class="error" data-error-for="firstName"></div>
-						  </div>
-						  <div>
-							<label for="lastName">Last name</label>
-							<input id="lastName" name="lastName" autocomplete="family-name" placeholder="Martin" required />
-							<div class="error" data-error-for="lastName"></div>
-						  </div>
-						</div>
-						<div>
-						  <label for="email">Email</label>
-						  <input id="email" name="email" type="email" inputmode="email" placeholder="alex@example.com" required />
-						  <div class="error" data-error-for="email"></div>
-						</div>
-						<div class="row two">
-						  <div>
-							<label for="company">Company</label>
-							<input id="company" name="company" placeholder="Acme Corp" />
-						  </div>
-						  <div>
-							<label for="role">Role / Position</label>
-							<input id="role" name="role" placeholder="Product Manager" />
-						  </div>
-						</div>
-						<div>
-						  <label for="ticket">Ticket type</label>
-						  <select id="ticket" name="ticket" required>
-							<option value="company">Corporate</option>
-							<option value="student">Student</option>
-							<option value="keynotespeaker">Keynote Speaker</option>
-							<option value="otherspeaker">Other Speaker</option>
-							<option value="otherparticipant">Other Participant</option>							  
-						  </select>
-						</div>
-						<div>
-							<label for="country">Country:</label>
-							<select id="country">
-							  <option value="">Select your country</option>
-							</select>
-						</div>
-						<div>
-						  <label for="message">Message (optional)</label>
-						  <textarea id="message" name="message" rows="4" placeholder="Accessibility needs, invoice, etc."></textarea>
-						</div>
-						<div class="consent">
-						  <input id="consent" name="consent" type="checkbox" required />
-						  <label for="consent" class="hint">I agree that my data will be used to manage the event, according to the privacy policy.</label>
-						</div>
-						<div class="error" data-error-for="consent"></div>
-
-						<button class="btn" type="submit">Confirm registration</button>
-						<p class="hint" style="text-align:center">You will receive a confirmation email.</p>
-					  </form>
+				<div class="container grid two" style="align-items:flex-start">
+					<div>
+						<h2>Register</h2>
+						<p class="muted">Reserve your seat in seconds. A confirmation email will be sent to you.</p>
+						<ul class="muted" style="margin-top:14px">
+							<p class="muted">
+								<li>Limited seats</li>
+								<li>Free cancellation up to 7 days before</li>
+								<li>Corporate and student rates</li>
+							</p>
+						</ul>
+						<p style="margin-top:10px"><a href="mailto:asiam.industrial.commission@gmail.com?subject=ACIAM%202026%20Registration">Or write to us ✉️</a></p>
 					</div>
 
-					<div id="success" class="success" hidden>
-					  <h3>Thank you! 🎉</h3>
-					  <p class="muted">Your registration has been recorded. We will get back to you very soon.</p>
-					  <p style="margin-top:14px"><a class="btn" href="#top">Back to top</a></p>
-					</div>
-					
-					<div id="successAfricanCondition" class="success" hidden>
-					  <h3>Thank you! 🎉</h3>
-					  <p class="muted">Your registration has been recorded. We will get back to you very soon.</p>
-					  <p class="muted" id="amountAfrican"></p><!--Please finalize your reservation by transferring ${amountAfrican} to the following Account: </p>-->
-					  <p class="muted" id="ibanId"></p>
-					  <p style="margin-top:14px"><a class="btn" href="#top">Back to top</a></p>
-					</div>
-					
-					<div id="successNonAfricanCondition" class="success" hidden>
-					  <h3>Thank you! 🎉</h3>
-					  <p class="muted">Your registration has been recorded. We will get back to you very soon. </p>
-					  <p class="muted" id="amountNonAfrican"></p><!--Please finalize your reservation by transferring ${amountNonAfrican} to the following Account:</p>-->
-					  <p class="muted" id="ibanNonAfricanId"></p>
-					  <p style="margin-top:14px"><a class="btn" href="#top">Back to top</a></p>
-					</div>
-					   <!-- PayPal button -->
-    				<div id="paypal-button-container" style="margin-top:24px;"></div>
+					<article class="card" style="width:100%">
+						<div class="card-b">
+							<div id="formWrap">
+								<form id="regForm" novalidate>
+									<div class="row two">
+										<div>
+											<label for="firstName">First name</label>
+											<input id="firstName" name="firstName" autocomplete="given-name" placeholder="Alex" required />
+											<div class="error" data-error-for="firstName"></div>
+										</div>
+										<div>
+											<label for="lastName">Last name</label>
+											<input id="lastName" name="lastName" autocomplete="family-name" placeholder="Martin" required />
+											<div class="error" data-error-for="lastName"></div>
+										</div>
+									</div>
+									<div>
+										<label for="email">Email</label>
+										<input id="email" name="email" type="email" inputmode="email" placeholder="alex@example.com" required />
+										<div class="error" data-error-for="email"></div>
+									</div>
+									<div class="row two">
+										<div>
+											<label for="company">Company</label>
+											<input id="company" name="company" placeholder="Acme Corp" />
+										</div>
+										<div>
+											<label for="role">Role / Position</label>
+											<input id="role" name="role" placeholder="Product Manager" />
+										</div>
+									</div>
+									<div>
+										<label for="ticket">Ticket type</label>
+										<select id="ticket" name="ticket" required>
+											<option value="company">Corporate</option>
+											<option value="student">Student</option>
+											<option value="keynotespeaker">Keynote Speaker</option>
+											<option value="otherspeaker">Other Speaker</option>
+											<option value="otherparticipant">Other Participant</option>							  
+										</select>
+									</div>
+									<div>
+										<label for="country">Country:</label>
+										<select id="country">
+										  <option value="">Select your country</option>
+										</select>
+									</div>
+									<div>
+										<label for="message">Message (optional)</label>
+										<textarea id="message" name="message" rows="4" placeholder="Accessibility needs, invoice, etc."></textarea>
+									</div>
+									<div class="consent">
+										<input id="consent" name="consent" type="checkbox" required />
+										<label for="consent" class="hint">I agree that my data will be used to manage the event, according to the privacy policy.</label>
+									</div>
+									<div class="error" data-error-for="consent"></div>
+
+									<button class="btn" type="submit">Confirm registration</button>
+									<p class="hint" style="text-align:center">You will receive a confirmation email.</p>
+								</form>
+							</div>
+
+							<div id="success" class="success" hidden>
+								<h3>Thank you! 🎉</h3>
+								<p class="muted">Your registration has been recorded. We will get back to you very soon.</p>
+								<p style="margin-top:14px"><a class="btn" href="#top">Back to top</a></p>
+							</div>
+						
+						<div id="successAfricanCondition" class="success" hidden>
+						  <h3>Thank you! 🎉</h3>
+						  <p class="muted">Your registration has been recorded. We will get back to you very soon.</p>
+						  <p class="muted" id="amountAfrican"></p><!--Please finalize your reservation by transferring ${amountAfrican} to the following Account: </p>-->
+						  <p class="muted" id="ibanId"></p>
+						  <p style="margin-top:14px"><a class="btn" href="#top">Back to top</a></p>
+						</div>
+						
+						<div id="successNonAfricanCondition" class="success" hidden>
+						  <h3>Thank you! 🎉</h3>
+						  <p class="muted">Your registration has been recorded. We will get back to you very soon. </p>
+						  <p class="muted" id="amountNonAfrican"></p><!--Please finalize your reservation by transferring ${amountNonAfrican} to the following Account:</p>-->
+						  <p class="muted" id="ibanNonAfricanId"></p>
+						  <p style="margin-top:14px"><a class="btn" href="#top">Back to top</a></p>
+						</div>
+						   <!-- PayPal button -->
+						<div id="paypal-button-container" style="margin-top:24px;"></div>
+					  </div>
+					</article>
 				  </div>
-				</article>
-			  </div>
 			</section>
 
 			<!-- =========================
@@ -773,11 +773,11 @@
 
 			<!-- Gallery -->
 			<section id="gallery" class="gallery">
-			  <div class="container">
-				<h2>Previous editions</h2>
-				<p class="muted">A look back at moments from past ACIAM events.</p>
-				<div class="gallery-grid" id="galleryGrid" aria-live="polite"></div>
-			  </div>
+				<div class="container">
+					<h2>Previous editions</h2>
+					<p class="muted">A look back at moments from past ACIAM events.</p>
+					<div class="gallery-grid" id="galleryGrid" aria-live="polite"></div>
+				</div>
 			</section>
 
 			<!-- Accommodations -->
@@ -785,50 +785,50 @@
 				<div class="container">
 					<h2>Accommodations in Ouagadougou</h2>
 					<p class="muted" style="margin-top:8px">
-					  Options near Université Joseph Ki-Zerbo and the city center. Times are typical taxi rides (traffic-dependent).
+						Options near Université Joseph Ki-Zerbo and the city center. Times are typical taxi rides (traffic-dependent).
 					</p>
 					<div class="hotel-grid" id="hotelGrid" aria-live="polite"></div>
 					<div style="margin-top:16px">
-					  <a class="btn outline" href="https://www.google.com/maps/search/?api=1&query=hotel+Ouagadougou" target="_blank" rel="noopener">Browse more on Google Maps</a>
+						<a class="btn outline" href="https://www.google.com/maps/search/?api=1&query=hotel+Ouagadougou" target="_blank" rel="noopener">Browse more on Google Maps</a>
 					</div>
 				</div>
 			</section>
 
 			<dialog id="lightbox" class="lightbox" aria-label="Image preview">
-			  <img alt="" id="lightboxImg" decoding="async" />
-			  <button class="close" aria-label="Close">✕</button>
+				<img alt="" id="lightboxImg" decoding="async" />
+				<button class="close" aria-label="Close">✕</button>
 			</dialog>
 
 			<!-- Venue -->
 			<section class="venue">
-			  <div class="container">
-				<h2>Venue</h2>
-				<p class="muted">University of Thomas Sankara, Ouagadougou – Burkina Faso.</p>
-				<div style="margin-top:16px;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden">
-				  <!--<iframe title="Plan"
-					src="https://www.openstreetmap.org/export/embed.html?bbox=-1.5353661775588991%2C12.363766340018941%2C-1.5328556299209595%2C12.365534835996145&amp;layer=mapnik"
-					loading="lazy" style="width:100%;height:340px;border:0" referrerpolicy="no-referrer-when-downgrade"></iframe>-->
-					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3895.6471684724843!2d-1.3475847251674726!3d12.473201787798251!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xe2ec85db70fdbbd%3A0x968f6dd4236ad573!2sUniversit%C3%A9%20Thomas%20Sankara!5e0!3m2!1sfr!2sfr!4v1761170131512!5m2!1sfr!2sfr" loading="lazy" style="width:100%;height:340px;border:0" referrerpolicy="no-referrer-when-downgrade"></iframe>
+				<div class="container">
+					<h2>Venue</h2>
+					<p class="muted">University of Thomas Sankara, Ouagadougou – Burkina Faso.</p>
+					<div style="margin-top:16px;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden">
+						<!--<iframe title="Plan"
+						src="https://www.openstreetmap.org/export/embed.html?bbox=-1.5353661775588991%2C12.363766340018941%2C-1.5328556299209595%2C12.365534835996145&amp;layer=mapnik"
+						loading="lazy" style="width:100%;height:340px;border:0" referrerpolicy="no-referrer-when-downgrade"></iframe>-->
+						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3895.6471684724843!2d-1.3475847251674726!3d12.473201787798251!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xe2ec85db70fdbbd%3A0x968f6dd4236ad573!2sUniversit%C3%A9%20Thomas%20Sankara!5e0!3m2!1sfr!2sfr!4v1761170131512!5m2!1sfr!2sfr" loading="lazy" style="width:100%;height:340px;border:0" referrerpolicy="no-referrer-when-downgrade"></iframe>
+					</div>
 				</div>
-			  </div>
 			</section>
 			<section class="hero">
 				<a href="#top" class="top" aria-label="Retour en haut">↑</a>
 			</section>
 		</main>
 
-	  <footer>
+	<footer>
 		<div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
-		  <div>© <span id="year"></span> ACIAM 2026 · All rights reserved</div>
-		  <div class="links">
-			<a href="#register">Registration</a>
-			<a href="#keynotespeakers">Speakers</a>
-			<a href="#">Legal</a>
-		  </div>
+			<div>© <span id="year"></span> ACIAM 2026 · All rights reserved</div>
+			<div class="links">
+				<a href="#register">Registration</a>
+				<a href="#keynotespeakers">Speakers</a>
+				<a href="#">Legal</a>
+			</div>
 		</div>
-	  </footer>
+	</footer>
 
-	  <script>
+	<script>
 		// ---------- Utils ----------
 		const $ = (s,r=document)=>r.querySelector(s);
 		const $$ = (s,r=document)=>Array.from(r.querySelectorAll(s));
@@ -1055,11 +1055,10 @@
 		function renderThematics(data, containerSel, cls = 'scroll-list') {
   			const root = document.querySelector(containerSel);
   			if (!root || !Array.isArray(data) || !data.length) return;
-			 const fragTms = document.createDocumentFragment();
-			 const htmlTms = document.createElement('article');
-			 htmlTms.className = cls;
-			 htmlTms.innerHTML = `${data.map(tm => `<div class="title">${tm.title || ''}</div>`).join('')}`
-  	
+			const fragTms = document.createDocumentFragment();
+			const htmlTms = document.createElement('article');
+			htmlTms.className = cls;
+			htmlTms.innerHTML = `${data.map(tm => `<div class="title">${tm.title || ''}</div>`).join('')}`
 			fragTms.appendChild(htmlTms);
 			root.appendChild(fragTms);
 		}
@@ -1106,23 +1105,14 @@
 			root.appendChild(fragIban);
 		}
 
-
-
-		// Each criterion has a weight
-const criteria = {
-  cost: 0.3,
-  quality: 0.4,
-  speed: 0.3
-};
-
-// Each option has scores per criterion
-const TICKETOPTIONS = [
-  { name: 'student', africanCost: 20, nonAfricanCost: 25 },
-  { name: 'company', africanCost: 100, nonAfricanCost: 500 },
-  { name: 'keynotespeaker', africanCost: 0, nonAfricanCost: 0 },
-  { name: 'otherspeaker', africanCost: 100, nonAfricanCost: 500 },
-  { name: 'otherparticipant', africanCost: 50, nonAfricanCost: 500 }
-];
+		// Each option has scores per criterion
+		const TICKETOPTIONS = [
+			{ name: 'student', africanCost: 20, nonAfricanCost: 25 },
+			{ name: 'company', africanCost: 100, nonAfricanCost: 500 },
+			{ name: 'keynotespeaker', africanCost: 0, nonAfricanCost: 0 },
+			{ name: 'otherspeaker', africanCost: 100, nonAfricanCost: 500 },
+			{ name: 'otherparticipant', africanCost: 50, nonAfricanCost: 500 }
+		];
 
 		  
 function amountFromCriteria(dataOptions, optionName, isAfrican) {
@@ -1332,19 +1322,19 @@ function amountFromCriteria(dataOptions, optionName, isAfrican) {
 		countrySelect.addEventListener("change", () => {
 			const selected = countrySelect.value;
 			if (!selected) {
-			  message.textContent = "";
-			  return;
+				message.textContent = "";
+				return;
 			}
 			if (africanCountries.includes(selected)) {
-			  /* message.textContent = `🌍 Welcome! ${selected} is an African country.`;
-			  message.style.color = "green";*/
-			  selectedCountry = "African";
-			  renderIBAN(IBAN, "#ibanId");
+				/* message.textContent = `🌍 Welcome! ${selected} is an African country.`;
+				message.style.color = "green";*/
+				selectedCountry = "African";
+				renderIBAN(IBAN, "#ibanId");
 			} else {
-			  /* message.textContent = `${selected} is not in Africa.`;
-			  message.style.color = "gray";*/
-			  selectedCountry = "NonAfrican";
-			  renderIBAN(IBAN, "#ibanNonAfricanId");
+				/* message.textContent = `${selected} is not in Africa.`;
+				message.style.color = "gray";*/
+				selectedCountry = "NonAfrican";
+				renderIBAN(IBAN, "#ibanNonAfricanId");
 			}
 			
 		  });
@@ -1362,44 +1352,44 @@ function amountFromCriteria(dataOptions, optionName, isAfrican) {
 			//formWrap.hidden=true; success.hidden=false; form.reset();
 
 			  
-  // Initialize PayPal Button
-  paypal.Buttons({
-    style: {
-      color:  'gold',
-      shape:  'pill',
-      label:  'pay',
-      layout: 'vertical'
-    },
+		// Initialize PayPal Button
+		paypal.Buttons({
+			style: {
+				color:  'gold',
+				shape:  'pill',
+				label:  'pay',
+				layout: 'vertical'
+			},
 
-    createOrder: function(data, actions) {
-		
-      return actions.order.create({
-		 
-        purchase_units: [{
-          description: `ACIAM 2026 Registration`,
-          amount: {
-            currency_code: 'EUR',
-            value: "20" /*.toFixed(2) */
-          }
-        }]
-      });
-    },
+			createOrder: function(data, actions) {
+			
+				return actions.order.create({
+			 
+					purchase_units: [{
+						description: `ACIAM 2026 Registration`,
+						amount: {
+							currency_code: 'EUR',
+							value: "20" /*.toFixed(2) */
+						}
+					}]
+				});
+			},
 
-    onApprove: function(data, actions) {
-      return actions.order.capture().then(function(details) {
-        alert(`✅ Payment successful! Thank you, ${details.payer.name.given_name}.`);
-      });
-    },
+			onApprove: function(data, actions) {
+				return actions.order.capture().then(function(details) {
+					alert(`✅ Payment successful! Thank you, ${details.payer.name.given_name}.`);
+				});
+			},
 
-    onCancel: function (data) {
-      alert('❌ Payment cancelled.');
-    },
+			onCancel: function (data) {
+				alert('❌ Payment cancelled.');
+			},
 
-    onError: function (err) {
-      console.error('PayPal Error:', err);
-      alert('⚠️ There was an issue processing your payment.');
-    }
-  }).render('#paypal-button-container');
+			onError: function (err) {
+				console.error('PayPal Error:', err);
+				alert('⚠️ There was an issue processing your payment.');
+			}
+		}).render('#paypal-button-container');
 			  
 			
 			if (selectedCountry == "African") {
@@ -1464,7 +1454,6 @@ function amountFromCriteria(dataOptions, optionName, isAfrican) {
 		  root.appendChild(frag);
 		}
 		renderHotels(HOTELS, '#hotelGrid');
-		
 		
 		
 		fetch("https://ipapi.co/json/")
