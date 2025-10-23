@@ -1361,7 +1361,11 @@ function amountFromCriteria(dataOptions, optionName, isAfrican) {
 			console.log('Registration payload', Object.fromEntries(new FormData(form).entries()));
 			//formWrap.hidden=true; success.hidden=false; form.reset();
 
-			
+			  if (selectedCountry == "African") {
+				const total = amountFromCriteria(TICKETOPTIONS, optionType.value, true);
+			 else {
+				  const total = amountFromCriteria(TICKETOPTIONS, optionType.value, false);
+			  }
   // Initialize PayPal Button
   paypal.Buttons({
     style: {
