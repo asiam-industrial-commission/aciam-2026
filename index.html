@@ -394,6 +394,7 @@
 	.committee .card .name{font-weight:800}
   </style>
   <script src="https://smtpjs.com/v3/smtp.js"></script>
+  <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&currency=EUR&locale=fr_FR"></script>
 </head>
 	<body>
 		<a id="top" tabindex="-1"></a>
@@ -704,6 +705,8 @@
 					  <p class="muted" id="ibanNonAfricanId"></p>
 					  <p style="margin-top:14px"><a class="btn" href="/aciam-2026/index.html">Back to top</a></p>
 					</div>
+					   <!-- PayPal button -->
+    				<div id="paypal-button-container" style="margin-top:24px;"></div>
 				  </div>
 				</article>
 			  </div>
@@ -1357,6 +1360,45 @@ function amountFromCriteria(dataOptions, optionName, isAfrican) {
 		  try{
 			console.log('Registration payload', Object.fromEntries(new FormData(form).entries()));
 			//formWrap.hidden=true; success.hidden=false; form.reset();
+
+			
+  // Initialize PayPal Button
+  paypal.Buttons({
+    style: {
+      color:  'gold',
+      shape:  'pill',
+      label:  'pay',
+      layout: 'vertical'
+    },
+
+    createOrder: function(data, actions) {
+      return actions.order.create({
+        purchase_units: [{
+          description: `ACIAM 2026 Registration — ${participantType}`,
+          amount: {
+            currency_code: 'USD',
+            value: total.toFixed(2)
+          }
+        }]
+      });
+    },
+
+    onApprove: function(data, actions) {
+      return actions.order.capture().then(function(details) {
+        alert(`✅ Payment successful! Thank you, ${details.payer.name.given_name}.`);
+      });
+    },
+
+    onCancel: function (data) {
+      alert('❌ Payment cancelled.');
+    },
+
+    onError: function (err) {
+      console.error('PayPal Error:', err);
+      alert('⚠️ There was an issue processing your payment.');
+    }
+  }).render('#paypal-button-container');
+			  
 			
 			if (selectedCountry == "African") {
 			  renderAmountFromCriteria(TICKETOPTIONS, "#amountAfrican", optionType.value, true);
