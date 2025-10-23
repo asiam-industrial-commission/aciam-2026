@@ -1361,11 +1361,7 @@ function amountFromCriteria(dataOptions, optionName, isAfrican) {
 			console.log('Registration payload', Object.fromEntries(new FormData(form).entries()));
 			//formWrap.hidden=true; success.hidden=false; form.reset();
 
-			  if (selectedCountry == "African") {
-				const total = amountFromCriteria(TICKETOPTIONS, optionType.value, true);
-			  } else {
-				  const total = amountFromCriteria(TICKETOPTIONS, optionType.value, false);
-			  }
+			  
   // Initialize PayPal Button
   paypal.Buttons({
     style: {
@@ -1376,6 +1372,13 @@ function amountFromCriteria(dataOptions, optionName, isAfrican) {
     },
 
     createOrder: function(data, actions) {
+
+		if (selectedCountry == "African") {
+				const total = amountFromCriteria(TICKETOPTIONS, optionType.value, true);
+			  } else {
+				  const total = amountFromCriteria(TICKETOPTIONS, optionType.value, false);
+			  }
+		
       return actions.order.create({
         purchase_units: [{
           description: `ACIAM 2026 Registration`,
