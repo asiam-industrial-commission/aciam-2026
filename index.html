@@ -1374,16 +1374,12 @@ function amountFromCriteria(dataOptions, optionName, isAfrican) {
     createOrder: function(data, actions) {
 		
       return actions.order.create({
-		  if (selectedCountry == "African") {
-				const total = amountFromCriteria(TICKETOPTIONS, optionType.value, true);
-			  } else {
-				  const total = amountFromCriteria(TICKETOPTIONS, optionType.value, false);
-			  }
+		 
         purchase_units: [{
           description: `ACIAM 2026 Registration`,
           amount: {
             currency_code: 'USD',
-            value: total.toFixed(2)
+            value: finalAmount.toFixed(2)
           }
         }]
       });
