@@ -1110,7 +1110,7 @@
 	  			if (!root || !Array.isArray(dataOptions) || !dataOptions.length) return;
 				const fragAmount = document.createDocumentFragment();
 				const htmlAmount = document.createElement('div');
-				finalAmount = amountFromCriteria(dataOptions, optionName, isAfrican)
+				const finalAmount = amountFromCriteria(dataOptions, optionName, isAfrican)
 				htmlAmount.innerHTML = `<div class="title">Please finalize your reservation by transferring $${finalAmount} to the following Account:</div>`
 				fragAmount.appendChild(htmlAmount);
 				root.appendChild(fragAmount);
