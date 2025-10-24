@@ -1116,7 +1116,7 @@
 				const finalAmount = document.getElementById('finalAmount');
 				finalAmount.value = amountFromCriteria(dataOptions, optionName, isAfrican);
 				
-				htmlAmount.innerHTML = `<div class="title">Please finalize your reservation by transferring $${finalAmount} to the following Account:</div>`
+				htmlAmount.innerHTML = `<div class="title">Please finalize your reservation by transferring $${finalAmount.value} to the following Account:</div>`
 				fragAmount.appendChild(htmlAmount);
 				root.appendChild(fragAmount);
 			}
@@ -1314,7 +1314,7 @@
 								description: `ACIAM 2026 Registration`,
 								amount: {
 									currency_code: 'EUR',
-									value: document.getElementById('finalAmount') /*.toFixed(2) */
+									value: document.getElementById('finalAmount').value /*.toFixed(2) */
 								}
 							}]
 						});
