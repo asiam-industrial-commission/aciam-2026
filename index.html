@@ -698,6 +698,7 @@
 							  <p class="muted" id="ibanNonAfricanId"></p>
 							  <p style="margin-top:14px"><a class="btn" href="#top">Back to top</a></p>
 							</div>
+							<input type="hidden" id="finalAmount" name="finalAmount" value="0" />
 						   	<!-- PayPal button -->
 							<div id="paypal-button-container" style="margin-top:24px;"></div>
 					  </div>
@@ -1110,7 +1111,11 @@
 	  			if (!root || !Array.isArray(dataOptions) || !dataOptions.length) return;
 				const fragAmount = document.createDocumentFragment();
 				const htmlAmount = document.createElement('div');
-				const finalAmount = amountFromCriteria(dataOptions, optionName, isAfrican)
+				//const finalAmount = amountFromCriteria(dataOptions, optionName, isAfrican)
+
+				const finalAmount = document.getElementById('finalAmount');
+				finalAmount.value = amountFromCriteria(dataOptions, optionName, isAfrican);
+				
 				htmlAmount.innerHTML = `<div class="title">Please finalize your reservation by transferring $${finalAmount} to the following Account:</div>`
 				fragAmount.appendChild(htmlAmount);
 				root.appendChild(fragAmount);
@@ -1309,7 +1314,7 @@
 								description: `ACIAM 2026 Registration`,
 								amount: {
 									currency_code: 'EUR',
-									value: finalAmount /*.toFixed(2) */
+									value: document.getElementById('finalAmount') /*.toFixed(2) */
 								}
 							}]
 						});
