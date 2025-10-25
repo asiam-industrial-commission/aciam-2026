@@ -62,6 +62,68 @@
     nav li ul a:hover{background:rgba(15,23,42,.04)
 	}
 
+
+
+
+
+	  /* Responsive Menu */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 26px;
+  cursor: pointer;
+  color: var(--brand);
+}
+
+@media (max-width: 880px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  header .nav {
+    flex-wrap: wrap;
+  }
+
+  nav.main-nav {
+    width: 100%;
+    display: none;
+    background: rgba(255,255,255,0.95);
+    border-top: 1px solid rgba(15,23,42,0.1);
+    padding: 12px 0;
+    margin-top: 10px;
+  }
+
+  nav.main-nav.open {
+    display: block;
+  }
+
+  nav.main-nav ul {
+    flex-direction: column;
+    gap: 10px;
+    text-align: left;
+    padding-left: 20px;
+  }
+
+  nav.main-nav li ul {
+    position: static;
+    border: 0;
+    box-shadow: none;
+    padding-left: 12px;
+    display: none;
+  }
+
+  nav.main-nav li:hover ul {
+    display: block;
+  }
+
+  header .btn {
+    display: none; /* Hide "Register" button in nav on small screens */
+  }
+}
+
+
+	  
     p { padding: 10px; width: 95%; text-align: justify; }
 	.none { text-justify: none; }
 	.auto { text-justify: auto; }
@@ -392,7 +454,14 @@
 		<header>
 			<div class="nav container">
 				<div class="brand">ACIAM 2026</div>
-				<nav aria-label="Navigation du site">
+
+				<!-- Hamburger Button -->
+    			<button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+      				☰
+    			</button>
+
+    			<nav class="main-nav" aria-label="Site Navigation">
+				<!--<nav aria-label="Navigation du site">-->
 					<ul>
 						<li><a href="#aim">About</a></li>
 						<li><a href="#committees">Committees</a>
@@ -811,6 +880,19 @@
 				</div>
 			</div>
 		</footer>
+
+		<script>
+		  // Responsive menu toggle
+		  const menuToggle = document.querySelector('.menu-toggle');
+		  const mainNav = document.querySelector('.main-nav');
+		
+		  menuToggle.addEventListener('click', () => {
+		    const isOpen = mainNav.classList.toggle('open');
+		    menuToggle.setAttribute('aria-expanded', isOpen);
+		    menuToggle.textContent = isOpen ? '✖' : '☰';
+		  });
+		</script>
+
 
 		<script>
 			// ---------- Utils ----------
