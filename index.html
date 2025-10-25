@@ -771,6 +771,75 @@
 					</article>
 				  </div>
 			</section>
+			<script>
+				document.addEventListener('DOMContentLoaded', function () {
+					const form = document.getElementById('regForm');
+					const countrySelect = document.getElementById('country');
+					// Load countries
+					fetch('/countries.php')
+						.then(r => r.json())
+						.then(data => {
+							if (data.success) {
+								data.countries.forEach(c => {
+									const opt = document.createElement('option');
+									opt.value = c.id;
+									opt.textContent = c.name;
+									countrySelect.appendChild(opt);
+								});
+							}
+						})
+						.catch(err => console.error('Failed to load countries', err));
+					// Show success UI
+					function showSuccessBlock() {
+						const wrap = document.getElementById('formWrap');
+						const formEl = wrap.querySelector('form');
+						if (formEl) formEl.hidden = true;
+						const success = document.getElementById('success');
+						if (success) success.hidden = false;
+					}
+					form.addEventListener('submit', async function (e) {
+						e.preventDefault();
+						// simple client validation
+						const required = ['firstName','lastName','email','ticket'];
+						for (const id of required) {
+							const el = form.querySelector('#' + id);
+							if (!el || !el.value.trim()) {
+								alert('Please complete: ' + id);
+								return;
+							
+							}
+							
+							const fd = new FormData(form);
+							// ensure consent -> '1' or '0'
+							fd.set('consent', form.querySelector('#consent').checked ? '1' : '0');
+							const obj = {};
+							fd.forEach((val, key) => obj[key] = val);
+							
+							try {
+								const resp = await fetch('/submit_form.php', {
+									method: 'POST',
+									headers: { 'Content-Type': 'application/json' },
+									body: JSON.stringify(obj)
+								});
+								
+								const data = await resp.json();
+								if (data.success) {
+									showSuccessBlock();
+								} else {
+									if (data.errors) {
+										alert('Fix errors: ' + data.errors.join('; '));
+									} else {
+										alert('Error: ' + (data.message || 'Unknown error'));
+									}
+								}
+							} catch (err) {
+								console.error(err);
+								alert('Network error: ' + err.message);
+							}
+						});
+				});
+			</script>
+
 
 			<!-- =========================
 			VERTICAL AUTO-SCROLLING TOPICS — WITH SPACING
