@@ -820,7 +820,7 @@
 					const obj = {};
 					fd.forEach((val, key) => obj[key] = val);
 					try {
-						const resp = await fetch('/submit_form.php', {
+						const resp = await fetch('submit_form.php', {
 							method: 'POST',
 							headers: { 'Content-Type': 'application/json' },
 							body: JSON.stringify(obj)
