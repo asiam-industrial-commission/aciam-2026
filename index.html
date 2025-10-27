@@ -445,7 +445,6 @@
 </head>
 	<body>
 		<a id="top" tabindex="-1"></a>
-
 		<header>
 			<div class="nav container">
 				<div class="brand"><a href="#top">ACIAM 2026</a></div>
@@ -893,6 +892,8 @@
 			$('#year').textContent = new Date().getFullYear();
 	
 			// ---------- Data ----------
+
+			/* Aim Chair and Co-Chair Data  */
 			const AIM = [
 			  { name:"Prof. Abdon ATANGANA", title:"Chair of African Conference of Industrial and Applied Mathematics (ACIAM).", avatar:"./images/Professor_ATANGANA_Award.jpg" },//"https://aciam-bf2026.com/images/prof-abdon.jpg" },
 			  { name:"Prof. Dr. Oluwole Daniel MAKINDE", title:"Co-Chair of African Conference of Industrial and Applied Mathematics (ACIAM).", avatar:"./images/Professor_MAKINDE_Award.jpg" } //"https://aciam-bf2026.com/images/ASIAM1-1-300x300-1.webp" },
@@ -966,7 +967,6 @@
 			const LOCAL_COMMITTEE = [
 			  { name:"Prof. Boureima SANGARE", title:" Unité de Formation et de Recherche en Sciences Exactes et Appliquées (UFR SEA), Burkina Faso" },
 			  { name:"Dr. Ibrahim NONKANE", title:"Université Thomas SANKARA, Ouagadougou, Burkina Faso" },
-			  //{ name:"Dr.Sanogo Satafa", title:"Université Paul Sabatier - Toulouse, France" },
 			  { name:"Dr. Abdoulaye KABORE", title:"Université Nazi Boni, Burkina Faso" },
 			  { name:"Prof. M. F. OUEDRAOGO", title:"Université Joseph Ki-Zerbo, Burkina Faso" },
 			  { name:"Matthieu Sobom SOME", title:"Université Sankara (Secrétaire), Burkina Faso" },
@@ -985,12 +985,15 @@
 			  { name:"Prof. Ousseynou NAKOULIMA", title:"President of the University Ouaga 3S, Burkina Faso", avatar:"./images/Prof_Ousseynou_NAKOULIMA.jpg" },
 			  { name:"HE Mr. Moriba Alain KONE", title:"His Excellency the Ambassador of the Republic of Guinea to the Republic of South Africa", avatar:"./images/Ambassador_Kone_Moriba_2.jpg" },
 			];
-	
+
+			/* Keynote Speakers list */
 			const KEYNOTESPEAKERS = [
 			  { name:"Prof. Wil SCHILDERS", title:"President of ECMI & ICIAM; advocate for industrial & societal mathematics.", avatar:"https://assets.w3.tue.nl/w/uploads/_processed_/0/3/csm_Schilders_Wil_BvOF230317ADP_4x3_LR_aa2b16cb9a.jpg" },
 			  { name:"Prof. Gaston Mandata N'GUEREKATA", title:"University Distinguished Professor and Associate Dean at Morgan State University in Baltimore, Maryland, USA", avatar:"./images/Prof_Gaston_Mandata_NGUEREKATA.jpg" },
 			  { name:"Prof. Tao TANG", title:"Hong Kong University of Science and Technology, Hong Kong", avatar:"https://gbaaa.org.hk/uploads/image/202206/cba7047a188db3d4657f28d0fbdf74d5.jpg" }
 			];
+
+			/* Plenary Speakers list */
 			const PLENARYSPEAKERS = [
 			  { name:"Prof. Dr. Oluwole Daniel MAKINDE", title:"Stellenbosch University, South Africa", avatar:"./images/ASIAM_Prof_MAKINDE.webp" },
 			  { name:"Prof. Abdon ATANGANA", title:"University of the Free State, South Africa.", avatar:"./images/ASIAM_Prof_ATANGANA.webp" },
@@ -1003,6 +1006,8 @@
 			  { name:"Prof. Dr. Kovalnogov VLADISLAV N", title:"Ulyanovsk State Technical University, Russia", avatar:"./images/Prof_Dr_Kovalnogov_Vladislav.webp" },
 			  { name:"Prof. Dr. Tomáš KOZUBEK", title:"Technical University Ostrava, Czech Republic", avatar:"./images/Tomas_KOZUBEK.jpg" }
 			];
+
+			/* Invited Speakers list */
 			const INVITEDSPEAKERS = [
 			  { name:"Prof. Zhonghua QIAO", title:"The Hong Kong Polytechnic University, Hong Kong", avatar:"https://awards.ugc.edu.hk/f/awardee/13610/560c560/RFS_Dr%20QIAO%20Zhonghua.jpg" },
 			  { name:"Prof. Jae KYOUNG KIM", title:"KAIST, South Korea.", avatar:"https://mathsci.kaist.ac.kr/~jaekkim/img/NYJ30062-1.jpg" },
@@ -1022,6 +1027,8 @@
 			  { name:"Prof. Dr. Zakia HAMMOUCH", title:"Mathematical modelling & fractional differential equations.", avatar:"https://tse2.mm.bing.net/th/id/OIP.n5r-UlkXbEpmc0n9DhWyNgAAAA?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" },
 			  { name:"Eng, Francklin LAPO", title:"Database Administrator.", avatar:"./images/Franklin_LAPO.jpeg" }
 			];
+
+			/* Gallery */
 			const GALLERY = [
 			  { src:'./images/Workshop_2_ACIAM_2024.jpeg', alt:'Conference hall' },
 			  { src:'./images/Workshop_1_ACIAM_2024.jpeg', alt:'Workshop session' },
@@ -1031,24 +1038,16 @@
 			  { src:'./images/Guests_Hosts_ACIAM_2024.jpeg', alt:'Panel discussion' },
 			  { src:'./images/Family_Photo_ACIAM_2023.jpeg', alt:'Audience in auditorium' }
 			];
-	
-			const OLDGALLERY = [
-			  { src:'https://aciam-bf2026.com/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-19-at-07.27.48.jpeg', alt:'Conference hall' },
-			  { src:'https://aciam-bf2026.com/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-17-at-08.16.54.jpeg', alt:'Workshop session' },
-			  { src:'https://aciam-bf2026.com/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-17-at-08.16.56-scaled.jpeg', alt:'Audience in auditorium' },
-			  { src:'https://aciam-bf2026.com/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-17-at-08.16.59.jpeg', alt:'Keynote on stage' },
-			  { src:'https://aciam-bf2026.com/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-17-at-08.16.53-scaled.jpeg', alt:'Networking break' },
-			  { src:'https://aciam-bf2026.com/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-17-at-08.16.52-scaled.jpeg', alt:'Panel discussion' },
-			  { src:'https://aciam-bf2026.com/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-19-at-07.26.19.jpeg', alt:'Audience in auditorium' }
-			];
-	
+
+			/* Bank Account Details */
 			const IBAN = [
 			  { key:'Bank', value:'NEDBANK' },
 			  { key:'Account_Number', value:'1310137943' },
 			  { key:'Branch_Code', value:'198765' },
 			  { key:'Swift_Code_BIC', value:'NEDSZAJJ' }
 			];
-			  
+
+			/* Suggested Thematics list */
 			const SUGGESTEDTHEMATICS = [
 			  { title:"Physics-Informed & Structure-Preserving Machine Learning" },
 			  { title:"Uncertainty Quantification & Probabilistic Numerics" },
@@ -1071,7 +1070,8 @@
 			  { title:"Mathematics of Networks: Resilience, Flow & Contagion" },
 			  { title:"Applied Topology & Geometric Methods for Complex Data" }
 			];
-			
+
+			/* Keynote Topics list */
 			const KEYNOTETOPICS = [
 			  { titlekt:"Physics-Informed AI for Scientific Discovery" },
 			  { titlekt:"Mathematics of Climate Resilience & Water Security" },
@@ -1090,7 +1090,7 @@
 			  {name:"Villa Kaya (Guesthouse)",area:"Quartier calme",time:"≈10–20 min taxi",price:"Budget",img:"./images/Villa_KAYA_Hotel.jpg",perks:["Wi-Fi","Breakfast"],maps:"https://www.google.com/maps/search/?api=1&query=Villa+Kaya+Ouagadougou",web:"https://www.google.com/search?q=Villa+Kaya+Ouagadougou"}
 			];
 
-			// Each option
+			// Ticket options and associated costs
 			const TICKETOPTIONS = [
 				{ name: 'student', africanCost: 20, nonAfricanCost: 25 },
 				{ name: 'company', africanCost: 100, nonAfricanCost: 500 },
@@ -1140,7 +1140,6 @@
 				root.appendChild(fragTps);
 			}
 			  
-	
 			/* NEW: simple list renderer for committee (no photos) */
 			function renderPeopleList(data, containerSel){
 			  const root = $(containerSel); if(!root) return;
@@ -1158,7 +1157,7 @@
 			  root.appendChild(frag);
 			}
 	
-			function renderIBAN(data, containerSel) {
+			function renderBankAccount(data, containerSel) {
 	  			const root = document.querySelector(containerSel);
 	  			if (!root || !Array.isArray(data) || !data.length) return;
 				 const fragIban = document.createDocumentFragment();
@@ -1349,12 +1348,12 @@
 					/* message.textContent = `🌍 Welcome! ${selected} is an African country.`;
 					message.style.color = "green";*/
 					selectedCountry = "African";
-					renderIBAN(IBAN, "#ibanId");
+					renderBankAccount(IBAN, "#ibanId");
 				} else {
 					/* message.textContent = `${selected} is not in Africa.`;
 					message.style.color = "gray";*/
 					selectedCountry = "NonAfrican";
-					renderIBAN(IBAN, "#ibanNonAfricanId");
+					renderBankAccount(IBAN, "#ibanNonAfricanId");
 				}
 				
 			  });
