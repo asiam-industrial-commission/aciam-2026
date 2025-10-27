@@ -230,7 +230,7 @@
       .btn{display:inline-block;background:var(--cta);color:var(--cta-ink);padding:10px 16px;border-radius:10px;font-weight:700;border:0;cursor:pointer}
       .btn:hover{filter:brightness(1.05)}
       .btn.outline{background:#fff;color:var(--ink);border:1px solid var(--line)}
-
+	  
       /* Layout */
       .grid{display:grid;gap:48px}
       .two{grid-template-columns:1fr}
@@ -347,6 +347,12 @@
 			margin: 8px 12px;
 		}
 	}
+
+	/* Mandatory Fields - Registration Formula */
+	.required:after {
+    	content:" *";
+    	color: red;
+  	}
 	
     /* Gallery */
     .gallery{padding:56px 0;border-top:1px solid var(--line)}
@@ -679,18 +685,18 @@
 								<form id="regForm" novalidate>
 									<div class="row two">
 										<div>
-											<label for="firstName">First name</label>
+											<label class="required" for="firstName">First name</label>
 											<input id="firstName" name="firstName" autocomplete="given-name" placeholder="Alex" required />
 											<div class="error" data-error-for="firstName"></div>
 										</div>
 										<div>
-											<label for="lastName">Last name</label>
+											<label class="required" for="lastName">Last name</label>
 											<input id="lastName" name="lastName" autocomplete="family-name" placeholder="Martin" required />
 											<div class="error" data-error-for="lastName"></div>
 										</div>
 									</div>
 									<div>
-										<label for="email">Email</label>
+										<label class="required" for="email">Email</label>
 										<input id="email" name="email" type="email" inputmode="email" placeholder="alex@example.com" required />
 										<div class="error" data-error-for="email"></div>
 									</div>
@@ -715,7 +721,7 @@
 										</select>
 									</div>
 									<div>
-										<label for="country">Country:</label>
+										<label class="required" for="country">Country:</label>
 										<select id="country">
 										  <option value="">Select your country</option>
 										</select>
