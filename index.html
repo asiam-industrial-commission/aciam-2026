@@ -724,7 +724,7 @@
 									</div>
 									<div>
 										<label for="country">Country:</label>
-										<select id="country" name="country" required>
+										<select id="country">
 										  <option value="">Select your country</option>
 										</select>
 									</div>
@@ -771,76 +771,6 @@
 					</article>
 				  </div>
 			</section>
-			<script>
-			document.addEventListener('DOMContentLoaded', function () {
-				const form = document.getElementById('regForm');
-				const countrySelect = document.getElementById('country');
-				
-				// ✅ Load countries dynamically
-				fetch('/countries.php')
-					.then(r => r.json())
-					.then(data => {
-						if (data.success) {
-							data.countries.forEach(c => {
-								const opt = document.createElement('option');
-								opt.value = c.id;
-								opt.textContent = c.name;
-								countrySelect.appendChild(opt);
-							});
-						}
-					})
-					.catch(err => console.error('Failed to load countries', err));
-				
-				// ✅ Show success message
-				function showSuccessBlock() {
-					document.getElementById('formWrap').hidden = true;
-					document.getElementById('success').hidden = false;
-				}
-				
-				// ✅ Form submission
-				form.addEventListener('submit', async function (e) {
-					e.preventDefault();
-					
-					// Basic validation
-					const required = ['firstName', 'lastName', 'email', 'ticket'];
-					for (const id of required) {
-						const el = form.querySelector('#' + id);
-						if (!el || !el.value.trim()) {
-							alert('Please complete: ' + id);
-							return;
-						}
-					}
-					
-					// Build FormData
-					const fd = new FormData(form);
-					fd.set('consent', form.querySelector('#consent').checked ? '1' : '0');
-					fd.set('country', form.querySelector('#country').value);
-					
-					// Convert to JSON
-					const obj = {};
-					fd.forEach((val, key) => obj[key] = val);
-					try {
-						const resp = await fetch('submit_form.php', {
-							method: 'POST',
-							headers: { 'Content-Type': 'application/json' },
-							body: JSON.stringify(obj)
-						});
-						
-						const data = await resp.json();
-						if (data.success) {
-							showSuccessBlock();
-						} else {
-							alert('Error: ' + (data.message || 'Something went wrong'));
-							console.log(data);
-						}
-					} catch (err) {
-						alert('Network error: ' + err.message);
-						console.error(err);
-					}
-				});
-			});
-			</script>
-
 
 			<!-- =========================
 			VERTICAL AUTO-SCROLLING TOPICS — WITH SPACING
