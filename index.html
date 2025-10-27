@@ -1313,7 +1313,7 @@
 			  setError('firstName','');setError('lastName','');setError('country','');setError('email','');setError('consent','');
 			  if(!firstName){setError('firstName','First name required');ok=false}
 			  if(!lastName){setError('lastName','Last name required');ok=false}
-			  if(!country){setError('country','Last name required');ok=false}
+			  if(!country){setError('country','Country required');ok=false}
 			  if(!/^([^\s@]+)@([^\s@]+)\.[^\s@]+$/.test(email)){setError('email','Invalid email');ok=false}
 			  if(!consent){setError('consent','Please accept data processing');ok=false}
 			  return ok;
