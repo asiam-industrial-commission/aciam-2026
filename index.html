@@ -496,34 +496,32 @@
 
 		<main>
 			<section class="hero2">
-					<img src="./images/Family_Photo_ACIAM_2023.jpeg" alt="Audience in auditorium">
-					<img src="./images/Workshop_2_ACIAM_2024.jpeg" class="active" alt="Conference hall">
-					<img src="./images/Workshop_1_ACIAM_2024.jpeg" alt="Workshop session">
-					<img src="./images/ACIAM_2023_State_Representation.jpeg" alt="Audience in auditorium">
-					<img src="./images/Prof_ATANGANA_Delegation_Aciam_2023.jpeg" alt="Keynote on stage">
-					<img src="./images/ACIAM_Festivities.jpeg" alt="Networking break">
-					<img src="./images/Guests_Hosts_ACIAM_2024.jpeg" alt="Panel discussion">
-
-					<div class="overlay"></div>
-
-					<div class="hero2-content">
-						<h1>ACIAM 2026 BURKINA FASO</h1>
-						<div class="hero2-buttons">
-							<a href="#register">Register</a>
-						</div>
+				<img src="./images/Family_Photo_ACIAM_2023.jpeg" alt="Audience in auditorium">
+				<img src="./images/Workshop_2_ACIAM_2024.jpeg" class="active" alt="Conference hall">
+				<img src="./images/Workshop_1_ACIAM_2024.jpeg" alt="Workshop session">
+				<img src="./images/ACIAM_2023_State_Representation.jpeg" alt="Audience in auditorium">
+				<img src="./images/Prof_ATANGANA_Delegation_Aciam_2023.jpeg" alt="Keynote on stage">
+				<img src="./images/ACIAM_Festivities.jpeg" alt="Networking break">
+				<img src="./images/Guests_Hosts_ACIAM_2024.jpeg" alt="Panel discussion">
+				<div class="overlay"></div>
+				<div class="hero2-content">
+					<h1>ACIAM 2026 BURKINA FASO</h1>
+					<div class="hero2-buttons">
+						<a href="#register">Register</a>
 					</div>
-				</section>
+				</div>
+			</section>
 
-				<script>
+			<script>
 				// Simple background image slideshow
-					const images = document.querySelectorAll('.hero2 img');
+				const images = document.querySelectorAll('.hero2 img');
 				let current = 0;
-
+	
 				setInterval(() => {
-				images[current].classList.remove('active');
-				current = (current + 1) % images.length;
-				images[current].classList.add('active');
-			  }, 5000);
+					images[current].classList.remove('active');
+					current = (current + 1) % images.length;
+					images[current].classList.add('active');
+				}, 5000);
 			</script>
 			
 			<!-- HERO -->
@@ -888,7 +886,6 @@
 		  });
 		</script>
 
-
 		<script>
 			// ---------- Utils ----------
 			const $ = (s,r=document)=>r.querySelector(s);
@@ -1101,8 +1098,6 @@
 				{ name: 'otherspeaker', africanCost: 100, nonAfricanCost: 500 },
 				{ name: 'otherparticipant', africanCost: 50, nonAfricanCost: 500 }
 			];
-
-			//const finalAmount = 0;
 	
 			// ---------- Render helpers ----------
 			function renderCards(data, containerSel, cls='card'){
@@ -1196,7 +1191,6 @@
 			}
 
 			// Render sections
-			
 			renderPeopleList(LOCAL_COMMITTEE, '#localCommitteeGrid');
 			renderPeopleList(INTERNATIONAL_COMMITTEE, '#internationalCommitteeGrid');
 			
@@ -1413,11 +1407,9 @@
 				  if (selectedCountry == "African") {
 				  	renderAmountFromCriteria(TICKETOPTIONS, "#amountAfrican", optionType.value, true);
 				    formWrap.hidden=true; successAfricanCondition.hidden=false; form.reset();
-				     //const amountAfrican = amountFromCriteria(TICKETOPTIONS, optionType.value, true);
 				  } else {
 				    renderAmountFromCriteria(TICKETOPTIONS, "#amountNonAfrican", optionType.value, false);
 				    formWrap.hidden=true; successNonAfricanCondition.hidden=false; form.reset();
-				    //const amountNonAfrican = amountFromCriteria(TICKETOPTIONS, "#amountAfrican", optionType.value, false);
 				  }
 	
 				  Email.send({
