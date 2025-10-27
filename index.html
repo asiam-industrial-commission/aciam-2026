@@ -711,14 +711,16 @@
 										</div>
 									</div>
 									<div>
-										<label for="ticket">Ticket type</label>
+										<label class="required" for="ticket">Ticket type</label>
 										<select id="ticket" name="ticket" required>
+											<option value="">Select your Ticket type</option>
 											<option value="company">Corporate</option>
 											<option value="student">Student</option>
 											<option value="keynotespeaker">Keynote Speaker</option>
 											<option value="otherspeaker">Other Speaker</option>
 											<option value="otherparticipant">Other Participant</option>							  
 										</select>
+										<div class="error" data-error-for="ticket"></div>
 									</div>
 									<div>
 										<label class="required" for="country">Country:</label>
@@ -1307,12 +1309,14 @@
 			  const firstName=form.firstName.value.trim();
 			  const lastName=form.lastName.value.trim();
 			  const email=form.email.value.trim();
+			  const ticket=form.ticket.value.trim();
 			  const country=form.country.value.trim();
 				
 			  const consent=form.consent.checked;
-			  setError('firstName','');setError('lastName','');setError('country','');setError('email','');setError('consent','');
+			  setError('firstName','');setError('lastName','');setError('ticket','');setError('country','');setError('email','');setError('consent','');
 			  if(!firstName){setError('firstName','First name required');ok=false}
 			  if(!lastName){setError('lastName','Last name required');ok=false}
+			  if(!ticket){setError('ticket','Ticket type required');ok=false}
 			  if(!country){setError('country','Country required');ok=false}
 			  if(!/^([^\s@]+)@([^\s@]+)\.[^\s@]+$/.test(email)){setError('email','Invalid email');ok=false}
 			  if(!consent){setError('consent','Please accept data processing');ok=false}
