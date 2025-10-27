@@ -62,68 +62,62 @@
     nav li ul a:hover{background:rgba(15,23,42,.04)
 	}
 
-
-
-
-
 	  /* Responsive Menu */
-.menu-toggle {
-  display: none;
-  background:linear-gradient(180deg,var(--bg-top) 0%, var(--bg-bottom) 100%); /*background: none;*/
-  border: none;
-  font-size: 26px;
-  cursor: pointer;
-  color: var(--brand);
-}
+	.menu-toggle {
+	  display: none;
+	  background:linear-gradient(180deg,var(--bg-top) 0%, var(--bg-bottom) 100%); /*background: none;*/
+	  border: none;
+	  font-size: 26px;
+	  cursor: pointer;
+	  color: var(--brand);
+	}
 
-@media (max-width: 880px) {
-  .menu-toggle {
-    display: block;
-  }
+	@media (max-width: 880px) {
+	  .menu-toggle {
+	    display: block;
+		}
 
-  header .nav {
-    flex-wrap: wrap;
-  }
+	  header .nav {
+	    flex-wrap: wrap;
+	  }
 
-  nav.main-nav {
-    width: 100%;
-    display: none;
-    background: rgba(255,255,255,0.95);
-    border-top: 1px solid rgba(15,23,42,0.1);
-    padding: 12px 0;
-    margin-top: 10px;
-  }
+	  nav.main-nav {
+	    width: 100%;
+	    display: none;
+	    background: rgba(255,255,255,0.95);
+	    border-top: 1px solid rgba(15,23,42,0.1);
+	    padding: 12px 0;
+	    margin-top: 10px;
+	  }
 
-  nav.main-nav.open {
-    display: block;
-  }
+	  nav.main-nav.open {
+	    display: block;
+	  }
 
-  nav.main-nav ul {
-    flex-direction: column;
-    gap: 10px;
-    text-align: left;
-    padding-left: 20px;
-  }
+	  nav.main-nav ul {
+	    flex-direction: column;
+	    gap: 10px;
+	    text-align: left;
+	    padding-left: 20px;
+	  }
 
-  nav.main-nav li ul {
-    position: static;
-    border: 0;
-    box-shadow: none;
-    padding-left: 12px;
-    display: none;
-  }
+	  nav.main-nav li ul {
+	    position: static;
+	    border: 0;
+	    box-shadow: none;
+	    padding-left: 12px;
+	    display: none;
+	  }
 
-  nav.main-nav li:hover ul {
-    display: block;
-  }
+	  nav.main-nav li:hover ul {
+	    display: block;
+	  }
 
-  header .btn {
-    display: none; /* Hide "Register" button in nav on small screens */
-  }
-}
+	  header .btn {
+	    display: none; /* Hide "Register" button in nav on small screens */
+	  }
+	}
 
-
-	  
     p { padding: 10px; width: 95%; text-align: justify; }
 	.none { text-justify: none; }
 	.auto { text-justify: auto; }
