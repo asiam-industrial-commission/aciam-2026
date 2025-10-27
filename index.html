@@ -1306,11 +1306,13 @@
 			  const firstName=form.firstName.value.trim();
 			  const lastName=form.lastName.value.trim();
 			  const email=form.email.value.trim();
-	
+			  const countrysel=form.country.value.trim();
+				
 			  const consent=form.consent.checked;
 			  setError('firstName','');setError('lastName','');setError('email','');setError('consent','');
 			  if(!firstName){setError('firstName','First name required');ok=false}
 			  if(!lastName){setError('lastName','Last name required');ok=false}
+			  if(!country){setError('country','Last name required');ok=false}
 			  if(!/^([^\s@]+)@([^\s@]+)\.[^\s@]+$/.test(email)){setError('email','Invalid email');ok=false}
 			  if(!consent){setError('consent','Please accept data processing');ok=false}
 			  return ok;
