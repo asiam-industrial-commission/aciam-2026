@@ -1372,15 +1372,65 @@
 			  });
 			});
 	
-			form.addEventListener('submit', async (e)=>{
-			  e.preventDefault();
-			  const optionType = document.getElementById("ticket");
-			  if(!validate()) return;
-			  try{
-				  console.log('Registration payload', Object.fromEntries(new FormData(form).entries()));
-				  
-				  // Initialize PayPal Button
-				  paypal.Buttons({
+			form.addEventListener('submit', async (e) => {
+				e.preventDefault();
+    
+				const optionType = document.getElementById("ticket");
+    
+				if (!validate()) return;
+    
+				// NEW: Disable button to prevent double submission
+				const submitBtn = form.querySelector('button[type="submit"]');
+				const originalBtnText = submitBtn.textContent;
+				submitBtn.disabled = true;
+				submitBtn.textContent = 'Processing...';
+    
+				try {
+					// NEW: Collect form data into object
+					const formData = {
+						firstName: form.firstName.value.trim(),
+						lastName: form.lastName.value.trim(),
+						email: form.email.value.trim(),
+						company: form.company.value.trim(),
+						role: form.role.value.trim(),
+						ticket: form.ticket.value.trim(),
+						country: form.country.value.trim(),
+						message: form.message.value.trim(),
+						finalAmount: document.getElementById('finalAmount').value
+					};
+        
+        
+					// NEW: Submit to database FIRST via fetch API
+        
+					const response = await fetch('register_handler.php', {
+        
+						method: 'POST',
+        
+						headers: {
+        
+							'Content-Type': 'application/json',
+        
+						},
+        
+						body: JSON.stringify(formData)
+        
+					});
+        
+        
+					// NEW: Check if database save was successful
+        
+					const result = await response.json();
+        
+        
+					if (!result.success) {
+        
+						throw new Error(result.message || 'Registration failed');
+        
+					}
+    
+					// THEN show PayPal and success message (same as before)				  
+					// Initialize PayPal Button
+					paypal.Buttons({
 				  	style: {
 						color:  'gold',
 						shape:  'pill',
@@ -1393,7 +1443,7 @@
 							purchase_units: [{
 								description: `ACIAM 2026 Registration`,
 								amount: {
-									currency_code: 'USD',
+									currency_code: 'EUR',
 									value: document.getElementById('finalAmount').value /*.toFixed(2) */
 								}
 							}]
@@ -1415,32 +1465,42 @@
 						alert('⚠️ There was an issue processing your payment.');
 					}
 				  }).render('#paypal-button-container');
-				  
+        
 				  if (selectedCountry == "African") {
-				  	renderAmountFromCriteria(TICKETOPTIONS, "#amountAfrican", optionType.value, true);
-				    formWrap.hidden=true; successAfricanCondition.hidden=false; form.reset();
-				  } else {
-				    renderAmountFromCriteria(TICKETOPTIONS, "#amountNonAfrican", optionType.value, false);
-				    formWrap.hidden=true; successNonAfricanCondition.hidden=false; form.reset();
-				  }
-	
-				  Email.send({
-	                  Host: "mail.aciam-bf206.com", /*smtp.yourisp.com",*/
-	                  Username: "info@aciam-bf2026.com",
-	                  Password: "burkina@4321",
-	                  To: "${email}",
-	                  From: "info@aciam-bf2026.com",
-	                  Subject: "Test Email",
-	                  Body: "This is a test email sent using SMTP.js"
-	              })
-	              .then(function (message) {
-	                  alert("Mail sent successfully") // Alert message on successful email delivery
-	              });
-			  }catch(err){
-				alert('Unable to submit the form. Please try again later.');
+            
+					renderAmountFromCriteria(TICKETOPTIONS, "#amountAfrican", optionType.value, true);
+            
+					formWrap.hidden = true;
+            
+					successAfricanCondition.hidden = false;
+        
+				} else {
+        
+					renderAmountFromCriteria(TICKETOPTIONS, "#amountNonAfrican", optionType.value, false);
+        
+					formWrap.hidden = true;
+        
+					successNonAfricanCondition.hidden = false;
+        
+				}
+        
+        
+				form.reset();
+        
+    
+			} catch (err) {
+    
+				// NEW: Better error handling with button re-enable
+    
+				alert('Unable to submit registration: ' + err.message);
+    
 				console.error(err);
-			  }
-			});
+        
+				submitBtn.disabled = false;
+    
+				submitBtn.textContent = originalBtnText;
+			}
+		});
 			  
 			// ---- Accommodations render
 			function renderHotels(list, sel){
