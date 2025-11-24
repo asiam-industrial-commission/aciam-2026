@@ -261,7 +261,8 @@
 	      display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:24px
 	  }
 	  .speaker img, .aim img, .honorarycommittee img, .keynotespeaker img,.plenaryspeaker img,.invitedspeaker img,.specialspeaker img{
-	      width:100%;height:180px;object-fit:cover;border-top-left-radius:var(--radius);border-top-right-radius:var(--radius);aspect-ratio:16/9
+	      width:100%;object-fit:cover;border-top-left-radius:var(--radius);border-top-right-radius:var(--radius);aspect-ratio:16/9
+		  /*width:100%;height:180px;object-fit:cover;border-top-left-radius:var(--radius);border-top-right-radius:var(--radius);aspect-ratio:16/9*/
 	  }
 	  .aim img{height:300px;aspect-ratio:4/3}
 	  .keynotespeaker img{height:300px;aspect-ratio:4/3}
@@ -272,6 +273,8 @@
 
 	  .specialspeaker-grid article img{width:100%;height:80%;object-fit:cover;border-radius:12px;aspect-ratio:4/3;display: flex; justify-content: center}
 	  .specialspeaker-grid article meta{padding:14px 16px}
+	  .specialspeaker-grid article meta name {font-weight:700}
+	  .specialspeaker-grid article meta title {font-size:14px;color:var(--muted)}
 
 	  /* Logo background for each section */
 	  section::before {
